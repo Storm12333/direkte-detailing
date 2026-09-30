@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# booking-bekræftelse.html har <meta name="robots" content="noindex">.
+# Den må gerne crawles — ellers kan Google ikke se noindex-taggen og risikerer
+# at indeksere adressen uden indhold.
+
+Sitemap: https://www.svendborgbildetail.dk/sitemap.xml
