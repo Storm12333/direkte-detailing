@@ -150,7 +150,7 @@ header {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 60;
+  z-index: 170;   /* over .nav-overlay, ellers aabner menuen bag det */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -285,12 +285,16 @@ button:focus-visible{
 .hamburger.open span:nth-child(2){ opacity:0; }
 .hamburger.open span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
 
+/* Menuen ligger inde i <header>, som selv danner en stablingskontekst.
+   Navens z-index gaelder derfor kun indbyrdes i headeren — udadtil er det
+   headerens eget tal, der taeller. Laa overlayet hoejere, aabnede menuen
+   bag det, og alle tryk ramte overlayet i stedet for menupunkterne. */
 .nav-overlay{
   display:none;
   position:fixed;
   inset:0;
   background:rgba(5,5,5,0.72);
-  z-index:90;
+  z-index:160;
 }
 .nav-overlay.open{ display:block; }
 
