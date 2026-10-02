@@ -5,6 +5,25 @@
 
 <!-- Samtykke: skal indlæses før al sporing, ellers når Cookiebot ikke at blokere den -->
 <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="43cb07ae-ea17-4fa1-9d92-21a8b7a0403d" data-blockingmode="auto" data-culture="DA" type="text/javascript"></script>
+<!-- Google Consent Mode: alt afvist indtil brugeren siger andet.
+     data-cookieconsent="ignore" er noedvendig — ellers blokerer Cookiebot
+     netop det script, der saetter standardtilstanden. -->
+<script data-cookieconsent="ignore">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied',
+    functionality_storage: 'denied',
+    personalization_storage: 'denied',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  gtag('set', 'ads_data_redaction', true);
+  gtag('set', 'url_passthrough', true);
+</script>
 <link rel="icon" href="Billeder/dd-favicon.svg" type="image/svg+xml">
 <link rel="icon" href="Billeder/dd-favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="Billeder/dd-favicon-180.png">

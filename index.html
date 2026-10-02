@@ -5,9 +5,36 @@
 
 <!-- Samtykke: skal indlæses før al sporing, ellers når Cookiebot ikke at blokere den -->
 <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="43cb07ae-ea17-4fa1-9d92-21a8b7a0403d" data-blockingmode="auto" data-culture="DA" type="text/javascript"></script>
+<!-- Google Consent Mode: alt afvist indtil brugeren siger andet.
+     data-cookieconsent="ignore" er noedvendig — ellers blokerer Cookiebot
+     netop det script, der saetter standardtilstanden. -->
+<script data-cookieconsent="ignore">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied',
+    functionality_storage: 'denied',
+    personalization_storage: 'denied',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  gtag('set', 'ads_data_redaction', true);
+  gtag('set', 'url_passthrough', true);
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- COOKIEBOT -->
+
+
+<!-- Google Analytics — samme opsaetning som de oevrige sider -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WBTPSVMRTZ"></script>
+<script>
+  gtag('js', new Date());
+  gtag('config', 'G-WBTPSVMRTZ');
+</script>
 
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
