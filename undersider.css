@@ -1,0 +1,136 @@
+/* Komponenter, der kun bruges på undersiderne. Bygger oven på faelles.css. */
+/* ── Undersider ──────────────────────────────────────────────────────── */
+.hero.u-hero{ height:82vh; height:82svh; min-height:600px; max-height:860px; }
+.hero.u-hero .ordmaerke{ top:16%; }
+.sti{ gap:8px; }
+.sti a{ color:var(--roeg); transition:color .2s; } .sti a:hover{ color:var(--kridt); }
+.sti span{ color:var(--champagne); }
+.nav-links a[aria-current="page"]{ color:var(--kridt); }
+.nav-links a[aria-current="page"]::after{ width:100%; }
+.u-hero .hero-raekke{ margin-bottom:clamp(36px,6vh,64px) !important; }
+/* På telefon vokser heroen med indholdet i stedet for at klemme det */
+@media(max-width:760px){
+  .hero.u-hero{ height:auto; min-height:0; max-height:none; padding-top:190px; }
+  .hero.u-hero .ordmaerke{ top:100px; }
+  .hero.u-hero .hero-bund{ position:relative; padding-bottom:22px; }
+  .hero.u-hero .gr-bund{ height:85%; }
+}
+
+/* To spalter: tekst og indhold */
+.to-spalter{ display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); gap:clamp(40px,6vw,90px); align-items:start; }
+.to-spalter.midt{ align-items:center; }
+.stor-titel{ margin-top:16px; font-family:var(--bebas); font-weight:400; text-transform:uppercase; letter-spacing:.005em; line-height:.92; font-size:clamp(2.8rem,5vw,4.2rem); }
+.broed p{ margin:0 0 18px; color:var(--tekst); font-size:1.05rem; line-height:1.75; max-width:60ch; }
+.broed p:first-child{ color:var(--tekst-2); font-size:1.15rem; }
+.broed a{ color:var(--champagne); border-bottom:1px solid rgba(var(--guld-rgb),.35); }
+@media(max-width:900px){ .to-spalter{ grid-template-columns:1fr; } }
+
+/* Prisboks på servicesiden */
+.prisboks{ border-radius:var(--r); padding:28px 28px 26px; }
+.prisboks .top{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; }
+.prisboks .tal{ font-family:var(--bebas); font-size:clamp(3.4rem,6vw,4.6rem); line-height:.9; letter-spacing:.01em; color:var(--kridt); transition:opacity .2s; }
+.prisboks .tal.skift{ opacity:0; }
+.prisboks .for{ font-family:var(--etikette); font-size:.6rem; letter-spacing:.24em; text-transform:uppercase; color:var(--champagne); }
+.prisboks .segment{ margin:22px 0 10px; max-width:none; }
+.prisboks .eks{ margin:0 0 20px; color:var(--roeg); font-size:.86rem; min-height:2.6em; }
+.prisboks .eks b{ color:var(--tekst-2); font-weight:500; }
+.str-liste{ list-style:none; margin:0 0 22px; padding:0; border-top:1px solid var(--linje); }
+.str-liste li{ display:flex; justify-content:space-between; gap:12px; padding:11px 2px; border-bottom:1px solid var(--linje); color:var(--tekst); font-size:.95rem; cursor:pointer; transition:color .25s, padding .3s var(--ease); }
+.str-liste li b{ font-weight:500; font-variant-numeric:tabular-nums; color:var(--tekst-2); }
+.str-liste li.valgt{ color:var(--kridt); padding-left:10px; }
+.str-liste li.valgt b{ color:var(--champagne); }
+.prisboks .knapper{ display:flex; gap:10px; flex-wrap:wrap; }
+.prisboks .knapper .knap{ flex:1 1 180px; }
+.prisboks .lille{ margin:16px 0 0; color:var(--roeg); font-size:.86rem; }
+.prisboks .lille a{ color:var(--champagne); border-bottom:1px solid rgba(var(--guld-rgb),.35); }
+
+/* Inkluderet: to kolonner med billede */
+.inkl-gitter{ display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+.inkl{ border-radius:var(--r); overflow:hidden; display:flex; flex-direction:column; }
+.inkl img{ width:100%; aspect-ratio:16/10; object-fit:cover; filter:saturate(.86) contrast(1.07) brightness(.94) sepia(.07); }
+.inkl .krop{ padding:24px 26px 26px; }
+.inkl h3{ font-family:var(--bebas); font-weight:400; font-size:2rem; letter-spacing:.01em; line-height:1; text-transform:uppercase; }
+.inkl ul{ list-style:none; margin:16px 0 0; padding:0; display:grid; gap:9px; }
+.inkl li{ display:grid; grid-template-columns:14px 1fr; gap:10px; color:var(--tekst-2); font-size:.97rem; }
+.inkl li::before{ content:"+"; color:var(--guld); font-weight:600; }
+@media(max-width:760px){ .inkl-gitter{ grid-template-columns:1fr; } }
+
+/* Tre små kort: hvem er den til */
+.tre{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.lille-kort{ border-radius:var(--r); padding:26px 24px 24px; }
+.lille-kort .n{ font-family:var(--bebas); font-size:2.6rem; line-height:1; color:transparent; -webkit-text-stroke:1px rgba(var(--guld-rgb),.7); }
+.lille-kort h3{ margin:12px 0 8px; font-size:1.15rem; letter-spacing:-.02em; }
+.lille-kort p{ margin:0; color:var(--tekst); font-size:.95rem; }
+@media(max-width:860px){ .tre{ grid-template-columns:1fr; } }
+
+/* Opgradering til premium */
+.opgrader{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.1fr); border-radius:var(--r); overflow:hidden; }
+.opgrader img{ width:100%; height:100%; min-height:320px; object-fit:cover; filter:saturate(.86) contrast(1.07) brightness(.94) sepia(.07); }
+.opgrader .krop{ padding:clamp(28px,4vw,48px); display:flex; flex-direction:column; justify-content:center; }
+.opgrader .krop p{ color:var(--tekst); margin:14px 0 0; max-width:48ch; }
+.opgrader .pris{ margin:24px 0 6px; display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; }
+.opgrader .pris b{ font-family:var(--bebas); font-weight:400; font-size:2.6rem; line-height:1; color:var(--kridt); }
+.opgrader .pris span{ font-family:var(--etikette); font-size:.58rem; letter-spacing:.2em; text-transform:uppercase; color:var(--roeg); }
+.opgrader .knapper{ margin-top:22px; display:flex; gap:10px; flex-wrap:wrap; }
+.opgrader .knap:not(.kant){ background:var(--champagne); border-color:var(--champagne); }
+@media(max-width:860px){ .opgrader{ grid-template-columns:1fr; } .opgrader img{ min-height:220px; aspect-ratio:16/9; } }
+
+/* Holdet — lille og dæmpet, med navne */
+.holdkort{ border-radius:var(--r); overflow:hidden; }
+.holdkort img{ width:100%; aspect-ratio:16/10; object-fit:cover; object-position:50% 38%; }
+.holdkort figcaption{ padding:16px 20px 18px; font-size:.92rem; color:var(--tekst-2); }
+.holdkort figcaption span{ display:block; margin-bottom:6px; font-family:var(--etikette); font-size:.56rem; letter-spacing:.24em; text-transform:uppercase; color:var(--champagne); }
+.citat-titel{ font-family:var(--bebas); font-weight:400; text-transform:uppercase; letter-spacing:.005em; line-height:.95; font-size:clamp(2.6rem,4.6vw,3.8rem); }
+
+/* Kontaktsiden */
+.fliser{ max-width:var(--maxw); margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+.flise{ border-radius:var(--r); padding:18px 20px 16px; display:flex; flex-direction:column; gap:4px; transition:background .3s; }
+.flise:hover{ background:rgba(255,255,255,.05); }
+.flise small{ font-family:var(--etikette); font-size:.56rem; letter-spacing:.24em; text-transform:uppercase; color:var(--champagne); }
+.flise b{ font-family:var(--bebas); font-weight:400; font-size:1.9rem; line-height:1.05; letter-spacing:.01em; color:var(--kridt); }
+.flise span{ font-size:.84rem; color:var(--tekst); }
+.flise span.aaben{ color:#9BCB9A; }
+@media(max-width:760px){ .fliser{ grid-template-columns:1fr; gap:8px; } .flise{ padding:12px 16px; } .flise b{ font-size:1.5rem; } }
+.booking{ border-radius:var(--r); overflow:hidden; }
+.booking iframe{ display:block; width:100%; height:880px; border:0; background:#fff; }
+.booking-fod{ margin:14px 0 0; color:var(--roeg); font-size:.88rem; }
+.booking-fod a{ color:var(--champagne); border-bottom:1px solid rgba(var(--guld-rgb),.35); }
+.tjek{ list-style:none; margin:22px 0 0; padding:0; border-top:1px solid var(--linje); }
+.tjek li{ display:grid; grid-template-columns:30px 1fr; gap:12px; padding:16px 0; border-bottom:1px solid var(--linje); color:var(--tekst-2); }
+.tjek li svg{ width:20px; height:20px; color:var(--champagne); margin-top:2px; }
+.tjek li b{ display:block; color:var(--kridt); font-weight:600; }
+
+/* Mellemoverskrifter i lange tekster */
+.broed h3.mellem{ margin:30px 0 10px; font-family:var(--bebas); font-weight:400; font-size:1.7rem; letter-spacing:.01em; line-height:1; text-transform:uppercase; color:var(--kridt); }
+.broed h3.mellem:first-child{ margin-top:0; }
+/* Servicekort-gitter på undersider */
+.kort-raekke.fire{ grid-template-columns:repeat(2,1fr); max-width:900px; margin:0 auto; }
+@media(max-width:640px){ .kort-raekke.fire{ grid-template-columns:1fr; } }
+
+/* Artikel: lange tekster som privatlivspolitikken */
+.artikel{ max-width:760px; margin:0 auto; color:var(--tekst); font-size:1.02rem; line-height:1.75; }
+.artikel .manchet{ color:var(--tekst-2); font-size:1.18rem; line-height:1.65; margin:0 0 10px; }
+.artikel .dato{ font-family:var(--etikette); font-size:.6rem; letter-spacing:.24em; text-transform:uppercase; color:var(--champagne); margin:0 0 40px; }
+.artikel h2{ margin:56px 0 14px; font-family:var(--bebas); font-weight:400; font-size:clamp(2rem,3.4vw,2.6rem); letter-spacing:.01em; line-height:1; text-transform:uppercase; color:var(--kridt); }
+.artikel h3{ margin:30px 0 8px; font-size:1.14rem; font-weight:600; letter-spacing:-.02em; color:var(--kridt); }
+.artikel p{ margin:0 0 14px; }
+.artikel a{ color:var(--champagne); border-bottom:1px solid rgba(var(--guld-rgb),.35); }
+.artikel ul{ margin:0 0 18px; padding:0; list-style:none; display:grid; gap:8px; }
+.artikel ul li{ display:grid; grid-template-columns:14px 1fr; gap:10px; }
+.artikel ul li::before{ content:"+"; color:var(--guld); font-weight:600; }
+.artikel ul.fakta{ padding:18px 22px; border-radius:var(--r); background:var(--kul); border:1px solid var(--linje); }
+.artikel ul.fakta li{ grid-template-columns:1fr; } .artikel ul.fakta li::before{ content:none; }
+.artikel b{ color:var(--kridt); font-weight:600; }
+.artikel .grundlag{ padding-left:16px; border-left:1px solid rgba(var(--guld-rgb),.5); color:var(--roeg); font-size:.94rem; }
+.artikel #CookieDeclaration, .artikel .CookieDeclaration{ color:var(--tekst); }
+/* 404 og tak-side: hero i fuld højde */
+.hero.u-hero.fuld{ height:100vh; height:100svh; max-height:none; }
+@media(max-width:760px){ .hero.u-hero.fuld{ height:auto; } }
+.genveje{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+.genvej{ border-radius:var(--r); padding:20px 20px 18px; display:flex; flex-direction:column; gap:6px; transition:background .3s; }
+.genvej:hover{ background:rgba(255,255,255,.05); }
+.genvej small{ font-family:var(--etikette); font-size:.56rem; letter-spacing:.24em; text-transform:uppercase; color:var(--champagne); }
+.genvej b{ font-family:var(--bebas); font-weight:400; font-size:1.8rem; line-height:1; letter-spacing:.01em; color:var(--kridt); }
+.genvej span{ color:var(--tekst); font-size:.88rem; }
+@media(max-width:900px){ .genveje{ grid-template-columns:1fr 1fr; } }
+@media(max-width:480px){ .genveje{ grid-template-columns:1fr; } }

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="da">
-  <head>
+<head>
 <meta charset="UTF-8">
 
 <!-- Samtykke: skal indlæses før al sporing, ellers når Cookiebot ikke at blokere den -->
@@ -64,9 +64,6 @@ fbq('track', 'PageView');
 
 
 <!-- BRANDSKRIFTER: Schibsted Grotesk (alt) + Jost (kun versal-etiketter) -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500&family=Schibsted+Grotesk:ital,wght@0,400..700;1,400&display=swap">
 
 <link rel="icon" href="Billeder/dd-favicon.svg" type="image/svg+xml">
 <link rel="icon" href="Billeder/dd-favicon-32.png" sizes="32x32" type="image/png">
@@ -187,38 +184,7 @@ fbq('track', 'PageView');
 </script>
 
 <!-- FAQ schema til forsiden (de 3 eksisterende FAQ-spørgsmål) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Hvor lang tid tager en bilrengøring?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "En typisk bilrengøring tager mellem 2 og 3 timer, afhængig af bilens beskidthed, størrelse og tilkøb."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Kører I ud til kunden?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Ja, vi tilbyder mobil bilrengøring i Svendborg, Tåsinge, Thurø og omegn."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Hvad koster bilrengøring?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Prisen afhænger af hvilken service du vælger. Vores priser for udvendig vask starter fra 375 kr. Vores priser for indvendig rengøring starter fra 685 kr."
-      }
-    }
-  ]
-}
-</script>
+
 
 <!-- BreadcrumbList til forsiden -->
 <script type="application/ld+json">
@@ -235,741 +201,1024 @@ fbq('track', 'PageView');
   ]
 }
 </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Jost:wght@500&family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   MOTION LAB v6
+   Rolig hero → priser lige bagefter. Prisen vises på servicekortene,
+   og bilstørrelsen vælges én gang øverst, så hvert kort viser den rigtige
+   pris for kundens bil. Ingen tabel, ingen separat beregner.
+   Alle priser er fra direktedetailing.dk.
+   ========================================================================== */
+:root{
+  --onyx:#050505; --kul:#0E0E0D; --grafit:#171613; --linje:#232019; --linje-2:#2E2A22;
+  --roeg:#8C867A; --kridt:#F2F1ED; --champagne:#E7CE93; --guld:#C9A227;
+  --champagne-lys:#F3E5C2; --tekst:#ADA79B; --tekst-2:#B8B2A6;
+  --varm-bund:#15120B;
+  --guld-rgb:201,162,39; --kridt-rgb:242,241,237;
+  --disp:"Schibsted Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --etikette:"Jost",system-ui,sans-serif;
+  --bebas:"Bebas Neue","Schibsted Grotesk",Impact,sans-serif;
+  --r:2px; --pad:72px; --maxw:1240px;
+  --hairline:linear-gradient(90deg,transparent,rgba(var(--guld-rgb),.55),transparent);
+  --ease:cubic-bezier(.22,.7,.2,1);
+}
+@media(max-width:1100px){ :root{ --pad:40px; } }
+@media(max-width:640px){ :root{ --pad:18px; } }
 
-<link rel="stylesheet" href="dd-brand.css?v=20260930c">
+*,*::before,*::after{ box-sizing:border-box; }
+html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; scroll-padding-top:96px; }
+body{ margin:0; background:var(--onyx); color:var(--kridt); font-family:var(--disp); line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+img,video{ display:block; max-width:100%; }
+a{ color:inherit; text-decoration:none; }
+button{ font:inherit; color:inherit; }
+a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{ outline:2px solid var(--guld); outline-offset:3px; }
+h1,h2,h3{ font-weight:600; letter-spacing:-.04em; line-height:1.04; margin:0; text-wrap:balance; }
+h1 em,h2 em{ font-style:normal; color:inherit; }
+
+.etiket{ font-family:var(--etikette); font-weight:500; font-size:.66rem; letter-spacing:.3em; text-transform:uppercase; color:var(--champagne); margin:0; }
+.etiket.streg{ display:inline-flex; align-items:center; gap:14px; }
+.etiket.streg::before{ content:""; width:32px; height:1px; background:linear-gradient(90deg,transparent,var(--guld)); }
+
+.glas{ position:relative; isolation:isolate; background:rgba(5,5,5,.3); -webkit-backdrop-filter:blur(10px) saturate(1.1); backdrop-filter:blur(10px) saturate(1.1); }
+.glas::before{ content:""; position:absolute; inset:0; border-radius:inherit; padding:1px; pointer-events:none;
+  background:linear-gradient(180deg,rgba(255,255,255,.3),rgba(255,255,255,.06) 30%,transparent 50%,rgba(255,255,255,.06) 70%,rgba(255,255,255,.2));
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0); -webkit-mask-composite:xor; mask-composite:exclude; }
+
+.knap{ display:inline-flex; align-items:center; justify-content:center; gap:10px; height:52px; padding:0 26px; border-radius:var(--r);
+  font:600 .98rem/1 var(--disp); white-space:nowrap; cursor:pointer; background:var(--kridt); color:var(--onyx); border:1px solid var(--kridt);
+  transition:background .25s, border-color .25s, color .25s; }
+.knap:hover{ background:#fff; }
+.knap svg{ width:17px; height:17px; flex-shrink:0; transition:transform .3s var(--ease); }
+.knap:hover svg{ transform:translateX(3px); }
+.knap.ned:hover svg{ transform:translateY(3px); }
+.knap.kant{ background:transparent; color:var(--kridt); border-color:rgba(var(--kridt-rgb),.3); font-weight:500; }
+.knap.kant:hover{ border-color:var(--kridt); background:rgba(var(--kridt-rgb),.06); }
+
+.vis{ opacity:0; transform:translateY(16px); transition:opacity 1.2s var(--ease), transform 1.3s var(--ease); transition-delay:var(--d,0ms); }
+.vis.in{ opacity:1; transform:none; }
+
+/* ── Liquid glass — fra den anden prompt, men skruet ned ───────────────
+   .lg       : svag sløring + tynd lyskant, der er stærkest foroven/forneden
+   .lg-staerk: lidt mere sløring til knapper over video
+   .lg-kant  : kun lyskanten, til kort på sort bund (ingen sløring)     */
+.lg,.lg-staerk{ position:relative; isolation:isolate; background:rgba(255,255,255,.012); background-blend-mode:luminosity;
+  -webkit-backdrop-filter:blur(6px) saturate(1.1); backdrop-filter:blur(6px) saturate(1.1); box-shadow:inset 0 1px 1px rgba(255,255,255,.1); }
+.lg-staerk{ background:rgba(255,255,255,.03); -webkit-backdrop-filter:blur(22px) saturate(1.15); backdrop-filter:blur(22px) saturate(1.15);
+  box-shadow:4px 4px 4px rgba(0,0,0,.05), inset 0 1px 1px rgba(255,255,255,.15); }
+.lg::before,.lg-staerk::before{ content:""; position:absolute; inset:0; border-radius:inherit; padding:1.2px; pointer-events:none; z-index:2;
+  background:linear-gradient(180deg,rgba(255,255,255,.42) 0%,rgba(255,255,255,.12) 20%,transparent 40%,transparent 60%,rgba(255,255,255,.12) 80%,rgba(255,255,255,.36) 100%);
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0); -webkit-mask-composite:xor; mask-composite:exclude; }
+.lg > *,.lg-staerk > *{ position:relative; z-index:3; }
+.lg-kant{ --bund:var(--kul); border:1px solid transparent !important;
+  background:linear-gradient(var(--bund),var(--bund)) padding-box,
+             linear-gradient(180deg,rgba(255,255,255,.2),rgba(255,255,255,.05) 22%,rgba(255,255,255,.03) 70%,rgba(255,255,255,.13)) border-box !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04); }
+.lg-kant:hover{ background:linear-gradient(var(--bund),var(--bund)) padding-box,
+             linear-gradient(180deg,rgba(243,229,194,.55),rgba(var(--guld-rgb),.16) 25%,rgba(255,255,255,.04) 70%,rgba(243,229,194,.32)) border-box !important; }
+.knap.lg-staerk{ color:var(--kridt); border-color:transparent; font-weight:500; }
+.knap.lg-staerk:hover{ background:rgba(255,255,255,.08); }
+
+/* ── Intro: DD tegnes i en tynd guldstreg, fyldes, og siden åbner ───── */
+.intro{ position:fixed; inset:0; z-index:200; background:#030303; display:grid; place-items:center; transition:opacity .7s ease .1s, visibility 0s .8s; }
+.intro svg{ width:min(180px,40vw); overflow:visible; }
+.intro-streg{ fill:none; stroke:var(--guld); stroke-width:3; stroke-dasharray:6000; stroke-dashoffset:6000; animation:tegn 1.25s cubic-bezier(.6,.05,.3,1) forwards; }
+.intro-fyld{ fill:var(--guld); opacity:0; animation:fyld .45s ease 1.1s forwards; }
+@keyframes tegn{ to{ stroke-dashoffset:0; } }
+@keyframes fyld{ to{ opacity:1; } }
+.intro.vaek{ opacity:0; visibility:hidden; }
+
+/* ── NAV ──────────────────────────────────────────────────────────────── */
+.nav{ position:fixed; top:14px; left:var(--pad); right:var(--pad); z-index:60; border-radius:var(--r);
+  display:flex; align-items:center; justify-content:space-between; gap:20px; padding:12px 14px 12px 20px; transition:background .4s; }
+.nav.fast{ background:rgba(5,5,5,.78); }
+.lockup{ display:flex; align-items:center; gap:14px; }
+.lockup svg{ height:24px; width:auto; color:var(--guld); }
+.lockup .delestreg{ width:1px; height:24px; background:linear-gradient(180deg,transparent,rgba(var(--guld-rgb),.55),transparent); }
+.lockup .navn{ font-weight:600; font-size:.88rem; letter-spacing:.2em; text-transform:uppercase; white-space:nowrap; }
+.lockup .navn b{ font-weight:600; color:var(--champagne); }
+.nav-links{ display:flex; gap:30px; }
+.nav-links a{ position:relative; font-size:.92rem; color:var(--tekst-2); transition:color .2s; }
+.nav-links a:hover{ color:var(--kridt); }
+.nav-links a::after{ content:""; position:absolute; left:0; bottom:-6px; height:1px; width:0; background:var(--guld); transition:width .3s var(--ease); }
+.nav-links a:hover::after{ width:100%; }
+.nav-hoejre{ display:flex; align-items:center; gap:22px; }
+.nav-tel{ color:var(--champagne); font-variant-numeric:tabular-nums; font-size:.92rem; white-space:nowrap; }
+.nav .knap{ height:42px; padding:0 18px; font-size:.9rem; }
+@media(max-width:1100px){ .nav-links{ display:none; } }
+@media(max-width:640px){ .nav{ top:10px; } .lockup .navn,.lockup .delestreg{ display:none; } .nav-tel{ font-size:.86rem; } }
+
+/* ── HERO — opbygningen fra "New Era"-prompten ─────────────────────────
+   Fuld video, gradient foroven og forneden, navnet som et stort
+   dekorativt ordmærke (lys foroven, næsten væk forneden), og nederst
+   tekst + knap til venstre og taglinen i Bebas til højre.            */
+.hero{ position:relative; isolation:isolate; overflow:hidden; height:100vh; height:100svh; min-height:640px; max-height:965px; background:#010101; }
+.hero-film{ position:absolute; inset:0; z-index:-4; will-change:transform; background:#010101; }
+.hero-film video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 1.6s ease;
+  filter:brightness(.6) saturate(.82) contrast(1.07) sepia(.06); }
+.hero-film video.aktiv{ opacity:1; }
+.hero .gr-top,.hero .gr-bund{ position:absolute; left:0; right:0; pointer-events:none; z-index:-2; }
+.hero .gr-top{ top:0; height:260px; background:linear-gradient(180deg,rgba(5,5,5,.55),transparent); }
+.hero .gr-bund{ bottom:0; height:600px; background:linear-gradient(0deg,rgba(5,5,5,.96) 0%,rgba(5,5,5,.74) 45%,rgba(5,5,5,.3) 75%,transparent); }
+.hero .spot{ position:absolute; inset:0; z-index:-3; pointer-events:none; mix-blend-mode:screen;
+  background:radial-gradient(520px circle at var(--mx,50%) var(--my,30%), rgba(243,229,194,.10), transparent 65%); }
+.ordmaerke{ position:absolute; z-index:-1; left:50%; top:15%; width:min(75vw,1073px); transform:translateX(-50%); pointer-events:none; overflow:visible; will-change:transform,opacity; animation:ord-ind 1.6s var(--ease) both; }
+.ordmaerke text{ font-family:var(--bebas); letter-spacing:.01em; }
+@keyframes ord-ind{ from{ opacity:0; filter:blur(12px); letter-spacing:.06em; } to{ opacity:1; filter:none; } }
+.hero-bund{ position:absolute; left:0; right:0; bottom:0; padding:0 var(--pad) 36px; }
+.hero-raekke{ margin-bottom:clamp(44px,7vh,76px) !important; }
+.hero-raekke{ max-width:var(--maxw); margin:0 auto; display:flex; justify-content:space-between; align-items:flex-end; gap:48px; }
+.hero-venstre{ display:flex; align-items:flex-end; gap:26px; }
+.hero-venstre p{ margin:0; max-width:414px; font-size:1.12rem; line-height:30px; color:var(--tekst-2); }
+.hero-hoejre{ max-width:500px; }
+.hero-knapper{ display:flex; gap:10px; flex-wrap:wrap; }
+.hero-venstre{ flex-wrap:wrap; }
+.hero-hoejre .etiket{ margin-bottom:18px; }
+@media(max-width:640px){ .kun-stor{ display:none; } .baand li{ padding:11px 0 10px; } .baand b{ font-size:1.5rem !important; } .baand span{ font-size:.52rem; } .hero h1{ font-size:42px !important; } }
+.hero-pille{ display:inline-flex; align-items:center; border-radius:999px; padding:8px 14px; font-size:.6rem; letter-spacing:.24em; }
+.hero h1{ font-family:var(--bebas); font-weight:400; text-transform:uppercase; letter-spacing:.005em; line-height:1; font-size:64px; color:var(--kridt); }
+.hero h1 em{ font-style:normal; color:inherit; }
+.hero-bund > *{ animation:stig 1s var(--ease) both; }
+.hero-raekke > :nth-child(2){ animation:stig 1s var(--ease) .15s both; }
+@keyframes stig{ from{ opacity:0; transform:translateY(16px); } to{ opacity:1; transform:none; } }
+@media(max-width:1024px){ .hero-raekke{ flex-direction:column-reverse; align-items:flex-start; gap:26px; } .hero h1{ font-size:56px; } .ordmaerke{ top:17%; width:86vw; } }
+@media(max-width:640px){ .hero-venstre{ flex-direction:column; align-items:flex-start; gap:18px; } .hero-venstre p{ font-size:1rem; line-height:1.6; } .hero h1{ font-size:48px; } .ordmaerke{ top:16%; width:90vw; } .hero-bund{ padding-bottom:18px; } .hero-raekke{ margin-bottom:22px !important; } .baand{ padding:0 16px; } }
+
+/* Tillidsbåndet lige under heroen */
+.baand{ max-width:var(--maxw); margin:0 auto; border-radius:var(--r); padding:0 26px; }
+.baand ul{ list-style:none; margin:0 auto; padding:0; max-width:var(--maxw); display:grid; grid-template-columns:repeat(4,1fr); }
+.baand li{ padding:18px 0 16px; display:flex; flex-direction:column; gap:3px; }
+.baand li + li{ padding-left:26px; border-left:1px solid rgba(255,255,255,.1); }
+.baand b{ font-family:var(--bebas); font-weight:400; font-size:2rem; line-height:1; letter-spacing:.01em; color:var(--kridt); font-variant-numeric:tabular-nums; }
+.baand span{ font-family:var(--etikette); font-size:.6rem; letter-spacing:.22em; text-transform:uppercase; color:var(--roeg); }
+@media(max-width:760px){ .baand ul{ grid-template-columns:1fr 1fr; } .baand li:nth-child(3){ padding-left:0; border-left:0; } .baand li:nth-child(n+3){ border-top:1px solid rgba(255,255,255,.1); } .baand b{ font-size:1.9rem; } }
+
+
+/* Bebas Neue til de store overskrifter — det, der giver prompten sit bilmærke-præg */
+.sek-hoved h2,.fod-cta h2,.om h2,.faq-gitter h2,.niveau-overskrift{ font-family:var(--bebas); font-weight:400; text-transform:uppercase; letter-spacing:.005em; line-height:.92; }
+.sek-hoved h2{ font-size:clamp(2.8rem,5.6vw,4.6rem); }
+.om h2,.faq-gitter h2{ font-size:clamp(2.4rem,4.4vw,3.4rem); }
+.fod-cta h2{ font-size:clamp(3rem,6.6vw,5.6rem); line-height:.9; }
+
+/* ── SEKTIONER ────────────────────────────────────────────────────────── */
+.sek{ position:relative; padding:clamp(96px,11vw,156px) var(--pad); }
+.sek.tynd{ padding-block:clamp(64px,7vw,100px); }
+.sek::before{ content:""; position:absolute; top:0; left:0; right:0; height:1px; background:var(--hairline); opacity:.6; }
+.indre{ max-width:var(--maxw); margin:0 auto; }
+.sek-hoved{ display:flex; justify-content:space-between; align-items:flex-end; gap:40px; flex-wrap:wrap; margin-bottom:clamp(30px,4vw,48px); }
+.sek-hoved h2{ margin-top:16px; font-size:clamp(2.1rem,4.4vw,3.4rem); }
+.sek-hoved p{ margin:0; max-width:42ch; color:var(--tekst); }
+
+/* ── PRISER: størrelsesvælger + servicekort ──────────────────────────── */
+.vaelger{ display:flex; align-items:center; gap:22px; flex-wrap:wrap; margin-bottom:28px; padding:16px 18px; border:1px solid var(--linje); border-radius:var(--r); background:var(--kul); }
+.vaelger > span{ font-weight:600; font-size:.98rem; letter-spacing:-.01em; }
+.segment{ position:relative; display:grid; grid-template-columns:repeat(4,1fr); border:1px solid var(--linje-2); border-radius:var(--r); padding:3px; flex:1; max-width:640px; }
+.segment .tommel{ position:absolute; top:3px; bottom:3px; left:3px; width:calc((100% - 6px) / 4); border-radius:var(--r);
+  background:rgba(var(--guld-rgb),.1); border:1px solid var(--guld); transform:translateX(calc(var(--i,1) * 100%)); transition:transform .45s var(--ease); }
+.segment button{ position:relative; z-index:1; background:none; border:0; cursor:pointer; padding:9px 8px; display:flex; align-items:center; justify-content:center; gap:10px;
+  color:var(--tekst); font-weight:500; font-size:.92rem; transition:color .25s; white-space:nowrap; }
+.segment svg{ width:40px; height:18px; flex-shrink:0; }
+.segment button[aria-checked="true"]{ color:var(--kridt); }
+.segment button[aria-checked="true"] svg{ color:var(--champagne); }
+.vaelger .eks{ flex-basis:100%; margin:0; color:var(--roeg); font-size:.86rem; }
+.vaelger .eks b{ color:var(--tekst-2); font-weight:500; }
+.vaelger .eks a{ color:var(--champagne); border-bottom:1px solid rgba(var(--guld-rgb),.35); }
+@media(max-width:640px){ .vaelger{ flex-direction:column; align-items:stretch; gap:12px; } .segment{ max-width:none; grid-template-columns:repeat(2,1fr); } .segment .tommel{ display:none; } .segment button[aria-checked="true"]{ background:rgba(var(--guld-rgb),.1); outline:1px solid var(--guld); } .segment svg{ width:32px; } }
+
+.kort-raekke{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.kort-raekke.to{ grid-template-columns:repeat(2,1fr); max-width:820px; margin:0 auto; }
+.kort{ position:relative; display:flex; flex-direction:column; background:var(--kul); border:1px solid var(--linje); border-radius:var(--r); overflow:hidden;
+  transition:transform .45s var(--ease), border-color .4s; }
+.kort::after{ content:""; position:absolute; top:0; left:0; right:0; height:1px; background:var(--hairline); transform:scaleX(0); transition:transform .6s var(--ease); z-index:3; }
+.kort:hover{ transform:translateY(-4px); border-color:rgba(var(--guld-rgb),.4); }
+.kort:hover::after{ transform:scaleX(1); }
+.kort.premium{ background:linear-gradient(180deg,var(--varm-bund),var(--kul) 58%); border-color:rgba(var(--guld-rgb),.3); }
+.kort.premium.lg-kant{ background:linear-gradient(180deg,var(--varm-bund),var(--kul) 58%) padding-box, linear-gradient(180deg,rgba(243,229,194,.45),rgba(var(--guld-rgb),.12) 25%,rgba(255,255,255,.03) 70%,rgba(243,229,194,.22)) border-box !important; }
+.kort.premium::after{ transform:scaleX(1); opacity:.55; }
+.kort .foto{ position:relative; aspect-ratio:4/3; overflow:hidden; background:var(--grafit); }
+.kort .foto img{ width:100%; height:100%; object-fit:cover; transition:transform 1.4s var(--ease); filter:saturate(.86) contrast(1.07) brightness(.94) sepia(.07); }
+.kort:hover .foto img{ transform:scale(1.04); }
+.kort .plade{ position:absolute; top:14px; left:14px; z-index:2; border-radius:var(--r); padding:5px 9px; font-family:var(--etikette); font-weight:500; font-size:.5rem; opacity:.9;
+  letter-spacing:.22em; text-transform:uppercase; color:var(--champagne); background:rgba(5,5,5,.6); border:1px solid rgba(var(--guld-rgb),.6); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); }
+.kort .krop{ padding:22px 22px 24px; display:flex; flex-direction:column; flex:1; }
+.kort .krop > .etiket{ color:var(--roeg); font-size:.6rem; }
+.kort.premium .krop > .etiket{ color:var(--champagne); }
+.kort h3{ margin:8px 0 8px; font-family:var(--bebas); font-weight:400; text-transform:uppercase; letter-spacing:.01em; line-height:.95; font-size:2.1rem; }
+.kort .desc{ margin:0 0 16px; color:var(--tekst); font-size:.94rem; }
+.kort ul{ list-style:none; margin:0 0 20px; padding:0; display:grid; gap:7px; flex:1; }
+.kort li{ display:grid; grid-template-columns:14px 1fr; gap:10px; color:var(--tekst-2); font-size:.92rem; line-height:1.45; }
+.kort li::before{ content:"+"; color:var(--guld); font-weight:600; }
+.kort .pris{ display:flex; align-items:baseline; justify-content:space-between; gap:12px; padding-top:16px; border-top:1px solid rgba(var(--guld-rgb),.22); margin-bottom:18px; }
+.kort .pris b{ font-family:var(--bebas); font-weight:400; font-size:2.5rem; letter-spacing:.01em; color:var(--kridt); font-variant-numeric:tabular-nums; line-height:1; transition:opacity .25s; }
+.kort .pris b.skift{ opacity:0; }
+.kort .pris span{ font-family:var(--etikette); font-size:.58rem; letter-spacing:.2em; text-transform:uppercase; color:var(--roeg); text-align:right; }
+.kort .knapper{ display:flex; gap:8px; }
+.kort .knapper a{ flex:1; height:46px; padding:0 12px; font-size:.9rem; }
+.kort.premium .knapper .knap:not(.kant){ background:var(--champagne); border-color:var(--champagne); }
+.kort.premium .knapper .knap:not(.kant):hover{ background:var(--champagne-lys); }
+.niveau{ display:flex; align-items:center; gap:22px; max-width:820px; margin:44px auto 18px; }
+.niveau::before,.niveau::after{ content:""; flex:1; height:1px; background:linear-gradient(90deg,transparent,rgba(var(--guld-rgb),.5)); }
+.niveau::after{ background:linear-gradient(90deg,rgba(var(--guld-rgb),.5),transparent); }
+.niveau span{ font-family:var(--etikette); font-weight:500; font-size:.9rem; letter-spacing:.34em; text-transform:uppercase; color:var(--champagne); }
+.niveau-tekst{ text-align:center; max-width:56ch; margin:0 auto 26px; color:var(--tekst); }
+@media(max-width:1000px){ .kort-raekke{ grid-template-columns:1fr 1fr; } }
+@media(max-width:640px){ .kort-raekke,.kort-raekke.to{ grid-template-columns:1fr; } }
+
+/* Tilkøb som én enkel linje */
+.tilkoeb{ margin-top:40px; border-top:1px solid var(--linje); border-bottom:1px solid var(--linje); padding:20px 0; display:flex; align-items:center; gap:14px 30px; flex-wrap:wrap; }
+.tilkoeb > b{ font-family:var(--etikette); font-weight:500; font-size:.62rem; letter-spacing:.26em; text-transform:uppercase; color:var(--champagne); }
+.tilkoeb ul{ list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:10px 26px; flex:1; }
+.tilkoeb li{ font-size:.94rem; color:var(--tekst-2); }
+.tilkoeb li span{ color:var(--champagne); font-variant-numeric:tabular-nums; margin-left:6px; }
+.tilkoeb a{ font-size:.9rem; color:var(--champagne); border-bottom:1px solid rgba(var(--guld-rgb),.35); white-space:nowrap; }
+.pris-note{ margin:18px 0 0; color:var(--roeg); font-size:.9rem; display:flex; gap:10px; align-items:flex-start; }
+.pris-note svg{ width:16px; height:16px; color:var(--champagne); flex-shrink:0; margin-top:3px; }
+
+/* ── SÅDAN ────────────────────────────────────────────────────────────── */
+.saadan-gitter{ display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); gap:clamp(40px,6vw,90px); align-items:center; }
+.opgave{ position:relative; margin:0; border-radius:var(--r); overflow:hidden; }
+.opgave img{ width:100%; aspect-ratio:4/5; object-fit:cover; object-position:50% 58%; transform:scale(1.06); transition:transform 1.8s var(--ease); }
+.opgave.in img{ transform:none; }
+.opgave figcaption{ position:absolute; left:16px; bottom:16px; border-radius:999px; padding:9px 14px; font-size:.84rem; color:var(--kridt); }
+.opgave figcaption span{ font-family:var(--etikette); font-size:.56rem; letter-spacing:.24em; text-transform:uppercase; color:var(--champagne); margin-right:8px; }
+.saadan-titel{ margin-top:16px; font-family:var(--bebas); font-weight:400; text-transform:uppercase; letter-spacing:.005em; line-height:.92; font-size:clamp(2.8rem,5vw,4.2rem); }
+.saadan-lead{ margin:18px 0 0; color:var(--tekst); max-width:46ch; }
+.trin3{ list-style:none; margin:30px 0 0; padding:0; display:grid; grid-template-columns:1fr; border-top:1px solid var(--linje); }
+.trin3 li{ display:grid; grid-template-columns:64px 1fr; gap:10px; align-items:start; padding:20px 0 !important; border-left:0 !important; border-bottom:1px solid var(--linje); }
+.trin3 h3{ margin-top:4px !important; }
+@media(max-width:900px){ .saadan-gitter{ grid-template-columns:1fr; } .opgave img{ aspect-ratio:4/3; } }
+.trin3 li{ padding:28px 32px 4px 0; }
+.trin3 li + li{ padding-left:32px; border-left:1px solid var(--linje); }
+.trin3 .n{ font-family:var(--bebas); font-size:3rem; line-height:1; letter-spacing:.01em; color:transparent; -webkit-text-stroke:1px rgba(var(--guld-rgb),.7); }
+.trin3 h3{ margin:10px 0 8px; font-size:1.3rem; letter-spacing:-.03em; }
+.trin3 p{ margin:0; color:var(--tekst); font-size:.97rem; max-width:34ch; }
+@media(max-width:860px){ .trin3{ grid-template-columns:1fr; } .trin3 li,.trin3 li + li{ padding:22px 0; border-left:0; border-bottom:1px solid var(--linje); } }
+
+/* ── FØR / EFTER: to små sammenligninger ─────────────────────────────── */
+.fe-gitter{ display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
+.fe-kort{ margin:0; }
+.slider{ --pos:50%; position:relative; aspect-ratio:16/9; overflow:hidden; border-radius:var(--r); border:1px solid var(--linje); background:var(--grafit); touch-action:pan-y; user-select:none; }
+.slider img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; pointer-events:none; filter:saturate(.86) contrast(1.07) brightness(.94) sepia(.07); }
+.slider .efter{ clip-path:inset(0 0 0 var(--pos)); }
+.slider .greb{ position:absolute; top:0; bottom:0; left:var(--pos); width:1px; background:var(--champagne); pointer-events:none; }
+.slider .greb i{ position:absolute; top:50%; left:50%; width:40px; height:40px; transform:translate(-50%,-50%); border-radius:50%; display:grid; place-items:center; }
+.slider .greb svg{ position:relative; width:18px; height:18px; color:var(--champagne); }
+.slider .lbl{ position:absolute; top:12px; border-radius:var(--r); padding:6px 10px; font-family:var(--etikette); font-size:.54rem; letter-spacing:.26em; text-transform:uppercase; color:var(--champagne); pointer-events:none; }
+.slider .lbl span{ position:relative; }
+.slider .l-foer{ left:12px; } .slider .l-efter{ right:12px; }
+.slider input{ position:absolute; inset:0; width:100%; height:100%; opacity:0; margin:0; cursor:ew-resize; }
+.fe-kort figcaption{ margin-top:12px; display:flex; justify-content:space-between; gap:12px; font-size:.94rem; color:var(--tekst-2); }
+.fe-kort figcaption span{ font-family:var(--etikette); font-size:.58rem; letter-spacing:.22em; text-transform:uppercase; color:var(--roeg); }
+@media(max-width:760px){ .fe-gitter{ grid-template-columns:1fr; } }
+
+/* ── ANMELDELSER (tyndere) ───────────────────────────────────────────── */
+/* Båndet: uden JS et almindeligt vandret scroll-felt, med JS en uendelig løkke */
+.anm-baand{ overflow-x:auto; scrollbar-width:none; padding:4px 0; }
+.anm-baand::-webkit-scrollbar{ display:none; }
+.anm-baand.koerer{ overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent); mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent); }
+.anm-spor{ display:flex; width:max-content; padding-inline:var(--pad); }
+.anm-baand.koerer .anm-spor{ padding-inline:0; animation:anm-loeb var(--loeb,90s) linear infinite; }
+@keyframes anm-loeb{ from{ transform:translate3d(0,0,0); } to{ transform:translate3d(-33.3333%,0,0); } }
+.anm-spor .anm{ flex:0 0 clamp(290px,27vw,390px); margin-right:18px; }
+@media(prefers-reduced-motion:reduce){ .anm-baand.koerer{ overflow-x:auto; -webkit-mask-image:none; mask-image:none; } .anm-baand.koerer .anm-spor{ animation:none; padding-inline:var(--pad); } }
+.anm{ margin:0; padding:26px 26px; background:var(--kul); border:1px solid var(--linje); border-radius:var(--r); display:flex; flex-direction:column; transition:border-color .4s; }
+.anm:hover{ border-color:rgba(var(--guld-rgb),.4); }
+.anm .stj{ color:var(--champagne); letter-spacing:.24em; font-size:.82rem; }
+.anm::before{ content:"\201C"; font-family:var(--bebas); font-size:4.2rem; line-height:.6; color:rgba(var(--guld-rgb),.55); height:26px; }
+.anm p{ margin:12px 0 18px; flex:1; color:var(--tekst-2); font-size:1rem; line-height:1.6; }
+.anm figcaption{ padding-top:14px; border-top:1px solid rgba(var(--guld-rgb),.2); font-family:var(--etikette); font-size:.6rem; letter-spacing:.24em; text-transform:uppercase; color:var(--roeg); }
+
+/* ── OM OS (tyndere) ─────────────────────────────────────────────────── */
+.om{ display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,1fr); gap:clamp(36px,6vw,80px); align-items:center; }
+.om h2{ margin-top:14px; font-size:clamp(1.9rem,3.4vw,2.6rem); }
+.om p{ margin:14px 0 0; color:var(--tekst); max-width:56ch; }
+.om-kort{ display:grid; grid-template-columns:104px 1fr; gap:20px; align-items:center; padding:18px; background:var(--kul); border:1px solid var(--linje); border-radius:var(--r); }
+.om-kort img{ width:104px; aspect-ratio:1; object-fit:cover; object-position:50% 35%; border-radius:var(--r); }
+.om-kort dl{ margin:0; display:grid; gap:8px; }
+.om-kort dt{ font-family:var(--etikette); font-size:.56rem; letter-spacing:.22em; text-transform:uppercase; color:var(--roeg); }
+.om-kort dd{ margin:1px 0 0; color:var(--kridt); font-size:.94rem; }
+@media(max-width:900px){ .om{ grid-template-columns:1fr; } }
+
+/* ── FAQ ─────────────────────────────────────────────────────────────── */
+.faq-gitter{ display:grid; grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr); gap:clamp(30px,6vw,80px); align-items:start; }
+.faq-gitter h2{ margin-top:14px; font-size:clamp(2rem,3.6vw,2.8rem); }
+.faq-gitter .ring{ margin-top:18px; color:var(--tekst); }
+.faq-gitter .ring a{ color:var(--champagne); border-bottom:1px solid rgba(var(--guld-rgb),.35); }
+.faq details{ border-bottom:1px solid var(--linje); }
+.faq details:first-of-type{ border-top:1px solid var(--linje); }
+.faq summary{ list-style:none; cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:20px; padding:20px 0; font-size:1.06rem; font-weight:600; letter-spacing:-.02em; }
+.faq summary::-webkit-details-marker{ display:none; }
+.plus{ width:15px; height:15px; position:relative; flex-shrink:0; }
+.plus::before,.plus::after{ content:""; position:absolute; background:var(--guld); transition:transform .3s; }
+.plus::before{ left:0; right:0; top:50%; height:1px; }
+.plus::after{ top:0; bottom:0; left:50%; width:1px; }
+.faq details[open] .plus::after{ transform:rotate(90deg); }
+.faq details p{ margin:0 0 20px; color:var(--tekst); max-width:64ch; }
+@media(max-width:860px){ .faq-gitter{ grid-template-columns:1fr; } }
+
+/* ── FOOTER ──────────────────────────────────────────────────────────── */
+.fod{ position:relative; overflow:hidden; isolation:isolate; background:#030303; padding:0 var(--pad); --fx:50%; --fy:50%; --fa:0; }
+.fod::before{ content:""; position:absolute; top:0; left:0; right:0; height:1px; background:var(--hairline); }
+.fod-cta{ max-width:var(--maxw); margin:0 auto; padding:clamp(70px,9vw,110px) 0 clamp(50px,6vw,70px); display:flex; justify-content:space-between; align-items:flex-end; gap:40px; flex-wrap:wrap;
+  border-bottom:1px solid var(--linje); }
+.fod-cta h2{ margin-top:14px; max-width:15ch; font-size:clamp(2.4rem,5.4vw,4.4rem); letter-spacing:-.05em; line-height:.98; }
+.fod-cta .knapper{ display:flex; gap:12px; flex-wrap:wrap; }
+.fod-gitter{ max-width:var(--maxw); margin:0 auto; padding:50px 0 40px; display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px; }
+.fod-gitter h4{ margin:0 0 16px; font-family:var(--etikette); font-weight:500; font-size:.6rem; letter-spacing:.28em; text-transform:uppercase; color:var(--champagne); }
+.fod-gitter ul{ list-style:none; margin:0; padding:0; display:grid; gap:10px; }
+.fod-gitter li,.fod-gitter p{ color:var(--tekst); font-size:.94rem; margin:0; }
+.fod-gitter a{ transition:color .2s; }
+.fod-gitter a:hover{ color:var(--kridt); }
+.fod-brand p{ margin-top:18px; max-width:34ch; }
+.fod-brand .lockup svg{ height:30px; }
+.soc{ display:flex; gap:10px; margin-top:22px; }
+.soc a{ width:40px; height:40px; border-radius:var(--r); border:1px solid var(--linje-2); display:grid; place-items:center; color:var(--tekst-2); transition:border-color .25s, color .25s, background .25s; }
+.soc a:hover{ border-color:var(--guld); color:var(--champagne); background:rgba(var(--guld-rgb),.06); }
+.soc svg{ width:17px; height:17px; }
+.tider li{ display:flex; justify-content:space-between; gap:16px; max-width:220px; }
+.tider li span:last-child{ color:var(--kridt); font-variant-numeric:tabular-nums; }
+.tider li.lukket span:last-child{ color:var(--roeg); }
+.nu-aaben{ display:inline-flex; align-items:center; gap:8px; margin-top:14px; font-size:.84rem; color:var(--tekst-2); }
+.nu-aaben i{ width:7px; height:7px; border-radius:50%; background:var(--roeg); }
+.nu-aaben.aaben i{ background:#7FB77E; box-shadow:0 0 0 4px rgba(127,183,126,.15); }
+
+/* Det store ordmærke nederst — lyser op, hvor musen er */
+.fod-ord{ position:relative; max-width:var(--maxw); margin:0 auto; padding-top:10px; user-select:none; }
+.fod-ord svg{ display:block; width:100%; height:auto; overflow:visible; }
+.fod-ord text{ font-family:var(--bebas); font-weight:400; letter-spacing:.01em; }
+.fod-bund{ max-width:var(--maxw); margin:0 auto; padding:22px 0 30px; border-top:1px solid var(--linje); display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; color:var(--roeg); font-size:.82rem; }
+.fod-bund nav{ display:flex; gap:20px; flex-wrap:wrap; }
+.fod-bund a:hover{ color:var(--kridt); }
+@media(max-width:1000px){ .fod-gitter{ grid-template-columns:1fr 1fr; } }
+@media(max-width:560px){ .fod-gitter{ grid-template-columns:1fr; gap:32px; } }
+
+/* Mobilbjælke */
+.mobil-bar{ position:fixed; left:10px; right:10px; bottom:10px; z-index:55; border-radius:var(--r); padding:10px 10px 10px 16px; display:none;
+  align-items:center; justify-content:space-between; gap:12px; transform:translateY(130%); transition:transform .45s var(--ease); background:rgba(5,5,5,.82); }
+.mobil-bar.op{ transform:none; }
+.mobil-bar .mb-t{ position:relative; font-size:.8rem; color:var(--roeg); line-height:1.3; }
+.mobil-bar .mb-t b{ display:block; color:var(--champagne); font-size:1.05rem; letter-spacing:-.02em; }
+.mobil-bar .knap{ height:44px; padding:0 18px; }
+@media(max-width:760px){ .mobil-bar{ display:flex; } }
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{ animation:none !important; transition:none !important; }
+  .vis{ opacity:1; transform:none; }
+}
+
+/* ── Mobilmenu (menu.js) ─────────────────────────────────────────────── */
+.menu-knap{ display:none; position:relative; width:42px; height:42px; flex-shrink:0; border-radius:var(--r); border:1px solid rgba(var(--kridt-rgb),.25); background:transparent; cursor:pointer; }
+.menu-knap span{ position:absolute; left:11px; right:11px; height:1.5px; background:var(--kridt); transition:transform .35s var(--ease), top .35s var(--ease); }
+.menu-knap span:first-child{ top:16px; } .menu-knap span:last-child{ top:24px; }
+html.menu-aaben .menu-knap span:first-child{ top:20px; transform:rotate(45deg); }
+html.menu-aaben .menu-knap span:last-child{ top:20px; transform:rotate(-45deg); }
+.menu-panel{ position:fixed; inset:0; z-index:59; display:flex; flex-direction:column; justify-content:space-between; gap:30px; padding:108px var(--pad) 30px; overflow-y:auto;
+  background:rgba(5,5,5,.95); -webkit-backdrop-filter:blur(18px); backdrop-filter:blur(18px); opacity:0; visibility:hidden; transition:opacity .35s ease, visibility 0s .35s; }
+html.menu-aaben .menu-panel{ opacity:1; visibility:visible; transition:opacity .35s ease; }
+html.menu-aaben{ overflow:hidden; }
+html.menu-aaben .nav{ background:rgba(5,5,5,.9); }
+.menu-panel nav{ display:flex; flex-direction:column; border-top:1px solid var(--linje); }
+.menu-panel nav a{ font-family:var(--bebas); font-size:2.5rem; line-height:1.05; letter-spacing:.01em; color:var(--kridt); padding:12px 0; border-bottom:1px solid var(--linje);
+  opacity:0; transform:translateY(12px); transition:opacity .5s ease, transform .5s var(--ease); }
+html.menu-aaben .menu-panel nav a{ opacity:1; transform:none; }
+.menu-panel nav a[aria-current="page"]{ color:var(--champagne); }
+.menu-bund{ display:flex; gap:10px; flex-wrap:wrap; } .menu-bund .knap{ flex:1 1 160px; }
+@media(max-width:1100px){ .menu-knap{ display:block; } }
+@media(max-width:480px){ .nav-tel{ display:none; } .nav-hoejre{ gap:10px !important; } }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Hvad skal I bruge fra mig?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Adgang til strøm og vand. Alt andet har vi med: højtryksrenser, støvsuger, damprenser og produkterne."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hvor lang tid tager det?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Typisk mellem 2 og 4 timer. Det afhænger af, hvor beskidt bilen er, hvor stor den er, og hvilke tilkøb du har valgt."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hvilken størrelse er min bil?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Har bilen 7 sæder, vælger du altid 7-personers. Ellers vælger du efter bilens fysiske størrelse. En stationcar tæller typisk som stor bil. Er du i tvivl, så se vores bilstørrelse-guide, eller ring."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hvad er forskellen på Standard og Premium?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Standard er en rengøring: vi fjerner snavset i og på bilen. Premium behandler materialerne oveni med sæderens, læderbehandling og plastikpleje. Vi siger det ærligt, hvis du ikke har brug for den dyreste pakke."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hvor kører I ud?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "I Svendborg, på Tåsinge, Thurø og i omegnen. Bor du lidt længere væk, så ring og spørg."
+      }
+    }
+  ]
+}
+</script>
 </head>
-
 <body>
+<div class="intro" id="intro" aria-hidden="true">
+  <svg viewBox="-20 -20 1040 655"><use href="#ddsti" class="intro-streg"/><use href="#ddsti" class="intro-fyld"/></svg>
+</div>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <path id="ddsti" fill-rule="evenodd" d="M983.9 255.6L975.6 243.1L968.9 234.8L955.9 221.8L946.8 214.6L936.0 207.4L917.4 197.4L890.5 187.4L868.9 181.9L851.4 178.5L819.5 174.9L787.9 173.8L712.2 174.7L655.1 220.7L646.0 228.7L726.9 228.4L738.8 229.3L756.6 231.8L768.2 234.8L781.3 239.8L789.6 244.2L796.8 249.2L805.1 257.3L810.4 263.9L814.5 271.4L818.7 282.2L820.3 291.1L821.2 300.5L820.3 318.5L817.9 332.4L814.0 347.4L806.2 372.3L786.2 425.6L773.8 454.1L763.8 473.8L752.1 492.4L743.8 503.5L734.7 514.0L717.2 530.4L700.3 541.7L685.6 549.2L674.2 553.4L659.8 557.2L646.8 559.2L637.6 559.7L496.8 559.5L496.3 558.9L499.0 550.9L551.4 424.7L608.0 283.9L610.8 278.3L622.7 247.9L622.1 247.9L530.4 319.4L321.9 477.7L321.9 478.2L336.0 478.5L355.7 478.2L359.6 478.5L360.1 479.9L308.6 608.3L306.3 615.5L657.6 614.6L700.6 613.0L717.2 611.6L743.3 608.3L777.1 601.3L790.4 597.4L809.3 590.8L823.7 585.0L834.5 579.7L855.0 568.3L876.4 554.2L898.3 536.2L917.1 517.6L930.4 502.1L945.1 481.8L957.0 463.0L971.4 435.3L982.8 407.8L991.1 382.0L997.2 356.8L999.7 335.5L1000.0 314.7L997.8 294.2L995.3 283.3L991.4 272.0Z M0.0 472.7L284.4 473.0L353.5 418.4L352.9 417.5L181.9 417.5L181.3 417.0L185.5 403.9L222.1 303.3L226.2 290.3L232.9 273.1L258.1 200.7L311.1 53.2L361.5 51.8L434.7 51.6L453.8 52.7L477.7 56.8L489.6 60.7L500.1 65.2L509.6 70.1L516.8 75.7L525.6 84.3L530.1 90.1L535.3 100.1L539.2 110.3L541.7 123.4L541.7 139.7L540.1 148.3L536.7 156.6L533.4 161.4L529.5 165.2L517.3 171.9L504.3 175.8L487.1 178.0L430.8 317.7L407.0 373.4L663.2 172.2L707.5 136.4L707.2 117.5L704.2 99.8L698.4 84.3L690.3 70.1L678.7 56.0L671.5 49.3L660.1 40.2L649.8 33.5L627.9 22.5L608.8 15.2L583.3 8.3L553.1 3.0L529.5 0.8L509.0 0.0L122.0 0.0L121.7 0.6L149.4 32.7L156.9 41.6L157.2 42.7L107.3 176.6L90.4 224.3L80.7 249.0L75.4 265.0L26.9 397.0Z"/>
+  </defs>
+  <symbol id="pil-h" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="pil-n" viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="bil-lille" viewBox="0 0 64 28"><path d="M8 21.5h-3v-4.2c0-1.4.8-2.4 2.2-2.8l5.6-1.6 5-5.2c.9-.9 2-1.3 3.2-1.3h11.6c1.3 0 2.4.5 3.2 1.5l4.3 5 4.9.9c1.6.3 2.6 1.6 2.6 3.2v4.5h-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="14" cy="21.5" r="3.6" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="41" cy="21.5" r="3.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M17.6 21.5h19.8" stroke="currentColor" stroke-width="1.6"/></symbol>
+  <symbol id="bil-mellem" viewBox="0 0 64 28"><path d="M7 21.5H3.5v-4c0-1.3.8-2.3 2-2.7l8.3-2.3 6.3-5c1-.8 2.2-1.2 3.4-1.2h12.7c1.4 0 2.7.6 3.6 1.7l4.5 5.1 9.6 1.3c1.6.2 2.6 1.5 2.6 3v4.1h-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12.5" cy="21.5" r="3.6" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="49" cy="21.5" r="3.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M16.1 21.5h29.3" stroke="currentColor" stroke-width="1.6"/></symbol>
+  <symbol id="bil-stor" viewBox="0 0 64 28"><path d="M7 21.5H3v-6.2c0-1.2.7-2.2 1.8-2.6l7-2.5 5.3-5.4c.9-.9 2-1.4 3.3-1.4h24.8c1.2 0 2.3.5 3.1 1.4l5 5.6 5.2 1.6c1.4.4 2.3 1.6 2.3 3v6.5h-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12.5" cy="21.5" r="3.8" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="50" cy="21.5" r="3.8" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M16.3 21.5h29.9" stroke="currentColor" stroke-width="1.6"/></symbol>
+  <symbol id="bil-syv" viewBox="0 0 64 28"><path d="M7 21.5H2.5V8.2c0-2.3 1.6-4.2 3.9-4.6l2.3-.4h38.6c1.4 0 2.6.6 3.5 1.7l6.5 7.6 3 1.2c1.2.5 1.9 1.6 1.9 2.9v4.9h-3.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="21.5" r="3.8" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="51" cy="21.5" r="3.8" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M15.8 21.5h31.4" stroke="currentColor" stroke-width="1.6"/></symbol>
+  <symbol id="ik-fb" viewBox="0 0 24 24"><path fill="currentColor" d="M13.5 21v-7.6h2.6l.4-3h-3V8.5c0-.9.3-1.5 1.5-1.5h1.6V4.3c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H7.8v3h2.6V21z"/></symbol>
+  <symbol id="ik-ig" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor"/></symbol>
+  <symbol id="ik-tt" viewBox="0 0 24 24"><path fill="currentColor" d="M16.6 3c.3 2.1 1.6 3.6 3.6 3.8v3c-1.4.1-2.6-.3-3.6-1v6.3c0 3.4-2.5 5.9-5.8 5.9S5 18.5 5 15.3s2.6-5.9 6-5.7v3.1c-1.6-.3-3 .9-3 2.6 0 1.5 1.2 2.8 2.8 2.8s2.8-1.2 2.8-3V3z"/></symbol>
+</svg>
 
-<header>
-
-  <a href="index.html" class="brand-lockup" aria-label="Direkte Detailing — forside">
-
-    <svg class="bl-mark" viewBox="0 0 1000.0 615.47" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M983.9 255.6L975.6 243.1L968.9 234.8L955.9 221.8L946.8 214.6L936.0 207.4L917.4 197.4L890.5 187.4L868.9 181.9L851.4 178.5L819.5 174.9L787.9 173.8L712.2 174.7L655.1 220.7L646.0 228.7L726.9 228.4L738.8 229.3L756.6 231.8L768.2 234.8L781.3 239.8L789.6 244.2L796.8 249.2L805.1 257.3L810.4 263.9L814.5 271.4L818.7 282.2L820.3 291.1L821.2 300.5L820.3 318.5L817.9 332.4L814.0 347.4L806.2 372.3L786.2 425.6L773.8 454.1L763.8 473.8L752.1 492.4L743.8 503.5L734.7 514.0L717.2 530.4L700.3 541.7L685.6 549.2L674.2 553.4L659.8 557.2L646.8 559.2L637.6 559.7L496.8 559.5L496.3 558.9L499.0 550.9L551.4 424.7L608.0 283.9L610.8 278.3L622.7 247.9L622.1 247.9L530.4 319.4L321.9 477.7L321.9 478.2L336.0 478.5L355.7 478.2L359.6 478.5L360.1 479.9L308.6 608.3L306.3 615.5L657.6 614.6L700.6 613.0L717.2 611.6L743.3 608.3L777.1 601.3L790.4 597.4L809.3 590.8L823.7 585.0L834.5 579.7L855.0 568.3L876.4 554.2L898.3 536.2L917.1 517.6L930.4 502.1L945.1 481.8L957.0 463.0L971.4 435.3L982.8 407.8L991.1 382.0L997.2 356.8L999.7 335.5L1000.0 314.7L997.8 294.2L995.3 283.3L991.4 272.0Z M0.0 472.7L284.4 473.0L353.5 418.4L352.9 417.5L181.9 417.5L181.3 417.0L185.5 403.9L222.1 303.3L226.2 290.3L232.9 273.1L258.1 200.7L311.1 53.2L361.5 51.8L434.7 51.6L453.8 52.7L477.7 56.8L489.6 60.7L500.1 65.2L509.6 70.1L516.8 75.7L525.6 84.3L530.1 90.1L535.3 100.1L539.2 110.3L541.7 123.4L541.7 139.7L540.1 148.3L536.7 156.6L533.4 161.4L529.5 165.2L517.3 171.9L504.3 175.8L487.1 178.0L430.8 317.7L407.0 373.4L663.2 172.2L707.5 136.4L707.2 117.5L704.2 99.8L698.4 84.3L690.3 70.1L678.7 56.0L671.5 49.3L660.1 40.2L649.8 33.5L627.9 22.5L608.8 15.2L583.3 8.3L553.1 3.0L529.5 0.8L509.0 0.0L122.0 0.0L121.7 0.6L149.4 32.7L156.9 41.6L157.2 42.7L107.3 176.6L90.4 224.3L80.7 249.0L75.4 265.0L26.9 397.0Z"/></svg>
-
-    <span class="bl-divider"></span>
-
-    <span class="bl-text">
-      <span class="bl-name">Direkte <b>Detailing</b></span>
-      <span class="bl-sub">Mobil bilpleje · Svendborg</span>
-    </span>
+<!-- ═══ NAV ═══════════════════════════════════════════════════════════ -->
+<header class="nav glas" id="nav">
+  <a href="#" class="lockup" aria-label="Direkte Detailing">
+    <svg viewBox="0 0 1000 615.47" aria-hidden="true"><use href="#ddsti" fill="currentColor"/></svg>
+    <span class="delestreg"></span>
+    <span class="navn">Direkte <b>Detailing</b></span>
   </a>
-
-  <button class="hamburger" id="hamburgerBtn" aria-label="Åbn menu" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
-
-  <nav class="main-nav" id="mainNav">
-    <a href="services.html">Services</a>
+  <nav class="nav-links" aria-label="Hovedmenu">
+    <a href="#priser">Priser</a>
+    <a href="#saadan">Sådan foregår det</a>
+    <a href="#resultater">Før og efter</a>
     <a href="omos.html">Om os</a>
     <a href="kontakt.html">Kontakt</a>
-    <a href="privacy.html">Privacy</a>
-    <a href="tel:+4529729695" class="nav-tel">29 72 96 95</a>
   </nav>
+  <div class="nav-hoejre">
+    <a href="tel:+4529729695" class="nav-tel">29 72 96 95</a>
+    <a href="https://direkte-detailing.planway.com/" class="knap">Book nu</a>
+  </div>
 </header>
 
-<div class="nav-overlay" id="navOverlay"></div>
-
-<section class="hero">
-
-  <video autoplay preload="none" muted playsinline poster="Billeder/opt/porsche-vask.webp" class="hero-video top-video" id="heroVideo1"></video>
-
-  <video autoplay preload="none" muted playsinline poster="Billeder/opt/porsche-vask.webp" class="hero-video bottom-video" id="heroVideo2"></video>
-
-  <div class="hero-content">
-    <p class="hero-eyebrow">Svendborg · Tåsinge · Thurø</p>
-
-    <h1>Professionel bilrengøring i Svendborg</h1>
-
-    <h2 class="hero-sub">Mobil bilpleje — vi kører ud til dig med alt værktøjet. Du skal kun sørge for strøm og vand.</h2>
-
-    <div class="cta-row">
-      <a href="https://direkte-detailing.planway.com/" class="cta cta-primary">Book nu</a>
-      <a href="#services" class="cta">Se vores services</a>
-    </div>
-
-    <ul class="hero-facts">
-      <li><span class="n">100+</span><span class="l">biler siden 2025</span></li>
-      <li><span class="n">5,0 ★</span><span class="l">på alle anmeldelser</span></li>
-    </ul>
+<!-- ═══ HERO ══════════════════════════════════════════════════════════ -->
+<section class="hero" id="hero">
+  <div class="hero-film" id="heroVideo">
+    <video class="aktiv" muted loop playsinline preload="auto" poster="Billeder/opt/porsche-vask.webp"></video>
+    <video muted loop playsinline preload="none"></video>
   </div>
+  <div class="spot" id="spot"></div>
+  <div class="gr-top"></div>
+  <div class="gr-bund"></div>
 
-</section>
+  <svg class="ordmaerke" id="ordmaerke" viewBox="0 0 1000 120" aria-hidden="true">
+    <defs>
+      <linearGradient id="omFyld" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#fff" stop-opacity=".83"/>
+        <stop offset="1" stop-color="#fff" stop-opacity=".12"/>
+      </linearGradient>
+      <radialGradient id="omLys" gradientUnits="userSpaceOnUse" cx="500" cy="60" r="190">
+        <stop offset="0" stop-color="#F3E5C2" stop-opacity="1"/>
+        <stop offset=".4" stop-color="#E7CE93" stop-opacity=".55"/>
+        <stop offset="1" stop-color="#E7CE93" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <text id="omTekst" x="500" y="100" text-anchor="middle" font-size="120" fill="url(#omFyld)">DIREKTE DETAILING</text>
+    <text id="omLysTekst" x="500" y="100" text-anchor="middle" font-size="120" fill="url(#omLys)">DIREKTE DETAILING</text>
+  </svg>
 
-<section class="services-section" id="services" aria-label="Vores services og priser">
-
-  <div class="services-header">
-
-    <h2 class="rule-under">Vores services</h2>
-  </div>
-
-
-  <div class="services-wrap">
-
-    <!-- STANDARD -->
-    <div class="service-row" id="standard">
-
-      <div class="svc-card">
-        <img class="svc-img" src="Billeder/kort-udvendig.webp" width="760" height="430" loading="lazy" decoding="async" alt="Udvendig håndvask af bil i Svendborg">
-
-        <div class="svc-body">
-        
-          <h3>Udvendig vask</h3>
-
-          <p class="desc">
-            Skånsom håndvask, fælgrens og vinduespuds. Til dig der vil have bilen ren og pæn uden det store.
-          </p>
-
-          <div class="svc-price">
-            Fra 375 kr
-          </div>
-
-          <div class="svc-ctas">
-            <a href="https://direkte-detailing.planway.com/" class="btn-book">Book nu</a>
-            <a href="udvendig-vask.html" class="btn-more">Læs mere</a>
-          </div>
+  <div class="hero-bund">
+    <div class="hero-raekke">
+      <div class="hero-venstre">
+        <p>Du booker en tid, og vi kommer ud med alt udstyret. Bilen bliver gjort ren i indkørslen eller på p-pladsen, og du skal kun sørge for strøm og vand.</p>
+        <div class="hero-knapper">
+          <a href="#priser" class="knap ned">Se priser <svg><use href="#pil-n"/></svg></a>
+          <a href="https://direkte-detailing.planway.com/" class="knap lg-staerk">Book en tid</a>
         </div>
       </div>
-
-      <div class="svc-card">
-        <img class="svc-img" src="Billeder/kort-indvendig.webp" width="760" height="430" loading="lazy" decoding="async" alt="Indvendig rengøring af bilkabine i Svendborg">
-
-        <div class="svc-body">
-         
-          <h3>Indvendig rengøring</h3>
-
-          <p class="desc">
-            Støvsugning, aftørring af paneler og rengøring af vinduer indefra. Frisk kabine, klar til hverdagen.
-          </p>
-
-          <div class="svc-price">
-            Fra 685 kr
-          </div>
-
-          <div class="svc-ctas">
-            <a href="https://direkte-detailing.planway.com/" class="btn-book">Book nu</a>
-            <a href="interiør-rengøring.html" class="btn-more">Læs mere</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="svc-card">
-        <span class="svc-ribbon">Mest populær</span>
-
-        <img class="svc-img" src="Billeder/kort-fulldetail.webp" width="760" height="430" loading="lazy" decoding="async" alt="Full detail bilrengøring indvendigt og udvendigt i Svendborg">
-
-        <div class="svc-body">
-          <h3>Full Detail</h3>
-
-          <p class="desc">
-            Indvendig og udvendig rengøring i én pakke. Perfekt valg hvis du vil friske bilen op, både inde og ude.
-          </p>
-
-          <div class="svc-price">
-            Fra 1060 kr
-          </div>
-
-          <div class="svc-ctas">
-            <a href="https://direkte-detailing.planway.com/" class="btn-book">Book nu</a>
-            <a href="full-detail.html" class="btn-more">Læs mere</a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- PREMIUM -->
-    <div class="premium-block" id="premium">
-
-      <p class="tier-rule"><span>Premium</span></p>
-
-      <div class="premium-row">
-
-        <div class="svc-card premium">
-          <img class="svc-img" src="Billeder/kort-premium-indvendig.webp" width="760" height="430" loading="lazy" decoding="async" alt="Premium indvendig bilrengøring med sæderens og læderbehandling">
-
-          <div class="svc-body">
-
-            <h3>Premium Indvendig</h3>
-            
-
-
-            <ul class="svc-plus">
-              <li>Total indvendig rengøring</li>
-              <li>Sæderens</li>
-              <li>Læderbehandling</li>
-              <li>Plastikpleje</li>
-            </ul>
-
-            <div class="svc-price">
-              Fra 1250 kr
-            </div>
-
-            <div class="svc-ctas">
-              <a href="https://direkte-detailing.planway.com/" class="btn-book">Book nu</a>
-              <a href="interiør-rengøring-premium.html" class="btn-more">Læs mere</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="svc-card premium">
-          <span class="svc-ribbon">Mest komplet</span>
-
-          <img class="svc-img" src="Billeder/kort-premium-fulldetail.webp" width="760" height="430" loading="lazy" decoding="async" alt="Premium full detail bilrengøring i Svendborg">
-
-          <div class="svc-body">
-            <h3>Premium Full Detail</h3>
-
-
-            <ul class="svc-plus">
-              <li>Total klargøring</li>
-              <li>Sæderens</li>
-              <li>Lædervedligeholdelse</li>
-              <li>Maksimal finish inde og ude</li>
-            </ul>
-
-            <div class="svc-price">
-              Fra 1560 kr
-            </div>
-
-            <div class="svc-ctas">
-              <a href="https://direkte-detailing.planway.com/" class="btn-book">Book nu</a>
-              <a href="full-detail-premium.html" class="btn-more">Læs mere</a>
-            </div>
-          </div>
-        </div>
-
+      <div class="hero-hoejre">
+        <p class="etiket hero-pille lg">Mobil bilpleje · Svendborg<span class="kun-stor">, Tåsinge og Thurø</span></p>
+        <h1>Professionel bilpleje, <em>der kommer ud til dig</em></h1>
       </div>
     </div>
+    <div class="baand lg" aria-label="Kort om os">
+      <ul>
+        <li><b>5,0 ★</b><span>på Google</span></li>
+        <li><b>100+</b><span>biler siden 2025</span></li>
+        <li><b>2–4 timer</b><span>typisk per bil</span></li>
+        <li><b>Håndvask</b><span>aldrig vaskehal</span></li>
+      </ul>
+    </div>
   </div>
-
-  <p class="services-note">
-    Priserne er startpriser for en lille bil.
-    <a href="bilstoerrelse.html">Hvilken størrelse er min bil?</a>
-  </p>
-
 </section>
 
 
-
-<section class="reviews">
-
-  <h2 class="rule-under">Hvad siger vores kunder?</h2>
-
-  <div class="review-band">
-    <div class="review-track">
-
-    <div class="review">
-      <p>
-        "Super professionel og pålidelig bilrengøring. Bilen kom tilbage skinnende ren både indvendigt og udvendigt, og servicen var hurtig. Kan klart anbefales."
-      </p>
-      <span>★★★★★</span>
-      <h4>Jacob, Svendborg</h4>
+<!-- ═══ PRISER ════════════════════════════════════════════════════════ -->
+<section class="sek" id="priser">
+  <div class="indre">
+    <div class="sek-hoved vis">
+      <div><p class="etiket streg">Priser</p><h2>Vælg din bil, <em>se prisen</em></h2></div>
+      <p>Prisen følger bilens størrelse, fordi der er mere arbejde i en 7-personers end i en VW Polo. Udvendig vask koster det samme for alle.</p>
     </div>
 
-    <div class="review">
-      <p>
-        "Jeg kan på det varmeste anbefale de gutter her,- de er venlige, effektive, arbejdsomme og yder en ekstrem professionel service.
-        Tøv ikke med at tage fat i dem 🤝 det kommer vi ihvertfald til igen, når bilen trænger til en tur mere.
-        Stærkt arbejde 👌"
-      </p>
-      <span>★★★★★</span>
-      <h4>Kenneth, Tved</h4>
+    <div class="vaelger lg-kant vis">
+      <span>Min bil er</span>
+      <div class="segment" role="radiogroup" aria-label="Bilstørrelse" id="segment">
+        <span class="tommel" aria-hidden="true"></span>
+        <button type="button" role="radio" data-s="lille" aria-checked="false"><svg><use href="#bil-lille"/></svg>Lille</button>
+        <button type="button" role="radio" data-s="mellem" aria-checked="true"><svg><use href="#bil-mellem"/></svg>Mellem</button>
+        <button type="button" role="radio" data-s="stor" aria-checked="false"><svg><use href="#bil-stor"/></svg>Stor</button>
+        <button type="button" role="radio" data-s="syv" aria-checked="false"><svg><use href="#bil-syv"/></svg>7-pers.</button>
+      </div>
+      <p class="eks" id="eks"></p>
     </div>
 
-    <div class="review">
-      <p>
-        "Helt utroligt flot resultat. Vi kan derfor sende vores bedste anbefalinger og det er absolut ikke sidste gang at de bliver booket."
-      </p>
-      <span>★★★★★</span>
-      <h4>Ulrik, Svendborg</h4>
-    </div>
+    <div class="kort-raekke" id="standard"></div>
+    <p class="niveau vis"><span>Premium</span></p>
+    <p class="niveau-tekst vis">Standard gør bilen ren. Premium gør den velholdt: her behandler vi også materialerne med sæderens, læderbehandling og plastikpleje.</p>
+    <div class="kort-raekke to" id="premium"></div>
 
-    <div class="review">
-      <p>
-        "En rigtig god oplevelse, vi har fået 2 biler ordnet både indvendig og udvendig. Og det er bare helt i top. Ros til jer drenge."
-      </p>
-      <span>★★★★★</span>
-      <h4>Mari-Ann, Svendborg</h4>
+    <div class="tilkoeb vis">
+      <b>Tilkøb</b>
+      <ul>
+        <li>Sæderens <span>80 kr pr. sæde</span></li>
+        <li>Voksbehandling <span>185 kr</span></li>
+        <li>Læderbehandling <span>125 kr</span></li>
+        <li>Plastikpleje <span>185 kr</span></li>
+        <li>Hundehår <span>149–399 kr</span></li>
+      </ul>
+      <a href="tilk%C3%B8b.html">Om tilkøbene</a>
     </div>
-
-    <div class="review">
-      <p>
-        "Fantastisk godt arbejde, meget høflige unge mennesker. Overholder aftaler ..
-5 stjerner herfra!"
-      </p>
-      <span>★★★★★</span>
-      <h4>Anja, Svendborg</h4>
-    </div>
-
-    <div class="review">
-      <p>
-        "Min bil har aldrig set bedre ud, virkelig pengene værd💪 kan stærkt anbefales
-      </p>
-      <span>★★★★★</span>
-      <h4>Olivia, Egense</h4>
-    </div>
-
-    </div>
+    <p class="pris-note vis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7.5 3v5.5c0 4.4-3.1 8.2-7.5 9.5-4.4-1.3-7.5-5.1-7.5-9.5V6z"/></svg>
+      <span>Ligger bilen mellem to størrelser, vurderer vi den ved ankomst. Du får prisen, før vi går i gang, og den bliver aldrig højere, uden at du har sagt ja.</span></p>
   </div>
-
 </section>
 
-<section class="before-after" aria-label="Før og efter bilrengøring">
-
-  <h2 class="rule-under">Se forskellen – Før &amp; Efter</h2>
-
-
-  <div class="ba-container">
-
-    <div class="ba-container-border">
-
-      <div class="ba-images">
-
-        <div class="ba-image-wrapper-simple">
-          <img src="Billeder/opt/foer-hjul.webp" width="852" height="478" loading="lazy" decoding="async" alt="Beskidt bilkabine før indvendig bilrengøring i Svendborg">
-          <p>Før</p>
-        </div>
-
-        <div class="ba-image-wrapper-simple">
-          <img src="Billeder/opt/efterhjul.webp" width="849" height="474" loading="lazy" decoding="async" alt="Samme bilkabine efter indvendig bilrengøring hos Direkte Detailing">
-          <p>Efter</p>
-        </div>
-
-      </div>
-
+<!-- ═══ SÅDAN ═════════════════════════════════════════════════════════ -->
+<section class="sek tynd" id="saadan">
+  <div class="indre saadan-gitter">
+    <figure class="opgave vis">
+      <img src="Billeder/ny/paa-opgave-graderet.webp" alt="Direkte Detailing i gang med en Porsche Macan i en indkørsel, med deres bil og udstyr ved siden af" loading="lazy">
+      <figcaption class="lg"><span>På opgave</span> Porsche Macan S</figcaption>
+    </figure>
+    <div class="vis" style="--d:120ms">
+      <p class="etiket streg">Sådan foregår det</p>
+      <h2 class="saadan-titel">Du skal ikke køre nogen steder</h2>
+      <p class="saadan-lead">Vi kører ud i Svendborg, på Tåsinge, Thurø og i omegnen, med alt udstyret i bilen.</p>
+      <ol class="trin3">
+        <li><span class="n">01</span><div><h3>Du booker online</h3><p>Vælg pakke, dag og tidspunkt i kalenderen.</p></div></li>
+        <li><span class="n">02</span><div><h3>Vi kommer ud til dig</h3><p>Vi har højtryksrenser, støvsuger, damprenser og produkterne med. Vi låner kun strøm og vand.</p></div></li>
+        <li><span class="n">03</span><div><h3>Bilen står klar</h3><p>Efter typisk 2–4 timer er vi færdige, og du kan have passet dit eget imens.</p></div></li>
+      </ol>
     </div>
-
-    <div class="ba-container-border">
-
-      <div class="ba-images">
-
-        <div class="ba-image-wrapper-simple">
-          <img src="Billeder/foer3.webp" width="1179" height="663" loading="lazy" decoding="async" alt="Plettet bilsæde før rengøring i Svendborg">
-          <p>Før</p>
-        </div>
-
-        <div class="ba-image-wrapper-simple">
-          <img src="Billeder/efter3.webp" width="1179" height="663" loading="lazy" decoding="async" alt="Samme bilsæde efter professionel sæderens i Svendborg">
-          <p>Efter</p>
-        </div>
-
-      </div>
-
-    </div>
-
   </div>
-
 </section>
 
-<section class="seo-faq-container">
-
-  <details class="seo-text">
-
-    <summary>
-      <h2>Bilrengøring i Svendborg, Tåsinge og Thurø</h2>
-      <span class="acc-ikon" aria-hidden="true"></span>
-    </summary>
-
-    <div class="details-body">
-
-    <p>
-      Hos <strong>Direkte Detailing</strong> tilbyder vi professionel bilrengøring i Svendborg og omegn. Vi specialiserer os i
-      <strong><a href="interiør-rengøring.html">indvendig bilrengøring</a></strong>,
-      <strong><a href="udvendig-vask.html">udvendig bilvask</a></strong> og
-      <strong><a href="full-detail.html">fuld bildetailing</a></strong>,
-      så din bil fremstår skinnende ren og velplejet. Vores mobile service gør det nemt – vi kommer til dig, uanset om du bor i Svendborg, på Tåsinge eller Thurø.
-    </p>
-
-    <h3>Professionel indvendig bilrengøring</h3>
-
-    <p>
-      Vi tilbyder grundig <a href="interiør-rengøring.html">indvendig bilrengøring</a>, der inkluderer støvsugning af sæder og gulve, rengøring af instrumentbord og paneler samt pleje af tekstil og læderoverflader. Din bil vil efter vores behandling føles frisk, ren og velholdt.
-    </p>
-
-    <h3>Udvendig bilvask og detailing</h3>
-
-    <p>
-      Vores udvendige bilvask fjerner effektivt snavs, salt og skidt fra lakken, hjul og karrosseri.
-    </p>
-
-    <h3>Mobil bilpleje – vi kommer til dig</h3>
-
-    <p>
-      Med vores mobile bilrengøring sparer du tid og besvær. Vi medbringer alt udstyr og professionelle rengøringsmidler, og alt du skal sørge for, er adgang til vand og el.
-    </p>
-
+<!-- ═══ FØR / EFTER ═══════════════════════════════════════════════════ -->
+<section class="sek tynd" id="resultater">
+  <div class="indre">
+    <div class="sek-hoved vis">
+      <div><p class="etiket streg">Før og efter</p><h2>Træk i stregen</h2></div>
+      <p>Fra opgaver, vi selv har lavet.</p>
     </div>
-  </details>
-
-  <details class="faq">
-
-    <summary>
-      <h2>Ofte stillede spørgsmål</h2>
-      <span class="acc-ikon" aria-hidden="true"></span>
-    </summary>
-
-    <div class="details-body">
-
-    <h3>Hvor lang tid tager en bilrengøring?</h3>
-    <p>
-      En typisk bilrengøring tager mellem 2 og 4 timer, afhængig af bilens beskidthed, størrelse og tilkøb.
-    </p>
-
-    <h3>Kører I ud til kunden?</h3>
-    <p>
-      Ja, vi tilbyder mobil bilrengøring i Svendborg, Tåsinge, Thurø og omegn.
-    </p>
-
-    <h3>Hvad koster bilrengøring?</h3>
-    <p>
-      Prisen afhænger af hvilken service du vælger. Vores priser for udvendig vask starter fra 375 kr. Vores priser for indvendig rengøring starter fra 685 kr.
-    </p>
-
+    <div class="fe-gitter">
+      <figure class="fe-kort vis">
+        <div class="slider">
+          <img class="foer" src="Billeder/foer3.webp" alt="Fodrum med snavs før rengøring">
+          <img class="efter" src="Billeder/efter3.webp" alt="Samme fodrum efter rengøring">
+          <span class="lbl l-foer glas"><span>Før</span></span><span class="lbl l-efter glas"><span>Efter</span></span>
+          <span class="greb"><i class="glas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></i></span>
+          <input type="range" min="0" max="100" value="50" step="0.1" aria-label="Flyt skillelinjen for fodrummet">
+        </div>
+        <figcaption>Fodrum og måtter <span>Indvendig</span></figcaption>
+      </figure>
+      <figure class="fe-kort vis" style="--d:100ms">
+        <div class="slider">
+          <img class="foer" src="Billeder/opt/foer-hjul.webp" alt="Snavset fælg før rengøring">
+          <img class="efter" src="Billeder/opt/efterhjul.webp" alt="Samme fælg efter rengøring">
+          <span class="lbl l-foer glas"><span>Før</span></span><span class="lbl l-efter glas"><span>Efter</span></span>
+          <span class="greb"><i class="glas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></i></span>
+          <input type="range" min="0" max="100" value="50" step="0.1" aria-label="Flyt skillelinjen for fælgen">
+        </div>
+        <figcaption>Fælg og dæk <span>Udvendig</span></figcaption>
+      </figure>
     </div>
-  </details>
-
+  </div>
 </section>
 
-<!-- CONTACT SECTION -->
-<section class="contact-section">
-
-  <div class="contact-container">
-
-    <div class="contact-left">
-
-      <h2>Kontakt os</h2>
-
-      <div class="contact-info">
-
-        <p>
-          <strong>Telefon:</strong>
-          <a href="tel:+4529729695">29 72 96 95</a>
-        </p>
-
-        <p>
-          <strong>Email:</strong>
-          <a href="mailto:kontakt@direktedetailing.dk">kontakt@direktedetailing.dk</a>
-        </p>
-
-        <p>
-          <strong>Område:</strong> Svendborg &amp; Omegn
-        </p>
-
-      </div>
-
-      <a href="kontakt.html" class="contact-btn">Kontakt os</a>
-
+<!-- ═══ ANMELDELSER: langsomt bånd som på det nuværende site ═══════════
+     Sættet står én gang i HTML'en; JS kloner det to gange, så løkken er
+     sømløs. Afstanden er margin-right, ikke gap — med gap passer en
+     tredjedel af sporet ikke præcist med ét sæt, og løkken hopper.     -->
+<section class="sek tynd" id="anmeldelser">
+  <div class="indre">
+    <div class="sek-hoved vis">
+      <div><p class="etiket streg">5,0 ★ på Google</p><h2>Det skriver kunderne</h2></div>
     </div>
-
-    <div class="contact-right">
-
-      <h3>Telefontider</h3>
-
-      <div class="hours">
-        <div class="hour-row"><span>Mandag</span><span>14:00 – 20:00</span></div>
-        <div class="hour-row"><span>Tirsdag</span><span>14:00 – 20:00</span></div>
-        <div class="hour-row"><span>Onsdag</span><span>14:00 – 20:00</span></div>
-        <div class="hour-row"><span>Torsdag</span><span>14:00 – 20:00</span></div>
-        <div class="hour-row"><span>Fredag</span><span>14:00 – 20:00</span></div>
-        <div class="hour-row"><span>Lørdag</span><span>Lukket</span></div>
-        <div class="hour-row"><span>Søndag</span><span>Lukket</span></div>
-      </div>
-    </div>
-
   </div>
-
+  <div class="anm-baand vis" id="anmBaand">
+    <div class="anm-spor" id="anmSpor">
+        <figure class="anm lg-kant"><span class="stj">★★★★★</span><p>"Super professionel og pålidelig bilrengøring. Bilen kom tilbage skinnende ren både indvendigt og udvendigt, og servicen var hurtig. Kan klart anbefales."</p><figcaption>Jacob · Svendborg</figcaption></figure>
+        <figure class="anm lg-kant"><span class="stj">★★★★★</span><p>"Jeg kan på det varmeste anbefale de gutter her, de er venlige, effektive, arbejdsomme og yder en ekstrem professionel service. Tøv ikke med at tage fat i dem. Det kommer vi i hvert fald til igen, når bilen trænger til en tur mere. Stærkt arbejde."</p><figcaption>Kenneth · Tved</figcaption></figure>
+        <figure class="anm lg-kant"><span class="stj">★★★★★</span><p>"Helt utroligt flot resultat. Vi kan derfor sende vores bedste anbefalinger og det er absolut ikke sidste gang at de bliver booket."</p><figcaption>Ulrik · Svendborg</figcaption></figure>
+        <figure class="anm lg-kant"><span class="stj">★★★★★</span><p>"En rigtig god oplevelse, vi har fået 2 biler ordnet både indvendig og udvendig. Og det er bare helt i top. Ros til jer drenge."</p><figcaption>Mari-Ann · Svendborg</figcaption></figure>
+        <figure class="anm lg-kant"><span class="stj">★★★★★</span><p>"Fantastisk godt arbejde, meget høflige unge mennesker. Overholder aftaler. 5 stjerner herfra!"</p><figcaption>Anja · Svendborg</figcaption></figure>
+        <figure class="anm lg-kant"><span class="stj">★★★★★</span><p>"Min bil har aldrig set bedre ud, virkelig pengene værd. Kan stærkt anbefales."</p><figcaption>Olivia · Egense</figcaption></figure>
+    </div>
+  </div>
 </section>
 
-<footer>
+<!-- ═══ OM OS ═════════════════════════════════════════════════════════ -->
+<section class="sek tynd" id="om">
+  <div class="indre om">
+    <div class="vis">
+      <p class="etiket streg">Om os</p>
+      <h2>Tre unge fra Svendborg, der tager det seriøst</h2>
+      <p>Vi går på HHX og startede Direkte Detailing i 2025. Siden har vi gjort over 100 biler rene i Svendborg og omegn. Det er os selv, der kommer ud til din bil, og det er også os, du taler med, når du ringer.</p>
+    </div>
+    <div class="om-kort lg-kant vis" style="--d:120ms">
+      <img src="Billeder/ny/holdet-graderet.webp" alt="De tre fra Direkte Detailing" loading="lazy">
+      <dl>
+        <div><dt>Telefon</dt><dd><a href="tel:+4529729695">29 72 96 95</a></dd></div>
+        <div><dt>Telefontid</dt><dd>Mandag–fredag 14–20</dd></div>
+        <div><dt>Område</dt><dd>Svendborg, Tåsinge, Thurø og omegn</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
 
-  <svg class="footer-mark" viewBox="0 0 1000.0 615.47" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M983.9 255.6L975.6 243.1L968.9 234.8L955.9 221.8L946.8 214.6L936.0 207.4L917.4 197.4L890.5 187.4L868.9 181.9L851.4 178.5L819.5 174.9L787.9 173.8L712.2 174.7L655.1 220.7L646.0 228.7L726.9 228.4L738.8 229.3L756.6 231.8L768.2 234.8L781.3 239.8L789.6 244.2L796.8 249.2L805.1 257.3L810.4 263.9L814.5 271.4L818.7 282.2L820.3 291.1L821.2 300.5L820.3 318.5L817.9 332.4L814.0 347.4L806.2 372.3L786.2 425.6L773.8 454.1L763.8 473.8L752.1 492.4L743.8 503.5L734.7 514.0L717.2 530.4L700.3 541.7L685.6 549.2L674.2 553.4L659.8 557.2L646.8 559.2L637.6 559.7L496.8 559.5L496.3 558.9L499.0 550.9L551.4 424.7L608.0 283.9L610.8 278.3L622.7 247.9L622.1 247.9L530.4 319.4L321.9 477.7L321.9 478.2L336.0 478.5L355.7 478.2L359.6 478.5L360.1 479.9L308.6 608.3L306.3 615.5L657.6 614.6L700.6 613.0L717.2 611.6L743.3 608.3L777.1 601.3L790.4 597.4L809.3 590.8L823.7 585.0L834.5 579.7L855.0 568.3L876.4 554.2L898.3 536.2L917.1 517.6L930.4 502.1L945.1 481.8L957.0 463.0L971.4 435.3L982.8 407.8L991.1 382.0L997.2 356.8L999.7 335.5L1000.0 314.7L997.8 294.2L995.3 283.3L991.4 272.0Z M0.0 472.7L284.4 473.0L353.5 418.4L352.9 417.5L181.9 417.5L181.3 417.0L185.5 403.9L222.1 303.3L226.2 290.3L232.9 273.1L258.1 200.7L311.1 53.2L361.5 51.8L434.7 51.6L453.8 52.7L477.7 56.8L489.6 60.7L500.1 65.2L509.6 70.1L516.8 75.7L525.6 84.3L530.1 90.1L535.3 100.1L539.2 110.3L541.7 123.4L541.7 139.7L540.1 148.3L536.7 156.6L533.4 161.4L529.5 165.2L517.3 171.9L504.3 175.8L487.1 178.0L430.8 317.7L407.0 373.4L663.2 172.2L707.5 136.4L707.2 117.5L704.2 99.8L698.4 84.3L690.3 70.1L678.7 56.0L671.5 49.3L660.1 40.2L649.8 33.5L627.9 22.5L608.8 15.2L583.3 8.3L553.1 3.0L529.5 0.8L509.0 0.0L122.0 0.0L121.7 0.6L149.4 32.7L156.9 41.6L157.2 42.7L107.3 176.6L90.4 224.3L80.7 249.0L75.4 265.0L26.9 397.0Z"/></svg>
+<!-- ═══ FAQ ═══════════════════════════════════════════════════════════ -->
+<section class="sek tynd" id="faq">
+  <div class="indre faq-gitter">
+    <div class="vis">
+      <p class="etiket streg">Spørgsmål</p>
+      <h2>Det bliver vi tit spurgt om</h2>
+      <p class="ring">Står dit spørgsmål ikke her, så ring på <a href="tel:+4529729695">29 72 96 95</a> på hverdage mellem 14 og 20.</p>
+    </div>
+    <div class="faq vis" style="--d:100ms">
+      <details><summary>Hvad skal I bruge fra mig?<i class="plus"></i></summary><p>Adgang til strøm og vand. Alt andet har vi med: højtryksrenser, støvsuger, damprenser og produkterne.</p></details>
+      <details><summary>Hvor lang tid tager det?<i class="plus"></i></summary><p>Typisk mellem 2 og 4 timer. Det afhænger af, hvor beskidt bilen er, hvor stor den er, og hvilke tilkøb du har valgt.</p></details>
+      <details><summary>Hvilken størrelse er min bil?<i class="plus"></i></summary><p>Har bilen 7 sæder, vælger du altid 7-personers. Ellers vælger du efter bilens fysiske størrelse. En stationcar tæller typisk som stor bil. Er du i tvivl, så se vores <a href="bilstoerrelse.html" style="color:var(--champagne)">bilstørrelse-guide</a>, eller ring.</p></details>
+      <details><summary>Hvad er forskellen på Standard og Premium?<i class="plus"></i></summary><p>Standard er en rengøring: vi fjerner snavset i og på bilen. Premium behandler materialerne oveni med sæderens, læderbehandling og plastikpleje. Vi siger det ærligt, hvis du ikke har brug for den dyreste pakke.</p></details>
+      <details><summary>Hvor kører I ud?<i class="plus"></i></summary><p>I Svendborg, på Tåsinge, Thurø og i omegnen. Bor du lidt længere væk, så ring og spørg.</p></details>
+    </div>
+  </div>
+</section>
 
-  <p class="footer-name">Direkte <b>Detailing</b></p>
-  <p class="footer-sub">Mobil bilpleje i Svendborg, på Tåsinge og Thurø</p>
-
-  <div class="social-links">
-
-    <a href="https://www.facebook.com/profile.php?id=61580811698012" target="_blank" rel="noopener" aria-label="Facebook">
-
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-      </svg>
-
-    </a>
-
-    <a href="https://www.instagram.com/direktedetailing" target="_blank" rel="noopener" aria-label="Instagram">
-
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-      </svg>
-
-    </a>
-
-    <a href="https://www.tiktok.com/@direktedetailing" target="_blank" rel="noopener" aria-label="TikTok">
-
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M16.6 5.82 A4.28 4.28 0 0 1 15.54 3 H12.45 V15.4 A2.59 2.59 0 1 1 10.22 12.83 V9.73 A5.66 5.66 0 1 0 15.54 15.4 V9.01 A7.35 7.35 0 0 0 19.84 10.39 V7.29 A4.29 4.29 0 0 1 16.6 5.82 Z"/>
-      </svg>
-
-    </a>
-
+<!-- ═══ FOOTER ════════════════════════════════════════════════════════ -->
+<footer class="fod" id="fod">
+  <div class="fod-cta">
+    <div class="vis">
+      <p class="etiket streg">Klar når du er</p>
+      <h2>Book en tid, så kommer vi ud til dig</h2>
+    </div>
+    <div class="knapper vis" style="--d:100ms">
+      <a href="https://direkte-detailing.planway.com/" class="knap">Book nu <svg><use href="#pil-h"/></svg></a>
+      <a href="tel:+4529729695" class="knap lg-staerk">Ring 29 72 96 95</a>
+    </div>
   </div>
 
-  <div class="footerlinks">
-
-    <a href="udvendig-vask.html">Udvendig bilvask i Svendborg</a>
-    <a href="interiør-rengøring.html">Indvendig bilrengøring i Svendborg</a>
-    <a href="full-detail.html">Fuld bildetailing i Svendborg</a>
-    <a href="mobil-bilpleje.html">Mobil bilpleje i Svendborg</a>
-    <a href="interiør-rengøring-premium.html">Premium indvendig rengøring i Svendborg</a>
-    <a href="full-detail-premium.html">Full detail premium i Svendborg</a>
-    <a href="hvad-er-detailing.html">Hvad er detailing?</a>
-
+  <div class="fod-gitter">
+    <div class="fod-brand">
+      <a href="#" class="lockup" aria-label="Direkte Detailing">
+        <svg viewBox="0 0 1000 615.47" aria-hidden="true"><use href="#ddsti" fill="currentColor"/></svg>
+        <span class="delestreg"></span>
+        <span class="navn">Direkte <b>Detailing</b></span>
+      </a>
+      <p>Mobil bilpleje i Svendborg, på Tåsinge og Thurø. Vi kommer ud til dig med alt udstyret.</p>
+      <div class="soc">
+        <a href="https://www.facebook.com/profile.php?id=61580811698012" aria-label="Facebook"><svg><use href="#ik-fb"/></svg></a>
+        <a href="https://www.instagram.com/direktedetailing" aria-label="Instagram"><svg><use href="#ik-ig"/></svg></a>
+        <a href="https://www.tiktok.com/@direktedetailing" aria-label="TikTok"><svg><use href="#ik-tt"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <ul>
+        <li><a href="udvendig-vask.html">Udvendig vask</a></li>
+        <li><a href="interi%C3%B8r-reng%C3%B8ring.html">Indvendig rengøring</a></li>
+        <li><a href="full-detail.html">Full Detail</a></li>
+        <li><a href="interi%C3%B8r-reng%C3%B8ring-premium.html">Premium Indvendig</a></li>
+        <li><a href="full-detail-premium.html">Premium Full Detail</a></li>
+        <li><a href="hvad-er-detailing.html">Hvad er detailing?</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Telefontid</h4>
+      <ul class="tider" id="tider">
+        <li data-d="1"><span>Mandag</span><span>14–20</span></li>
+        <li data-d="2"><span>Tirsdag</span><span>14–20</span></li>
+        <li data-d="3"><span>Onsdag</span><span>14–20</span></li>
+        <li data-d="4"><span>Torsdag</span><span>14–20</span></li>
+        <li data-d="5"><span>Fredag</span><span>14–20</span></li>
+        <li class="lukket" data-d="6"><span>Lørdag</span><span>Lukket</span></li>
+        <li class="lukket" data-d="0"><span>Søndag</span><span>Lukket</span></li>
+      </ul>
+      <span class="nu-aaben" id="nuAaben"><i></i><span>Telefonen er lukket lige nu</span></span>
+    </div>
+    <div>
+      <h4>Kontakt</h4>
+      <ul>
+        <li><a href="tel:+4529729695">29 72 96 95</a></li>
+        <li><a href="mailto:kontakt@direktedetailing.dk">kontakt@direktedetailing.dk</a></li>
+        <li>Løvholmen 2, 5700 Svendborg</li>
+        <li>CVR 46 35 57 84</li>
+        <li style="color:var(--roeg)">Tidligere Svendborg Bildetail</li>
+      </ul>
+    </div>
   </div>
 
-  <p>© 2026 Direkte Detailing – Bilklargøring i Svendborg</p>
-  <p>Tidligere Svendborg Bildetail · CVR: 46 35 57 84</p>
+  <div class="fod-ord" id="fodOrd" aria-hidden="true">
+    <svg viewBox="0 0 1200 150" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <linearGradient id="ordFyld" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#E7CE93" stop-opacity=".22"/>
+          <stop offset="1" stop-color="#E7CE93" stop-opacity=".02"/>
+        </linearGradient>
+        <radialGradient id="ordLys" gradientUnits="userSpaceOnUse" cx="600" cy="80" r="230">
+          <stop offset="0" stop-color="#F3E5C2" stop-opacity=".95"/>
+          <stop offset=".45" stop-color="#E7CE93" stop-opacity=".35"/>
+          <stop offset="1" stop-color="#E7CE93" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <text id="ordTekst" x="600" y="128" text-anchor="middle" font-size="150" fill="url(#ordFyld)">DIREKTE DETAILING</text>
+      <text x="600" y="128" text-anchor="middle" font-size="150" fill="url(#ordLys)" id="ordLysTekst" opacity="0">DIREKTE DETAILING</text>
+    </svg>
+  </div>
 
-  <p class="footerlinks">
-    Hjemmeside lavet af
-    <a href="https://www.sonderbymarketing.dk">SONDERBY MARKETING</a>
-  </p>
-
+  <div class="fod-bund">
+    <span>© 2026 Direkte Detailing · Mobil bilpleje i Svendborg</span>
+    <nav>
+      <a href="privacy.html">Privatliv og cookies</a>
+      <a href="https://www.sonderbymarketing.dk">Hjemmeside af SONDERBY MARKETING</a>
+    </nav>
+  </div>
 </footer>
 
+<div class="mobil-bar glas" id="mobilBar">
+  <div class="mb-t">Din pris<b id="mbPris">Fra 375 kr</b></div>
+  <a href="https://direkte-detailing.planway.com/" class="knap">Book nu</a>
+</div>
+
 <script>
-  const hamburgerBtn = document.getElementById('hamburgerBtn');
-  const mainNav = document.getElementById('mainNav');
-  const navOverlay = document.getElementById('navOverlay');
-
-  function toggleNav(){
-    const isOpen = mainNav.classList.toggle('open');
-
-    navOverlay.classList.toggle('open', isOpen);
-    hamburgerBtn.classList.toggle('open', isOpen);
-    hamburgerBtn.setAttribute('aria-expanded', isOpen);
-  }
-
-  hamburgerBtn.addEventListener('click', toggleNav);
-
-  navOverlay.addEventListener('click', toggleNav);
-
-  mainNav.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      if (mainNav.classList.contains('open')) {
-        toggleNav();
-      }
-    });
-  });
-</script>
-
-<!-- HEADER: gennemsigtig over videoen, massiv med guldkant når man scroller -->
-<script>
-  const siteHeader = document.querySelector('header');
-
-  function setHeaderState(){
-    siteHeader.classList.toggle('scrolled', window.scrollY > 40);
-  }
-
-  setHeaderState();
-  window.addEventListener('scroll', setHeaderState, { passive: true });
-</script>
-
-<!-- ANMELDELSESBÅND: sættet klones, så løkken er sømløs. Sker kun med
-     JavaScript — uden det er båndet bare et vandret scroll-felt. -->
-<script>
-(function(){
-  const band = document.querySelector('.review-band');
-  const track = band && band.querySelector('.review-track');
-
-  if (!track) return;
-
-  const saet = Array.from(track.children);
-
-  for (let i = 0; i < 2; i++) {
-    saet.forEach(kort => {
-      const kopi = kort.cloneNode(true);
-      kopi.setAttribute('aria-hidden', 'true');
-      track.appendChild(kopi);
-    });
-  }
-
-  band.classList.add('koerer');
+/* Introen vises kun én gang pr. besøg og springes over ved reduceret bevægelse */
+(() => {
+  const intro = document.getElementById('intro');
+  let set = false; try { set = sessionStorage.getItem('dd-intro') === '1'; } catch (e) {}
+  if (set || matchMedia('(prefers-reduced-motion: reduce)').matches) { intro.remove(); return; }
+  try { sessionStorage.setItem('dd-intro', '1'); } catch (e) {}
+  document.documentElement.style.overflow = 'hidden';
+  const luk = () => { intro.classList.add('vaek'); document.documentElement.style.overflow = ''; setTimeout(() => intro.remove(), 900); };
+  setTimeout(luk, 1750);
+  intro.addEventListener('click', luk);
 })();
 </script>
-
-<!-- INDTONING: klasserne sættes af JS, så alt er synligt uden JavaScript -->
 <script>
-(function(){
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fin = matchMedia('(hover:hover) and (pointer:fine)').matches;
+  const $ = (s, el = document) => el.querySelector(s);
+  const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+  const kr = n => n.toLocaleString('da-DK');
+  const BOOK = 'https://direkte-detailing.planway.com/', SITE = '';
 
-  if (reduceMotion || !('IntersectionObserver' in window)) return;
+  /* ══ DATA — fra direktedetailing.dk ═══════════════════════════════ */
+  const STR = {
+    lille:  { navn:'Lille bil',   eks:'VW Polo, Fiat 500, Toyota Aygo, Mini Cooper' },
+    mellem: { navn:'Mellem bil',  eks:'VW Golf, Skoda Octavia, Toyota Corolla, BMW 3-serie, Audi A4' },
+    stor:   { navn:'Stor bil',    eks:'BMW 5-serie, Mercedes E-klasse, VW Passat stationcar, Tesla Model Y, Skoda Enyaq' },
+    syv:    { navn:'7-personers', eks:'alle biler med 7 sæder, f.eks. VW Touran, Ford Galaxy, Mercedes EQV' },
+  };
+  const ORDEN = ['lille','mellem','stor','syv'];
+  const PAKKER = {
+    standard: [
+      { id:'udv', etiket:'Udvendig', navn:'Udvendig vask', foto:'Billeder/kort-udvendig.webp', link:'udvendig-vask.html',
+        desc:'Til dig, der vil have bilen ren og pæn udenpå.', liste:['Forvask og skånsom håndvask','Fælgrens','Vinduespuds','Tørring af hele bilen'],
+        pris:{ lille:375, mellem:375, stor:375, syv:375 } },
+      { id:'indv', etiket:'Indvendig', navn:'Indvendig rengøring', foto:'Billeder/ny/macan-bag.webp', link:'interi%C3%B8r-reng%C3%B8ring.html',
+        desc:'Frisk kabine, klar til hverdagen.', liste:['Støvsugning i alle kroge','Damprens af paneler og dørfalser','Måtter og vinduer indefra'],
+        pris:{ lille:685, mellem:875, stor:975, syv:1125 } },
+      { id:'full', etiket:'Inde og ude', navn:'Full Detail', plade:'Mest valgt', foto:'Billeder/kort-fulldetail.webp', link:'full-detail.html', lokal:true,
+        desc:'Hele bilen på én gang, inde og ude.', liste:['Alt fra Udvendig vask','Alt fra Indvendig rengøring','Ét besøg, én pris'],
+        pris:{ lille:1060, mellem:1185, stor:1299, syv:1435 } },
+    ],
+    premium: [
+      { id:'pindv', etiket:'Premium · Indvendig', navn:'Premium Indvendig', foto:'Billeder/ny/macan-foran.webp', link:'interi%C3%B8r-reng%C3%B8ring-premium.html', premium:true,
+        desc:'Når kabinen har brug for mere end en rengøring.', liste:['Alt fra Indvendig rengøring','Sæderens, der trækker pletter og lugt ud','Læderbehandling og plastikpleje'],
+        pris:{ lille:1250, mellem:1430, stor:1549, syv:1750 }, mod:'indv', modNavn:'Indvendig' },
+      { id:'pfull', etiket:'Premium · Inde og ude', navn:'Premium Full Detail', plade:'Mest komplet', foto:'Billeder/kort-premium-fulldetail.webp', link:'full-detail-premium.html', premium:true,
+        desc:'Den mest komplette pakke, inde og ude.', liste:['Alt fra Full Detail','Sæderens og lædervedligeholdelse','Plastikpleje og maksimal finish'],
+        pris:{ lille:1560, mellem:1875, stor:2049, syv:2310 }, mod:'full', modNavn:'Full Detail' },
+    ],
+  };
+  const alle = [...PAKKER.standard, ...PAKKER.premium];
+  let str = 'mellem';
 
-  const grupper = [
-    '.services-header',
-    '.premium-intro',
-    '.svc-card',
-    '.explainer-box',
-    '.review-band',
-    '.ba-container-border',
-    '.mission-text, .mission-images',
-    '.seo-text, .faq',
-    '.contact-left, .contact-right'
+  /* ══ Kort ═════════════════════════════════════════════════════════ */
+  const kort = p => `
+    <article class="kort lg-kant ${p.premium ? 'premium' : ''} vis">
+      <div class="foto">${p.plade ? `<span class="plade">${p.plade}</span>` : ''}<img src="${p.foto}" alt="${p.navn}" loading="lazy"></div>
+      <div class="krop">
+        <p class="etiket">${p.etiket}</p>
+        <h3>${p.navn}</h3>
+        <p class="desc">${p.desc}</p>
+        <ul>${p.liste.map(l => `<li>${l}</li>`).join('')}</ul>
+        <div class="pris"><b data-pris="${p.id}"></b><span data-for="${p.id}"></span></div>
+        <div class="knapper">
+          <a href="${BOOK}" class="knap">Book</a>
+          <a href="${p.link}" class="knap kant">Læs mere</a>
+        </div>
+      </div>
+    </article>`;
+  $('#standard').innerHTML = PAKKER.standard.map(kort).join('');
+  $('#premium').innerHTML = PAKKER.premium.map(kort).join('');
+  $$('.kort').forEach((k, i) => k.style.setProperty('--d', (i % 3) * 90 + 'ms'));
+
+  function visPriser(animer){
+    const seg = $('#segment');
+    $$('button', seg).forEach(b => b.setAttribute('aria-checked', b.dataset.s === str));
+    seg.style.setProperty('--i', ORDEN.indexOf(str));
+    $('#eks').innerHTML = `<b>${STR[str].navn}:</b> f.eks. ${STR[str].eks}. <a href="bilstoerrelse.html">Se alle modeller</a>`;
+    alle.forEach(p => {
+      const b = $(`[data-pris=${p.id}]`), s = $(`[data-for=${p.id}]`);
+      const saet = () => {
+        b.textContent = (p.id === 'udv' ? 'Fra ' : '') + kr(p.pris[str]) + ' kr';
+        s.textContent = p.id === 'udv' ? 'Samme pris for alle biler' : (p.mod ? `${kr(p.pris[str] - alle.find(x => x.id === p.mod).pris[str])} kr mere end ${p.modNavn}` : STR[str].navn);
+        b.classList.remove('skift');
+      };
+      if (animer && !reduce && p.id !== 'udv') { b.classList.add('skift'); setTimeout(saet, 180); } else saet();
+    });
+    $('#mbPris').textContent = 'Full Detail · ' + kr(PAKKER.standard[2].pris[str]) + ' kr';
+  }
+  $('#segment').addEventListener('click', e => { const b = e.target.closest('button'); if (b && b.dataset.s !== str) { str = b.dataset.s; visPriser(true); } });
+  $('#segment').addEventListener('keydown', e => {
+    if (!['ArrowRight','ArrowLeft'].includes(e.key)) return;
+    e.preventDefault();
+    const i = (ORDEN.indexOf(str) + (e.key === 'ArrowRight' ? 1 : -1) + 4) % 4;
+    const b = $(`#segment [data-s=${ORDEN[i]}]`); b.click(); b.focus();
+  });
+  visPriser(false);
+
+
+  // Langsommere video føles dyrere — vandperlerne i 75 % hastighed
+  $$('video').forEach(v => { v.playbackRate = .75; v.addEventListener('play', () => { v.playbackRate = .75; }); });
+
+  /* ══ Hero-film: seks klip med blød overgang og "På opgave"-etiket ════
+     Kun det klip, der vises, og det næste bliver hentet. Står helt stille,
+     når heroen er ude af syne eller fanen er skjult.                   */
+  const KLIP = [
+    { src:'video/flotprewash2.mp4',   tekst:'Forvask med skum' },
+    { src:'video/contactwash.mp4',    tekst:'Håndvask med vaskehandske' },
+    { src:'video/cabriolet_skyl.mp4', tekst:'Skylning' },
+    { src:'video/steamclean.mp4',     tekst:'Damprens indvendigt' },
+    { src:'video/porschebag.mp4',     tekst:'Skum, der løsner snavset' },
+    { src:'video/bmw.mp4',            tekst:'Vandperler på lakken' },
   ];
+  const VARIGHED = 7000;
+  const film = $$('#heroVideo video');
+  let ki = 0, front = film[0], filmTimer = null, heroSynlig = true;
+  const label = () => {};
+  const start = v => { v.playbackRate = .75; const p = v.play(); if (p) p.catch(() => {}); };
+  front.src = KLIP[0].src; start(front); label();
+  function naeste(){
+    ki = (ki + 1) % KLIP.length;
+    const bag = film.find(v => v !== front);
+    bag.preload = 'auto'; bag.src = KLIP[ki].src; bag.currentTime = 0; start(bag);
+    const skift = () => {
+      bag.classList.add('aktiv'); front.classList.remove('aktiv');
+      setTimeout(() => film.forEach(v => { if (v !== front) v.pause(); }), 1700);
+      front = bag; label();
+    };
+    if (bag.readyState >= 2) skift(); else bag.addEventListener('loadeddata', skift, { once: true });
+  }
+  const koer = () => { clearInterval(filmTimer); if (!reduce && heroSynlig && !document.hidden) { filmTimer = setInterval(naeste, VARIGHED); start(front); } };
+  new IntersectionObserver(es => { heroSynlig = es[0].isIntersecting; if (heroSynlig) koer(); else { clearInterval(filmTimer); film.forEach(v => v.pause()); } }, { threshold: .05 }).observe($('#hero'));
+  document.addEventListener('visibilitychange', koer);
+  koer();
 
-  const emner = [];
+  /* ══ Hero-ordmærket: fyld præcis bredden, lys der følger musen ═════ */
+  const om = $('#ordmaerke'), omLys = $('#omLys'), heroV = $('#heroVideo');
+  const tilpasOm = () => {
+    const t = $('#omTekst'); t.setAttribute('font-size', 120);
+    const w = t.getComputedTextLength(); if (!w) return;
+    const fs = 120 * 996 / w;
+    $$('#ordmaerke text').forEach(x => { x.setAttribute('font-size', fs); x.setAttribute('y', fs * .86); });
+    om.setAttribute('viewBox', `0 0 1000 ${Math.round(fs * .9)}`);
+  };
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(tilpasOm);
+  let omSidst = 0;
+  const saetOmLys = (cx, cy) => {
+    const r = om.getBoundingClientRect(), vb = om.viewBox.baseVal;
+    omLys.setAttribute('cx', (cx - r.left) / r.width * vb.width);
+    omLys.setAttribute('cy', (cy - r.top) / r.height * vb.height);
+  };
+  $('#hero').addEventListener('pointermove', e => { if (e.pointerType === 'mouse') { saetOmLys(e.clientX, e.clientY); omSidst = performance.now(); } });
+  if (!reduce) (function drift(t){
+    if (t - omSidst > 2400 && scrollY < innerHeight) {
+      const r = om.getBoundingClientRect();
+      saetOmLys(r.left + r.width * (.5 + Math.sin(t / 3000) * .55), r.top + r.height * (.5 + Math.cos(t / 4000) * .3));
+    }
+    requestAnimationFrame(drift);
+  })(0);
+  addEventListener('scroll', () => {
+    if (reduce) return;
+    const y = scrollY, h = $('#hero').offsetHeight; if (y > h) return;
+    heroV.style.transform = `translate3d(0,${y * .22}px,0)`;
+    om.style.transform = `translate3d(-50%,${y * .38}px,0)`;
+    om.style.opacity = Math.max(0, 1 - y / (h * .6));
+  }, { passive: true });
 
-  grupper.forEach(vaelger => {
-    document.querySelectorAll(vaelger).forEach((el, i) => {
-      el.classList.add('reveal');
-      el.style.setProperty('--d', Math.min(i, 3) * 0.08 + 's');
-      emner.push(el);
-    });
+
+  /* ══ Anmeldelsesbåndet: klon sættet to gange, så løkken er sømløs ══ */
+  const anmSpor = $('#anmSpor'), anmBaand = $('#anmBaand');
+  if (anmSpor && !reduce) {
+    const orig = $$('.anm', anmSpor);
+    for (let i = 0; i < 2; i++) orig.forEach(k => { const c = k.cloneNode(true); c.setAttribute('aria-hidden', 'true'); anmSpor.appendChild(c); });
+    // Samme tempo uanset skærmbredde: ca. 40 px i sekundet
+    const saetTempo = () => anmSpor.style.setProperty('--loeb', Math.round(anmSpor.scrollWidth / 3 / 40) + 's');
+    saetTempo(); addEventListener('resize', saetTempo);
+    anmBaand.classList.add('koerer');
+  }
+
+  /* ══ Før/efter ════════════════════════════════════════════════════ */
+  $$('.slider').forEach((sl, n) => {
+    const inp = $('input', sl);
+    const saet = v => { inp.value = v; sl.style.setProperty('--pos', v + '%'); };
+    inp.addEventListener('input', () => saet(inp.value));
+    const glid = (fra, til, fn) => {
+      if (reduce) { saet(til); return; }
+      const t0 = performance.now(), d = 520;
+      (function step(t){ const k = Math.min(1, (t - t0) / d), e = 1 - Math.pow(1 - k, 3); saet(fra + (til - fra) * e); k < 1 ? requestAnimationFrame(step) : fn && fn(); })(t0);
+    };
+    new IntersectionObserver((es, o) => { if (es[0].isIntersecting) { o.disconnect(); setTimeout(() => glid(50, 70, () => glid(70, 50)), 400 + n * 250); } }, { threshold: .7 }).observe(sl);
   });
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add('in');
-      observer.unobserve(entry.target);
-    });
-  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+  /* ══ Lys: hero og ordmærket i footeren ════════════════════════════ */
+  if (fin) {
+    const hero = $('#hero'), spot = $('#spot');
+    hero.addEventListener('pointermove', e => { const r = hero.getBoundingClientRect(); spot.style.setProperty('--mx', (e.clientX - r.left) + 'px'); spot.style.setProperty('--my', (e.clientY - r.top) + 'px'); });
+  }
+  const fodOrd = $('#fodOrd'), ordLys = $('#ordLys'), ordLysTekst = $('#ordLysTekst');
+  // Skalér ordmærket, så det fylder bredden uden at bogstaverne presses sammen
+  const tilpasOrd = () => {
+    const t1 = $('#ordTekst'); t1.setAttribute('font-size', 150);
+    const w = t1.getComputedTextLength(); if (!w) return;
+    const fs = 150 * 1190 / w;
+    $$('#fodOrd text').forEach(t => { t.setAttribute('font-size', fs); t.setAttribute('y', fs * .78 + 8); });
+    $('#fodOrd svg').setAttribute('viewBox', `0 0 1200 ${Math.round(fs * .82 + 10)}`);
+  };
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(tilpasOrd);
+  const flytOrdLys = (cx, cy) => {
+    const r = fodOrd.querySelector('svg').getBoundingClientRect();
+    ordLys.setAttribute('cx', (cx - r.left) / r.width * 1200);
+    ordLys.setAttribute('cy', (cy - r.top) / r.height * fodOrd.querySelector('svg').viewBox.baseVal.height);
+  };
+  if (fin) {
+    $('#fod').addEventListener('pointermove', e => { flytOrdLys(e.clientX, e.clientY); ordLysTekst.setAttribute('opacity', 1); });
+    $('#fod').addEventListener('pointerleave', () => ordLysTekst.setAttribute('opacity', 0));
+  } else if (!reduce) {
+    // Uden mus glider lyset langsomt hen over ordet, når footeren er i syne
+    let koer = false;
+    new IntersectionObserver(es => { koer = es[0].isIntersecting; ordLysTekst.setAttribute('opacity', koer ? 1 : 0); }).observe(fodOrd);
+    (function drift(t){ if (koer) { ordLys.setAttribute('cx', 600 + Math.sin(t / 2200) * 520); ordLys.setAttribute('cy', 80); } requestAnimationFrame(drift); })(0);
+  }
 
-  emner.forEach(el => observer.observe(el));
+  /* ══ Telefontid: markér i dag og om der er åbent ══════════════════ */
+  const nu = new Date(), dag = nu.getDay(), time = nu.getHours();
+  const idag = $(`#tider [data-d="${dag}"]`);
+  if (idag) { idag.style.color = 'var(--kridt)'; idag.firstElementChild.textContent += ' · i dag'; }
+  const aaben = dag >= 1 && dag <= 5 && time >= 14 && time < 20;
+  const na = $('#nuAaben'); na.classList.toggle('aaben', aaben);
+  na.lastElementChild.textContent = aaben ? 'Ring nu, vi tager telefonen' : 'Telefonen er lukket lige nu, men du kan altid booke online';
+
+  /* ══ Indtoning, nav, mobilbjælke ══════════════════════════════════ */
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
+  $$('.vis').forEach(el => io.observe(el));
+  const nav = $('#nav'), bar = $('#mobilBar'), heroEl = $('#hero');
+  addEventListener('scroll', () => {
+    nav.classList.toggle('fast', scrollY > 40);
+    const fodTop = $('#fod').getBoundingClientRect().top;
+    bar.classList.toggle('op', scrollY > heroEl.offsetHeight * .7 && fodTop > innerHeight);
+  }, { passive: true });
 })();
 </script>
-
-<!-- VIDEO SCRIPT -->
-<script>
-
-const videos = [
-  "video/prewash.mp4",
-  "video/hej.mp4",
-  "video/hej1.mp4",
-  "video/contactwash.mp4",
-  "video/spuling.mp4",
-  "video/porschebag.mp4",
-  "video/ret_rens.mp4",
-  "video/ret_rens2.mp4",
-  "video/spuling2.mp4",
-  "video/steamclean.mp4",
-  "video/flotprewash2.mp4",
-  "video/bmw.mp4",
-  "video/droenvideo.mp4",
-  "video/cabriolet_skyl.mp4"
-];
-
-let queue = [];
-
-function shuffleVideos() {
-  queue = [...videos].sort(() => Math.random() - 0.5);
-}
-
-shuffleVideos();
-
-let video1 = document.getElementById("heroVideo1");
-let video2 = document.getElementById("heroVideo2");
-
-function getNextVideo() {
-  if (queue.length === 0) {
-    shuffleVideos();
-  }
-
-  return queue.pop();
-}
-
-// Sikrer lyd er slået fra på begge elementer via JS-egenskaben
-video1.muted = true;
-video1.defaultMuted = true;
-
-video2.muted = true;
-video2.defaultMuted = true;
-
-// Start første video
-video1.src = getNextVideo();
-video1.load();
-video1.style.opacity = 1;
-
-video1.play().catch((err) => {
-  console.error("Video kunne ikke autoplaye:", err);
-});
-
-function scheduleNextVideo(current, next) {
-
-  // Start fade 2 sek før videoen slutter
-  const fadeTime = 2;
-  const duration = current.duration;
-
-  if (isNaN(duration)) {
-
-    setTimeout(() => {
-      scheduleNextVideo(current, next);
-    }, 500);
-
-    return;
-  }
-
-  const timeToFade = (duration - fadeTime) * 1000;
-
-  setTimeout(() => {
-
-    // Start næste video bagved
-    next.muted = true;
-    next.src = getNextVideo();
-    next.load();
-
-    next.play().catch((err) => {
-      console.error("Video kunne ikke autoplaye:", err);
-    });
-
-    next.style.opacity = 0;
-
-    // Fade
-    next.style.transition = 'opacity 2s ease-in-out';
-    current.style.transition = 'opacity 2s ease-in-out';
-
-    setTimeout(() => {
-
-      next.style.opacity = 1;
-      current.style.opacity = 0;
-
-      // swap references
-      [video1, video2] = [video2, video1];
-
-      // Sæt schedule for næste skift
-      scheduleNextVideo(video1, video2);
-
-    }, 50);
-
-  }, timeToFade);
-}
-
-// Start loop
-scheduleNextVideo(video1, video2);
-
-</script>
-
-<iframe
-  name="__uspapiLocator"
-  tabindex="-1"
-  role="presentation"
-  aria-hidden="true"
-  title="Blank"
-  style="display: none; position: absolute; width: 1px; height: 1px; top: -9999px;">
-</iframe>
-
-<iframe
-  tabindex="-1"
-  role="presentation"
-  aria-hidden="true"
-  title="Blank"
-  src="https://consentcdn.cookiebot.com/sdk/bc-v4.min.html"
-  style="position: absolute; width: 1px; height: 1px; top: -9999px;">
-</iframe>
-
+<script src="menu.js"></script>
 </body>
 </html>
