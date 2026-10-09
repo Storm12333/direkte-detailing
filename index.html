@@ -201,6 +201,7 @@ fbq('track', 'PageView');
   ]
 }
 </script>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Jost:wght@500&family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Jost:wght@500&family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -1080,7 +1081,7 @@ html.menu-aaben .menu-panel nav a{ opacity:1; transform:none; }
   // Langsommere video føles dyrere — vandperlerne i 75 % hastighed
   $$('video').forEach(v => { v.playbackRate = .75; v.addEventListener('play', () => { v.playbackRate = .75; }); });
 
-  /* ══ Hero-film: seks klip med blød overgang og "På opgave"-etiket ════
+  /* ══ Hero-film: syv klip med blød overgang og "På opgave"-etiket ════
      Kun det klip, der vises, og det næste bliver hentet. Står helt stille,
      når heroen er ude af syne eller fanen er skjult.                   */
   const KLIP = [
@@ -1088,6 +1089,7 @@ html.menu-aaben .menu-panel nav a{ opacity:1; transform:none; }
     { src:'video/contactwash.mp4',    tekst:'Håndvask med vaskehandske' },
     { src:'video/cabriolet_skyl.mp4', tekst:'Skylning' },
     { src:'video/steamclean.mp4',     tekst:'Damprens indvendigt' },
+    { src:'video/macanret.mp4',       tekst:'Detaljerens af rattet' },
     { src:'video/porschebag.mp4',     tekst:'Skum, der løsner snavset' },
     { src:'video/bmw.mp4',            tekst:'Vandperler på lakken' },
   ];
