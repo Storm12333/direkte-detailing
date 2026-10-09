@@ -283,7 +283,7 @@ h1 em,h2 em{ font-style:normal; color:inherit; }
 .om{ display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,1fr); gap:clamp(36px,6vw,80px); align-items:center; }
 .om h2{ margin-top:14px; font-size:clamp(1.9rem,3.4vw,2.6rem); }
 .om p{ margin:14px 0 0; color:var(--tekst); max-width:56ch; }
-.om-kort{ display:grid; grid-template-columns:104px 1fr; gap:20px; align-items:center; padding:18px; background:var(--kul); border:1px solid var(--linje); border-radius:var(--r); }
+.om-kort{ display:grid; grid-template-columns:1fr; gap:20px; align-items:center; padding:18px; background:var(--kul); border:1px solid var(--linje); border-radius:var(--r); }
 .om-kort img{ width:104px; aspect-ratio:1; object-fit:cover; object-position:50% 35%; border-radius:var(--r); }
 .om-kort dl{ margin:0; display:grid; gap:8px; }
 .om-kort dt{ font-family:var(--etikette); font-size:.56rem; letter-spacing:.22em; text-transform:uppercase; color:var(--roeg); }
