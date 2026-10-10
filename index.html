@@ -442,6 +442,7 @@ h1 em,h2 em{ font-style:normal; color:inherit; }
 .opgave img{ width:100%; aspect-ratio:4/5; object-fit:cover; object-position:50% 58%; transform:scale(1.06); transition:transform 1.8s var(--ease); }
 .opgave.in img{ transform:none; }
 .opgave figcaption{ position:absolute; left:16px; bottom:16px; border-radius:999px; padding:9px 14px; font-size:.84rem; color:var(--kridt); }
+.opgave figcaption b{ font-weight:inherit; }
 .opgave figcaption span{ font-family:var(--etikette); font-size:.56rem; letter-spacing:.24em; text-transform:uppercase; color:var(--champagne); margin-right:8px; }
 .saadan-titel{ margin-top:16px; font-family:var(--bebas); font-weight:400; text-transform:uppercase; letter-spacing:.005em; line-height:.92; font-size:clamp(2.8rem,5vw,4.2rem); }
 .saadan-lead{ margin:18px 0 0; color:var(--tekst); max-width:46ch; }
@@ -777,8 +778,22 @@ html.menu-aaben .menu-panel nav a{ opacity:1; transform:none; }
   <div class="indre saadan-gitter">
     <figure class="opgave vis">
       <img src="Billeder/ny/paa-opgave-graderet.webp" alt="Direkte Detailing i gang med en Porsche Macan i en indkørsel, med deres bil og udstyr ved siden af" loading="lazy">
-      <figcaption class="lg"><span>På opgave</span> Porsche Macan S</figcaption>
+      <figcaption class="lg"><span>På opgave</span> <b>Porsche Macan S</b></figcaption>
     </figure>
+    <script>
+      /* "På opgave": et tilfældigt af vores egne billeder ved hvert besøg (Macan står i HTML'en, hvis JS er slået fra) */
+      (function(){
+        var OPGAVER = [
+          ['Billeder/ny/paa-opgave-graderet.webp', 'Porsche Macan S', 'Direkte Detailing i gang med en Porsche Macan i en indkørsel, med deres bil og udstyr ved siden af', '50% 58%'],
+          ['Billeder/ny/paa-opgave-taycan.webp', 'Porsche Taycan', 'En fra Direkte Detailing gør vaskespanden klar ved en blå Porsche Taycan i en indkørsel', '50% 62%'],
+          ['Billeder/ny/paa-opgave-rexbirk.webp', 'BMW · Rex Birk', 'En fra Direkte Detailing skummer en hvid BMW ind foran arkitektfirmaet Rex Birk i Svendborg', '69% 50%']
+        ];
+        var o = OPGAVER[Math.floor(Math.random() * OPGAVER.length)];
+        var fig = document.currentScript.previousElementSibling, img = fig.querySelector('img');
+        img.src = o[0]; img.alt = o[2]; img.style.objectPosition = o[3];
+        fig.querySelector('figcaption b').textContent = o[1];
+      })();
+    </script>
     <div class="vis" style="--d:120ms">
       <p class="etiket streg">Sådan foregår det</p>
       <h2 class="saadan-titel">Du skal ikke køre nogen steder</h2>
