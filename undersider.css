@@ -51,8 +51,9 @@
 .inkl .krop{ padding:24px 26px 26px; }
 .inkl h3{ font-family:var(--bebas); font-weight:400; font-size:2rem; letter-spacing:.01em; line-height:1; text-transform:uppercase; }
 .inkl ul{ list-style:none; margin:16px 0 0; padding:0; display:grid; gap:9px; }
-.inkl li{ display:grid; grid-template-columns:14px 1fr; gap:10px; color:var(--tekst-2); font-size:.97rem; }
-.inkl li::before{ content:"+"; color:var(--guld); font-weight:600; }
+/* Ikke grid: et punkt med <b> + tekst blev til tre grid-elementer, og teksten røg ned i 14px-kolonnen */
+.inkl li{ position:relative; padding-left:24px; color:var(--tekst-2); font-size:.97rem; }
+.inkl li::before{ content:"+"; position:absolute; left:0; top:0; color:var(--guld); font-weight:600; }
 @media(max-width:760px){ .inkl-gitter{ grid-template-columns:1fr; } }
 
 /* Tre små kort: hvem er den til */
@@ -116,8 +117,8 @@
 .artikel p{ margin:0 0 14px; }
 .artikel a{ color:var(--champagne); border-bottom:1px solid rgba(var(--guld-rgb),.35); }
 .artikel ul{ margin:0 0 18px; padding:0; list-style:none; display:grid; gap:8px; }
-.artikel ul li{ display:grid; grid-template-columns:14px 1fr; gap:10px; }
-.artikel ul li::before{ content:"+"; color:var(--guld); font-weight:600; }
+.artikel ul li{ position:relative; padding-left:24px; }
+.artikel ul li::before{ content:"+"; position:absolute; left:0; top:0; color:var(--guld); font-weight:600; }
 .artikel ul.fakta{ padding:18px 22px; border-radius:var(--r); background:var(--kul); border:1px solid var(--linje); }
 .artikel ul.fakta li{ grid-template-columns:1fr; } .artikel ul.fakta li::before{ content:none; }
 .artikel b{ color:var(--kridt); font-weight:600; }
