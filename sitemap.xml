@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://direktedetailing.dk/full-detail.html</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -86,6 +86,12 @@
   </url>
   <url>
     <loc>https://direktedetailing.dk/hvad-koster-indvendig-rengoering.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://direktedetailing.dk/klargoer-bilen-til-salg.html</loc>
     <lastmod>2026-10-14</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
