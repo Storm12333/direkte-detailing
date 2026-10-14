@@ -67,8 +67,9 @@
     const klip = (filmWrap.dataset.klip || '').split(',').map(x => x.trim()).filter(Boolean);
     const film = $$('video', filmWrap);
     const start = v => { v.playbackRate = .75; const p = v.play(); if (p) p.catch(() => {}); };
-    let ki = 0, front = film[0], timer = null, synlig = true;
-    if (klip.length) { front.src = klip[0]; start(front); }
+    let ki = 0, front = film[0], timer = null, synlig = true, klar = false;
+    // Videoen hentes først, når siden er loadet; indtil da står plakaten (LCP)
+    const efterLoad = fn => document.readyState === 'complete' ? setTimeout(fn, 0) : addEventListener('load', fn, { once: true });
     const naeste = () => {
       ki = (ki + 1) % klip.length;
       const bag = film.find(v => v !== front);
@@ -81,14 +82,14 @@
     };
     const koer = () => {
       clearInterval(timer);
-      if (!reduce && synlig && !document.hidden && klip.length > 1) { timer = setInterval(naeste, 7000); start(front); }
+      if (klar && !reduce && synlig && !document.hidden && klip.length > 1) { timer = setInterval(naeste, 7000); start(front); }
     };
     new IntersectionObserver(es => {
       synlig = es[0].isIntersecting;
       if (synlig) koer(); else { clearInterval(timer); film.forEach(v => v.pause()); }
     }, { threshold: .05 }).observe(hero);
     document.addEventListener('visibilitychange', koer);
-    koer();
+    efterLoad(() => { klar = true; if (klip.length) { front.src = klip[0]; start(front); } koer(); });
   }
 
   /* ── Prisvælger (Full Detail-siden) ──────────────────────────────── */

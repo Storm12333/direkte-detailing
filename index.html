@@ -1116,7 +1116,9 @@ html.menu-aaben .menu-panel nav a{ opacity:1; transform:none; }
   let ki = 0, front = film[0], filmTimer = null, heroSynlig = true;
   const label = () => {};
   const start = v => { v.playbackRate = .75; const p = v.play(); if (p) p.catch(() => {}); };
-  front.src = KLIP[0].src; start(front); label();
+  // Videoen hentes først, når siden er loadet; indtil da står plakaten (LCP)
+  let filmKlar = false;
+  const efterLoad = fn => document.readyState === 'complete' ? setTimeout(fn, 0) : addEventListener('load', fn, { once: true });
   function naeste(){
     ki = (ki + 1) % KLIP.length;
     const bag = film.find(v => v !== front);
@@ -1128,10 +1130,10 @@ html.menu-aaben .menu-panel nav a{ opacity:1; transform:none; }
     };
     if (bag.readyState >= 2) skift(); else bag.addEventListener('loadeddata', skift, { once: true });
   }
-  const koer = () => { clearInterval(filmTimer); if (!reduce && heroSynlig && !document.hidden) { filmTimer = setInterval(naeste, VARIGHED); start(front); } };
+  const koer = () => { clearInterval(filmTimer); if (filmKlar && !reduce && heroSynlig && !document.hidden) { filmTimer = setInterval(naeste, VARIGHED); start(front); } };
   new IntersectionObserver(es => { heroSynlig = es[0].isIntersecting; if (heroSynlig) koer(); else { clearInterval(filmTimer); film.forEach(v => v.pause()); } }, { threshold: .05 }).observe($('#hero'));
   document.addEventListener('visibilitychange', koer);
-  koer();
+  efterLoad(() => { filmKlar = true; front.src = KLIP[0].src; start(front); label(); koer(); });
 
   /* ══ Hero-ordmærket: fyld præcis bredden, lys der følger musen ═════ */
   const om = $('#ordmaerke'), omLys = $('#omLys'), heroV = $('#heroVideo');
