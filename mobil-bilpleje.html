@@ -87,33 +87,38 @@
   "description": "Professionel mobil bilpleje i Svendborg, Tåsinge og Thurø. Vi kører ud til dig med alt udstyr og leverer indvendig rengøring, udvendig bilvask og fuld bildetailing direkte på din adresse.",
   "provider": {
     "@type": "LocalBusiness",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Løvholmen 2",
-    "addressLocality": "Svendborg",
-    "postalCode": "5700",
-    "addressRegion": "Region Syddanmark",
-    "addressCountry": "DK"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 55.0746307,
-    "longitude": 10.6020657
-  },
-    "name": "Direkte Detailing",
-  "alternateName": "Direkte Detailing",
-    "url": "https://direktedetailing.dk/",
-    "telephone": "+4529729695",
+    "@id": "https://direktedetailing.dk/#virksomhed",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Løvholmen 2",
+      "addressLocality": "Svendborg",
+      "postalCode": "5700",
+      "addressRegion": "Region Syddanmark",
+      "addressCountry": "DK"
+    },
     "geo": {
       "@type": "GeoCoordinates",
       "latitude": 55.0746307,
       "longitude": 10.6020657
-    }
+    },
+    "name": "Direkte Detailing",
+    "alternateName": "Svendborg Bildetail",
+    "url": "https://direktedetailing.dk/",
+    "telephone": "+4529729695"
   },
   "areaServed": [
-    { "@type": "City", "name": "Svendborg" },
-    { "@type": "Place", "name": "Tåsinge" },
-    { "@type": "Place", "name": "Thurø" }
+    {
+      "@type": "City",
+      "name": "Svendborg"
+    },
+    {
+      "@type": "Place",
+      "name": "Tåsinge"
+    },
+    {
+      "@type": "Place",
+      "name": "Thurø"
+    }
   ],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
@@ -121,18 +126,30 @@
     "itemListElement": [
       {
         "@type": "Offer",
-        "itemOffered": { "@type": "Service", "name": "Mobil udvendig bilvask Svendborg" },
-        "price": "375", "priceCurrency": "DKK"
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Mobil udvendig bilvask Svendborg"
+        },
+        "price": "375",
+        "priceCurrency": "DKK"
       },
       {
         "@type": "Offer",
-        "itemOffered": { "@type": "Service", "name": "Mobil indvendig bilrengøring Svendborg" },
-        "price": "685", "priceCurrency": "DKK"
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Mobil indvendig bilrengøring Svendborg"
+        },
+        "price": "685",
+        "priceCurrency": "DKK"
       },
       {
         "@type": "Offer",
-        "itemOffered": { "@type": "Service", "name": "Mobil fuld bildetailing Svendborg" },
-        "price": "1060", "priceCurrency": "DKK"
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Mobil fuld bildetailing Svendborg"
+        },
+        "price": "1060",
+        "priceCurrency": "DKK"
       }
     ]
   }
@@ -141,10 +158,11 @@
 
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
   "@type": "LocalBusiness",
+  "@id": "https://direktedetailing.dk/#virksomhed",
+  "@context": "https://schema.org",
   "name": "Direkte Detailing",
-  "alternateName": "Direkte Detailing",
+  "alternateName": "Svendborg Bildetail",
   "telephone": "+4529729695",
   "email": "kontakt@direktedetailing.dk",
   "url": "https://direktedetailing.dk/",
@@ -153,12 +171,22 @@
   "openingHoursSpecification": [
     {
       "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
       "opens": "14:00",
       "closes": "20:00"
     }
   ],
-  "areaServed": ["Svendborg","Tåsinge","Thurø"],
+  "areaServed": [
+    "Svendborg",
+    "Tåsinge",
+    "Thurø"
+  ],
   "sameAs": [
     "https://maps.google.com/?cid=16628578266830274771",
     "https://www.facebook.com/profile.php?id=61580811698012",
@@ -171,9 +199,8 @@
 
 
 <!-- BRANDSKRIFTER: Schibsted Grotesk (alt) + Jost (kun versal-etiketter) -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Jost:wght@500&family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" href="/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts/fonts.css">
 <link rel="stylesheet" href="faelles.css?v=20261007">
 <link rel="stylesheet" href="undersider.css?v=20261007">
 <script type="application/ld+json">
