@@ -165,3 +165,7 @@
 .tk-mere p:last-child{ margin-bottom:6px; }
 @media(max-width:1000px){ .tk-gitter{ grid-template-columns:repeat(2,1fr); } }
 @media(max-width:640px){ .tk-gitter{ grid-template-columns:1fr; } }
+
+/* Brede tabeller scroller vandret på mobil: vis det */
+.tabel-hint{ display:none; margin:-18px 0 24px; font-size:.78rem; color:var(--roeg); }
+@media(max-width:640px){ .tabel-hint{ display:block; } }
