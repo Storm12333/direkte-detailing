@@ -74,14 +74,14 @@ fbq('track', 'PageView');
 <meta name="geo.region" content="DK-83">
 <meta name="geo.placename" content="Svendborg">
 
-<title>Bilrengøring i Svendborg | Indvendig &amp; Udvendig Bilvask</title>
+<title>Bilpleje i Svendborg – vi kommer til dig | Direkte Detailing</title>
 <meta name="description" content="Bilrengøring i Svendborg ✓ Indvendig og udvendig rengøring ✓ Bildetailing ✓ Vi kører ud i Svendborg, Tåsinge og Thurø. Book i dag.">
 
 <!-- OG TAGS -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="da_DK">
 <meta property="og:site_name" content="Direkte Detailing">
-<meta property="og:title" content="Bilrengøring i Svendborg | Indvendig &amp; Udvendig Bilvask">
+<meta property="og:title" content="Bilpleje i Svendborg – vi kommer til dig | Direkte Detailing">
 <meta property="og:description" content="Mobil bilpleje i Svendborg, Tåsinge og Thurø. Udvendig vask fra 375 kr, indvendig rengøring fra 685 kr. Vi kører ud til dig.">
 <meta property="og:url" content="https://direktedetailing.dk/">
 <meta property="og:image" content="https://direktedetailing.dk/Billeder/og-billede.jpg">
@@ -89,7 +89,7 @@ fbq('track', 'PageView');
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Bil efter professionel bilpleje hos Direkte Detailing">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Bilrengøring i Svendborg | Indvendig &amp; Udvendig Bilvask">
+<meta name="twitter:title" content="Bilpleje i Svendborg – vi kommer til dig | Direkte Detailing">
 <meta name="twitter:description" content="Mobil bilpleje i Svendborg, Tåsinge og Thurø. Udvendig vask fra 375 kr, indvendig rengøring fra 685 kr. Vi kører ud til dig.">
 <meta name="twitter:image" content="https://direktedetailing.dk/Billeder/og-billede.jpg">
 
@@ -194,7 +194,6 @@ fbq('track', 'PageView');
   "@type": "WebSite",
   "@id": "https://direktedetailing.dk/#website",
   "name": "Direkte Detailing",
-  "alternateName": "Svendborg Bildetail",
   "url": "https://direktedetailing.dk/",
   "inLanguage": "da-DK",
   "publisher": { "@id": "https://direktedetailing.dk/#virksomhed" }
@@ -604,6 +603,10 @@ html.menu-aaben .menu-panel nav a{ opacity:1; transform:none; }
 .menu-bund{ display:flex; gap:10px; flex-wrap:wrap; } .menu-bund .knap{ flex:1 1 160px; }
 @media(max-width:1100px){ .menu-knap{ display:block; } }
 @media(max-width:480px){ .nav-tel{ display:none; } .nav-hoejre{ gap:10px !important; } }
+
+/* Link til Google-anmeldelser i bånd og etiketter: arver farve, diskret understregning */
+.anm-link{ color:inherit; text-decoration:underline; text-decoration-color:rgba(var(--guld-rgb),.5); text-underline-offset:3px; }
+.anm-link:hover{ color:var(--champagne); text-decoration-color:var(--champagne); }
 </style>
 <script type="application/ld+json">
 {
@@ -737,7 +740,7 @@ html.menu-aaben .menu-panel nav a{ opacity:1; transform:none; }
     </div>
     <div class="baand lg" aria-label="Kort om os">
       <ul>
-        <li><b>5,0 ★</b><span>på Google</span></li>
+        <li><b>5,0 ★</b><span><a href="https://maps.google.com/?cid=16628578266830274771" class="anm-link" target="_blank" rel="noopener" title="Se anmeldelserne på Google">10 anmeldelser</a></span></li>
         <li><b>100+</b><span>biler siden 2025</span></li>
         <li><b>2–4 timer</b><span>typisk per bil</span></li>
         <li><b>Håndvask</b><span>aldrig vaskehal</span></li>
@@ -863,7 +866,7 @@ html.menu-aaben .menu-panel nav a{ opacity:1; transform:none; }
 <section class="sek tynd" id="anmeldelser">
   <div class="indre">
     <div class="sek-hoved vis">
-      <div><p class="etiket streg">5,0 ★ på Google</p><h2>Det skriver kunderne</h2></div>
+      <div><p class="etiket streg"><a href="https://maps.google.com/?cid=16628578266830274771" class="anm-link" target="_blank" rel="noopener">5,0 ★ · 10 anmeldelser på Google</a></p><h2>Det skriver kunderne</h2></div>
     </div>
   </div>
   <div class="anm-baand vis" id="anmBaand">

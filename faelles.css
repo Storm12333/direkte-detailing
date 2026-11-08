@@ -379,3 +379,7 @@ html.menu-aaben .menu-panel nav a{ opacity:1; transform:none; }
 .menu-bund{ display:flex; gap:10px; flex-wrap:wrap; } .menu-bund .knap{ flex:1 1 160px; }
 @media(max-width:1100px){ .menu-knap{ display:block; } }
 @media(max-width:480px){ .nav-tel{ display:none; } .nav-hoejre{ gap:10px !important; } }
+
+/* Link til Google-anmeldelser i bånd og etiketter: arver farve, diskret understregning */
+.anm-link{ color:inherit; text-decoration:underline; text-decoration-color:rgba(var(--guld-rgb),.5); text-underline-offset:3px; }
+.anm-link:hover{ color:var(--champagne); text-decoration-color:var(--champagne); }
