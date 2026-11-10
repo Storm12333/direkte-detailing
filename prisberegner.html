@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+
+<!-- Samtykke: skal indlæses før al sporing, ellers når Cookiebot ikke at blokere den -->
+<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="43cb07ae-ea17-4fa1-9d92-21a8b7a0403d" data-blockingmode="auto" data-culture="DA" type="text/javascript"></script>
+<!-- Google Consent Mode: alt afvist indtil brugeren siger andet.
+     data-cookieconsent="ignore" er noedvendig — ellers blokerer Cookiebot
+     netop det script, der saetter standardtilstanden. -->
+<script data-cookieconsent="ignore">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied',
+    functionality_storage: 'denied',
+    personalization_storage: 'denied',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  gtag('set', 'ads_data_redaction', true);
+  gtag('set', 'url_passthrough', true);
+</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WBTPSVMRTZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-WBTPSVMRTZ');
+</script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="Billeder/dd-favicon.svg" type="image/svg+xml">
+<link rel="icon" href="Billeder/dd-favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="Billeder/dd-favicon-180.png">
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', '1885228559542217');
+fbq('track', 'PageView');
+</script>
+
+<!-- End Meta Pixel Code -->
+<title>Prisberegner: se prisen på din bilrengøring | Direkte Detailing</title>
+<meta name="description" content="Vælg bilens størrelse, pakke og tilkøb, og se prisen med det samme. Mobil bilrengøring i Svendborg, på Tåsinge og Thurø. Vi kommer ud til dig.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://direktedetailing.dk/prisberegner.html">
+<meta property="og:image" content="https://direktedetailing.dk/Billeder/og-billede.jpg">
+<meta property="og:title" content="Se prisen på din bilrengøring på 20 sekunder">
+<meta property="og:description" content="Vælg bilens størrelse, pakke og tilkøb. Vi kommer ud til dig i Svendborg, på Tåsinge og Thurø.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Direkte Detailing">
+<meta property="og:url" content="https://direktedetailing.dk/prisberegner.html">
+<link rel="preload" href="/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="faelles.css?v=20261108b">
+<link rel="stylesheet" href="undersider.css?v=20261108b">
+<style>
+/* ── Prisberegner (landingpage) ─────────────────────────────────────── */
+.hero.lp-hero{ height:auto; min-height:0; max-height:none; padding:clamp(120px,15vh,170px) var(--pad) 0; }
+.lp-hero .ordmaerke{ top:clamp(86px,11vh,120px); }
+.lp-hero .lp-top{ position:relative; max-width:var(--maxw); margin:0 auto; padding-top:clamp(70px,12vw,150px); }
+.lp-hero h1{ font-size:clamp(2.3rem,4.6vw,3.9rem); max-width:16ch; }
+.lp-hero .lp-lead{ margin:18px 0 0; max-width:48ch; color:var(--tekst-2); font-size:1.08rem; }
+.lp-hero .baand{ margin:clamp(30px,5vh,48px) auto 0; }
+
+.beregner{ display:grid; grid-template-columns:minmax(0,1.45fr) minmax(0,1fr); gap:clamp(24px,4vw,56px); align-items:start; }
+.trin + .trin{ margin-top:clamp(36px,5vw,52px); }
+.trin-hoved{ display:flex; align-items:baseline; gap:14px; margin-bottom:16px; }
+.trin-hoved .n{ font-family:var(--bebas); font-size:1.5rem; color:var(--champagne); line-height:1; }
+.trin-hoved h2{ font-family:var(--bebas); font-weight:400; text-transform:uppercase; letter-spacing:.01em; font-size:clamp(1.7rem,2.6vw,2.1rem); line-height:1; }
+.trin-hoved a{ margin-left:auto; font-size:.86rem; color:var(--tekst); border-bottom:1px solid rgba(var(--guld-rgb),.35); }
+.trin-hoved a:hover{ color:var(--champagne); }
+
+.valg{ position:relative; display:block; cursor:pointer; }
+.valg input{ position:absolute; opacity:0; pointer-events:none; }
+.valg .flade{ display:block; height:100%; padding:16px 18px; background:var(--kul); border:1px solid var(--linje); border-radius:var(--r); transition:border-color .25s, background .25s; }
+.valg:hover .flade{ border-color:var(--linje-2); }
+.valg input:checked + .flade{ border-color:rgba(var(--guld-rgb),.75); background:linear-gradient(180deg,rgba(var(--guld-rgb),.07),rgba(var(--guld-rgb),.02)); }
+.valg input:focus-visible + .flade{ outline:2px solid var(--guld); outline-offset:3px; }
+
+.str-valg{ display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
+.str-valg .flade{ text-align:center; padding:16px 10px 14px; }
+.str-valg svg{ width:58px; height:26px; margin:0 auto 8px; color:var(--roeg); transition:color .25s; }
+.str-valg input:checked + .flade svg{ color:var(--champagne); }
+.str-valg b{ display:block; font-weight:600; letter-spacing:-.02em; }
+.str-valg small{ display:block; margin-top:4px; font-size:.74rem; line-height:1.35; color:var(--roeg); }
+
+.pakke-valg{ display:grid; gap:10px; }
+.pakke-valg .flade{ display:grid; grid-template-columns:auto 1fr auto; gap:4px 16px; align-items:center; }
+.pakke-valg .prik{ grid-row:span 2; width:18px; height:18px; border-radius:50%; border:1px solid var(--linje-2); position:relative; transition:border-color .25s; }
+.pakke-valg input:checked + .flade .prik{ border-color:var(--champagne); }
+.pakke-valg input:checked + .flade .prik::after{ content:""; position:absolute; inset:4px; border-radius:50%; background:var(--champagne); }
+.pakke-valg .navn{ font-weight:600; letter-spacing:-.02em; display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.pakke-valg .navn i{ font-style:normal; font-family:var(--etikette); font-size:.56rem; letter-spacing:.2em; text-transform:uppercase; color:var(--onyx); background:var(--champagne); padding:3px 7px 2px; border-radius:var(--r); }
+.pakke-valg .navn i.kant{ background:none; color:var(--champagne); border:1px solid rgba(var(--guld-rgb),.5); }
+.pakke-valg .bes{ grid-column:2; font-size:.88rem; color:var(--tekst); line-height:1.45; }
+.pakke-valg .pp{ grid-row:1 / span 2; grid-column:3; text-align:right; font-family:var(--bebas); font-size:1.6rem; line-height:1; color:var(--kridt); font-variant-numeric:tabular-nums; white-space:nowrap; }
+
+.tk-valg{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.tk-valg .flade{ display:grid; grid-template-columns:auto 1fr; gap:3px 12px; align-items:start; padding:14px 16px; }
+.tk-valg .boks{ grid-row:span 2; margin-top:3px; width:18px; height:18px; border-radius:var(--r); border:1px solid var(--linje-2); position:relative; }
+.tk-valg input:checked + .flade .boks{ border-color:var(--champagne); background:var(--champagne); }
+.tk-valg input:checked + .flade .boks::after{ content:""; position:absolute; left:5px; top:1px; width:5px; height:10px; border:solid var(--onyx); border-width:0 2px 2px 0; transform:rotate(45deg); }
+.tk-valg b{ font-weight:600; font-size:.96rem; letter-spacing:-.01em; }
+.tk-valg small{ grid-column:2; font-size:.82rem; color:var(--roeg); }
+.tk-valg .valg.inkl{ cursor:default; }
+.tk-valg .valg.inkl .flade{ opacity:.55; }
+.tk-valg .valg.inkl small{ color:var(--champagne); }
+.saeder{ display:none; grid-column:2; margin-top:8px; align-items:center; gap:10px; font-size:.84rem; color:var(--tekst); }
+.tk-valg input:checked + .flade .saeder{ display:flex; }
+.saeder button{ width:30px; height:30px; border-radius:var(--r); border:1px solid var(--linje-2); background:var(--grafit); cursor:pointer; font-size:1rem; line-height:1; }
+.saeder button:hover{ border-color:var(--champagne); }
+.saeder output{ min-width:18px; text-align:center; font-weight:600; color:var(--kridt); font-variant-numeric:tabular-nums; }
+
+.opsummering{ position:sticky; top:104px; padding:clamp(22px,2.6vw,30px); border-radius:var(--r); background:var(--kul); }
+.opsummering .etiket{ display:block; }
+.opsummering .valgt{ margin:12px 0 0; font-size:1.02rem; font-weight:600; letter-spacing:-.02em; }
+.opsummering .valgt span{ display:block; font-weight:400; font-size:.88rem; color:var(--roeg); }
+.linjer{ list-style:none; margin:18px 0 0; padding:14px 0 0; border-top:1px solid var(--linje); display:grid; gap:8px; font-size:.92rem; }
+.linjer li{ display:flex; justify-content:space-between; gap:12px; color:var(--tekst-2); }
+.linjer li b{ font-weight:500; color:var(--kridt); font-variant-numeric:tabular-nums; white-space:nowrap; }
+.linjer li.note b{ color:var(--roeg); font-weight:400; }
+.total{ margin-top:16px; padding-top:16px; border-top:1px solid rgba(var(--guld-rgb),.35); display:flex; justify-content:space-between; align-items:flex-end; gap:12px; }
+.total span{ font-family:var(--etikette); font-size:.62rem; letter-spacing:.24em; text-transform:uppercase; color:var(--roeg); padding-bottom:6px; }
+.total b{ font-family:var(--bebas); font-weight:400; font-size:clamp(3rem,5vw,3.8rem); line-height:.9; color:var(--champagne); font-variant-numeric:tabular-nums; transition:opacity .2s; }
+.total b.skift{ opacity:.35; }
+.moms{ margin:6px 0 0; text-align:right; font-size:.78rem; color:var(--roeg); }
+.opsummering .knap{ width:100%; margin-top:20px; }
+.opsummering .knap.kant{ margin-top:10px; }
+.lover{ margin:16px 0 0; font-size:.84rem; line-height:1.5; color:var(--tekst); display:flex; gap:10px; }
+.lover svg{ width:16px; height:16px; flex-shrink:0; margin-top:3px; color:var(--champagne); }
+.med-i{ margin-top:18px; border-top:1px solid var(--linje); }
+.med-i summary{ list-style:none; cursor:pointer; display:flex; justify-content:space-between; align-items:center; padding:14px 0 0; font-size:.88rem; color:var(--tekst-2); }
+.med-i summary::-webkit-details-marker{ display:none; }
+.med-i[open] .plus::after{ transform:rotate(90deg); }
+.med-i ul{ margin:10px 0 0; padding:0 0 0 18px; font-size:.86rem; color:var(--tekst); display:grid; gap:4px; }
+.med-i ul li::marker{ color:var(--champagne); }
+
+.lp-trin{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.lp-trin li{ padding:24px; background:var(--kul); border:1px solid var(--linje); border-radius:var(--r); }
+.lp-trin .n{ font-family:var(--bebas); font-size:1.4rem; color:var(--champagne); }
+.lp-trin h3{ margin-top:10px; font-size:1.15rem; letter-spacing:-.02em; }
+.lp-trin p{ margin:8px 0 0; color:var(--tekst); font-size:.94rem; }
+
+@media(max-width:980px){
+  .beregner{ grid-template-columns:1fr; }
+  .opsummering{ position:static; }
+  .lp-trin{ grid-template-columns:1fr; }
+}
+@media(max-width:640px){
+  .str-valg{ grid-template-columns:1fr 1fr; }
+  .tk-valg{ grid-template-columns:1fr; }
+  .pakke-valg .pp{ font-size:1.35rem; }
+  .anm-gitter{ grid-template-columns:1fr; }
+  .lp-hero .lp-top{ padding-top:clamp(40px,14vw,80px); }
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <path id="ddsti" fill-rule="evenodd" d="M983.9 255.6L975.6 243.1L968.9 234.8L955.9 221.8L946.8 214.6L936.0 207.4L917.4 197.4L890.5 187.4L868.9 181.9L851.4 178.5L819.5 174.9L787.9 173.8L712.2 174.7L655.1 220.7L646.0 228.7L726.9 228.4L738.8 229.3L756.6 231.8L768.2 234.8L781.3 239.8L789.6 244.2L796.8 249.2L805.1 257.3L810.4 263.9L814.5 271.4L818.7 282.2L820.3 291.1L821.2 300.5L820.3 318.5L817.9 332.4L814.0 347.4L806.2 372.3L786.2 425.6L773.8 454.1L763.8 473.8L752.1 492.4L743.8 503.5L734.7 514.0L717.2 530.4L700.3 541.7L685.6 549.2L674.2 553.4L659.8 557.2L646.8 559.2L637.6 559.7L496.8 559.5L496.3 558.9L499.0 550.9L551.4 424.7L608.0 283.9L610.8 278.3L622.7 247.9L622.1 247.9L530.4 319.4L321.9 477.7L321.9 478.2L336.0 478.5L355.7 478.2L359.6 478.5L360.1 479.9L308.6 608.3L306.3 615.5L657.6 614.6L700.6 613.0L717.2 611.6L743.3 608.3L777.1 601.3L790.4 597.4L809.3 590.8L823.7 585.0L834.5 579.7L855.0 568.3L876.4 554.2L898.3 536.2L917.1 517.6L930.4 502.1L945.1 481.8L957.0 463.0L971.4 435.3L982.8 407.8L991.1 382.0L997.2 356.8L999.7 335.5L1000.0 314.7L997.8 294.2L995.3 283.3L991.4 272.0Z M0.0 472.7L284.4 473.0L353.5 418.4L352.9 417.5L181.9 417.5L181.3 417.0L185.5 403.9L222.1 303.3L226.2 290.3L232.9 273.1L258.1 200.7L311.1 53.2L361.5 51.8L434.7 51.6L453.8 52.7L477.7 56.8L489.6 60.7L500.1 65.2L509.6 70.1L516.8 75.7L525.6 84.3L530.1 90.1L535.3 100.1L539.2 110.3L541.7 123.4L541.7 139.7L540.1 148.3L536.7 156.6L533.4 161.4L529.5 165.2L517.3 171.9L504.3 175.8L487.1 178.0L430.8 317.7L407.0 373.4L663.2 172.2L707.5 136.4L707.2 117.5L704.2 99.8L698.4 84.3L690.3 70.1L678.7 56.0L671.5 49.3L660.1 40.2L649.8 33.5L627.9 22.5L608.8 15.2L583.3 8.3L553.1 3.0L529.5 0.8L509.0 0.0L122.0 0.0L121.7 0.6L149.4 32.7L156.9 41.6L157.2 42.7L107.3 176.6L90.4 224.3L80.7 249.0L75.4 265.0L26.9 397.0Z"/>
+  </defs>
+  <symbol id="pil-h" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="pil-n" viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="bil-lille" viewBox="0 0 64 28"><path d="M8 21.5h-3v-4.2c0-1.4.8-2.4 2.2-2.8l5.6-1.6 5-5.2c.9-.9 2-1.3 3.2-1.3h11.6c1.3 0 2.4.5 3.2 1.5l4.3 5 4.9.9c1.6.3 2.6 1.6 2.6 3.2v4.5h-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="14" cy="21.5" r="3.6" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="41" cy="21.5" r="3.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M17.6 21.5h19.8" stroke="currentColor" stroke-width="1.6"/></symbol>
+  <symbol id="bil-mellem" viewBox="0 0 64 28"><path d="M7 21.5H3.5v-4c0-1.3.8-2.3 2-2.7l8.3-2.3 6.3-5c1-.8 2.2-1.2 3.4-1.2h12.7c1.4 0 2.7.6 3.6 1.7l4.5 5.1 9.6 1.3c1.6.2 2.6 1.5 2.6 3v4.1h-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12.5" cy="21.5" r="3.6" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="49" cy="21.5" r="3.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M16.1 21.5h29.3" stroke="currentColor" stroke-width="1.6"/></symbol>
+  <symbol id="bil-stor" viewBox="0 0 64 28"><path d="M7 21.5H3v-6.2c0-1.2.7-2.2 1.8-2.6l7-2.5 5.3-5.4c.9-.9 2-1.4 3.3-1.4h24.8c1.2 0 2.3.5 3.1 1.4l5 5.6 5.2 1.6c1.4.4 2.3 1.6 2.3 3v6.5h-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12.5" cy="21.5" r="3.8" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="50" cy="21.5" r="3.8" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M16.3 21.5h29.9" stroke="currentColor" stroke-width="1.6"/></symbol>
+  <symbol id="bil-syv" viewBox="0 0 64 28"><path d="M7 21.5H2.5V8.2c0-2.3 1.6-4.2 3.9-4.6l2.3-.4h38.6c1.4 0 2.6.6 3.5 1.7l6.5 7.6 3 1.2c1.2.5 1.9 1.6 1.9 2.9v4.9h-3.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="21.5" r="3.8" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="51" cy="21.5" r="3.8" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M15.8 21.5h31.4" stroke="currentColor" stroke-width="1.6"/></symbol>
+  <symbol id="ik-fb" viewBox="0 0 24 24"><path fill="currentColor" d="M13.5 21v-7.6h2.6l.4-3h-3V8.5c0-.9.3-1.5 1.5-1.5h1.6V4.3c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H7.8v3h2.6V21z"/></symbol>
+  <symbol id="ik-ig" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor"/></symbol>
+  <symbol id="ik-tt" viewBox="0 0 24 24"><path fill="currentColor" d="M16.6 3c.3 2.1 1.6 3.6 3.6 3.8v3c-1.4.1-2.6-.3-3.6-1v6.3c0 3.4-2.5 5.9-5.8 5.9S5 18.5 5 15.3s2.6-5.9 6-5.7v3.1c-1.6-.3-3 .9-3 2.6 0 1.5 1.2 2.8 2.8 2.8s2.8-1.2 2.8-3V3z"/></symbol>
+</svg>
+
+
+<header class="nav glas" id="nav">
+  <a href="index.html" class="lockup" aria-label="Direkte Detailing, forside">
+    <svg viewBox="0 0 1000 615.47" aria-hidden="true"><use href="#ddsti" fill="currentColor"/></svg>
+    <span class="delestreg"></span>
+    <span class="navn">Direkte <b>Detailing</b></span>
+  </a>
+  <nav class="nav-links" aria-label="Hovedmenu">
+    <a href="index.html#priser">Priser</a>
+    <a href="index.html#saadan">Sådan foregår det</a>
+    <a href="omos.html">Om os</a>
+    <a href="kontakt.html">Kontakt</a>
+  </nav>
+  <div class="nav-hoejre">
+    <a href="tel:+4529729695" class="nav-tel">29 72 96 95</a>
+    <a href="https://direkte-detailing.planway.com/" class="knap">Book nu</a>
+  </div>
+</header>
+
+<main id="indhold">
+<section class="hero lp-hero" id="hero">
+  <div class="hero-film" id="heroVideo" data-klip="video/flotprewash2.mp4,video/contactwash.mp4,video/steamclean.mp4,video/bmw.mp4">
+    <video class="aktiv" muted loop playsinline preload="auto" poster="Billeder/opt/floteqv.webp"></video>
+    <video muted loop playsinline preload="none"></video>
+  </div>
+  <div class="spot" id="spot"></div>
+  <div class="gr-top"></div>
+  <div class="gr-bund"></div>
+  <svg class="ordmaerke" id="ordmaerke" data-maks="150" viewBox="0 0 1000 120" aria-hidden="true">
+    <defs>
+      <linearGradient id="omFyld" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".83"/><stop offset="1" stop-color="#fff" stop-opacity=".12"/></linearGradient>
+      <radialGradient id="omLys" gradientUnits="userSpaceOnUse" cx="500" cy="60" r="190"><stop offset="0" stop-color="#F3E5C2" stop-opacity="1"/><stop offset=".4" stop-color="#E7CE93" stop-opacity=".55"/><stop offset="1" stop-color="#E7CE93" stop-opacity="0"/></radialGradient>
+    </defs>
+    <text id="omTekst" x="500" y="100" text-anchor="middle" font-size="120" fill="url(#omFyld)">DIN PRIS</text>
+    <text id="omLysTekst" x="500" y="100" text-anchor="middle" font-size="120" fill="url(#omLys)">DIN PRIS</text>
+  </svg>
+  <div class="lp-top">
+    <p class="etiket streg">Prisberegner</p>
+    <h1 style="margin-top:16px">Se prisen på din bil, før du booker</h1>
+    <p class="lp-lead">Vælg bilens størrelse, pakke og eventuelle tilkøb. Vi kommer ud til dig i Svendborg, på Tåsinge og Thurø, og der er intet transporttillæg.</p>
+  </div>
+  <div class="baand lg" aria-label="Kort fortalt">
+    <ul>
+      <li><b>5,0 ★</b><span>på Google</span></li>
+      <li><b>100+</b><span>biler gjort rene</span></li>
+      <li><b>0 kr</b><span>i transporttillæg</span></li>
+      <li><b>Hånd&shy;vask</b><span>ingen vaskehal</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sek tynd" id="beregner" style="padding-top:clamp(48px,6vw,80px)">
+  <div class="indre beregner">
+    <div class="vis">
+      <fieldset class="trin" style="border:0;margin:0;padding:0;min-width:0">
+        <div class="trin-hoved"><span class="n">01</span><h2>Hvor stor er bilen?</h2><a href="bilstoerrelse.html" target="_blank" rel="noopener">I tvivl?</a></div>
+        <legend class="sr" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Bilstørrelse</legend>
+        <div class="str-valg" id="strValg"></div>
+      </fieldset>
+      <fieldset class="trin" style="border:0;margin-inline:0;padding:0;min-width:0">
+        <div class="trin-hoved"><span class="n">02</span><h2>Vælg pakke</h2><a href="services.html" target="_blank" rel="noopener">Se alle pakker</a></div>
+        <legend style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Pakke</legend>
+        <div class="pakke-valg" id="pakkeValg"></div>
+      </fieldset>
+      <fieldset class="trin" style="border:0;margin-inline:0;padding:0;min-width:0">
+        <div class="trin-hoved"><span class="n">03</span><h2>Tilkøb</h2><a href="tilk%C3%B8b.html" target="_blank" rel="noopener">Læs om tilkøb</a></div>
+        <legend style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Tilkøb</legend>
+        <div class="tk-valg" id="tkValg"></div>
+      </fieldset>
+    </div>
+
+    <aside class="opsummering lg-kant vis" style="--d:120ms" aria-live="polite">
+      <span class="etiket">Din pris</span>
+      <p class="valgt" id="valgt"></p>
+      <ul class="linjer" id="linjer"></ul>
+      <div class="total"><span>I alt</span><b id="total">0 kr</b></div>
+      <p class="moms">inkl. moms · intet transporttillæg</p>
+      <a href="https://direkte-detailing.planway.com/" class="knap" id="bookKnap">Book tid <svg><use href="#pil-h"/></svg></a>
+      <a href="tel:+4529729695" class="knap kant" id="ringKnap">Ring 29 72 96 95</a>
+      <p class="lover"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Du får prisen bekræftet, før vi går i gang, og den bliver aldrig højere, uden at du har sagt ja.</span></p>
+      <details class="med-i"><summary><span id="medITitel">Det er med</span><i class="plus"></i></summary><ul id="medI"></ul></details>
+    </aside>
+  </div>
+</section>
+
+<section class="sek tynd">
+  <div class="indre">
+    <div class="sek-hoved vis"><div><p class="etiket streg"><a href="https://maps.google.com/?cid=16628578266830274771" class="anm-link" target="_blank" rel="noopener">5,0 ★ på Google</a></p><h2>Det siger kunderne</h2></div></div>
+    <div class="anm-gitter">
+      <figure class="anm vis"><span class="stj">★★★★★</span><p>"Super professionel og pålidelig bilrengøring. Bilen kom tilbage skinnende ren både indvendigt og udvendigt, og servicen var hurtig. Kan klart anbefales."</p><figcaption>Jacob · Svendborg</figcaption></figure>
+      <figure class="anm vis" style="--d:100ms"><span class="stj">★★★★★</span><p>"Helt utroligt flot resultat. Vi kan derfor sende vores bedste anbefalinger og det er absolut ikke sidste gang at de bliver booket."</p><figcaption>Ulrik · Svendborg</figcaption></figure>
+      <figure class="anm vis" style="--d:200ms"><span class="stj">★★★★★</span><p>"Jeg kan på det varmeste anbefale de gutter her, de er venlige, effektive, arbejdsomme og yder en ekstrem professionel service."</p><figcaption>Kenneth · Tved</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="sek tynd">
+  <div class="indre">
+    <div class="sek-hoved vis"><div><p class="etiket streg">Sådan foregår det</p><h2>Du skal ikke køre nogen steder</h2></div></div>
+    <ol class="lp-trin">
+      <li class="vis"><span class="n">01</span><h3>Du booker online</h3><p>Vælg pakke, dag og tidspunkt i kalenderen.</p></li>
+      <li class="vis" style="--d:100ms"><span class="n">02</span><h3>Vi kommer ud til dig</h3><p>Vi har højtryksrenser, støvsuger, damprenser og produkterne med. Vi låner kun strøm og vand.</p></li>
+      <li class="vis" style="--d:200ms"><span class="n">03</span><h3>Bilen står klar</h3><p>Efter typisk 2–4 timer er vi færdige, og du kan have passet dit eget imens.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sek tynd" id="faq">
+  <div class="indre faq-gitter">
+    <div class="vis"><p class="etiket streg">Spørgsmål</p><h2>Før du booker</h2><p class="ring">Står dit spørgsmål ikke her, så ring på <a href="tel:+4529729695">29 72 96 95</a> på hverdage mellem 14 og 20.</p></div>
+    <div class="faq vis" style="--d:100ms">
+      <details><summary>Hvilken størrelse er min bil?<i class="plus"></i></summary><p>Har bilen 7 sæder, vælger du altid 7-personers. Ellers vælger du efter bilens fysiske størrelse. En stationcar tæller typisk som stor bil. Ligger bilen mellem to størrelser, vurderer vi den ved ankomst, og du får prisen, før vi går i gang.</p></details>
+      <details><summary>Hvad skal I bruge fra mig?<i class="plus"></i></summary><p>Adgang til strøm og vand. Alt andet har vi med: højtryksrenser, støvsuger, damprenser og produkterne.</p></details>
+      <details><summary>Hvad er forskellen på Standard og Premium?<i class="plus"></i></summary><p>Standard er en rengøring: vi fjerner snavset i og på bilen. Premium er mere grundig og går helt i dybden, så den er klart bedst, hvis bilen er meget beskidt. Læderbehandling og plastikpleje er også med.</p></details>
+      <details><summary>Koster det ekstra, at I kører ud?<i class="plus"></i></summary><p>Nej. Der er intet transporttillæg i Svendborg, på Tåsinge eller Thurø. Bor du længere væk, så ring, så aftaler vi det på forhånd.</p></details>
+      <details><summary>Hvad hvis bilen er meget beskidt?<i class="plus"></i></summary><p>Så siger vi det til dig ved ankomst. Er bilen usædvanligt beskidt, rækker standardpakken typisk ikke, og vi anbefaler en premiumpakke i stedet, så du ikke betaler for en behandling, der ikke løser problemet.</p></details>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════════════════ -->
+</main>
+
+<footer class="fod" id="fod">
+  <div class="fod-cta">
+    <div class="vis">
+      <p class="etiket streg">Klar når du er</p>
+      <h2>Book en tid, så kommer vi ud til dig</h2>
+    </div>
+    <div class="knapper vis" style="--d:100ms">
+      <a href="https://direkte-detailing.planway.com/" class="knap">Book nu <svg><use href="#pil-h"/></svg></a>
+      <a href="tel:+4529729695" class="knap lg-staerk">Ring 29 72 96 95</a>
+    </div>
+  </div>
+
+  <div class="fod-gitter">
+    <div class="fod-brand">
+      <a href="index.html" class="lockup" aria-label="Direkte Detailing">
+        <svg viewBox="0 0 1000 615.47" aria-hidden="true"><use href="#ddsti" fill="currentColor"/></svg>
+        <span class="delestreg"></span>
+        <span class="navn">Direkte <b>Detailing</b></span>
+      </a>
+      <p>Mobil bilpleje i Svendborg, på Tåsinge og Thurø. Vi kommer ud til dig med alt udstyret.</p>
+      <div class="soc">
+        <a href="https://www.facebook.com/profile.php?id=61580811698012" aria-label="Facebook"><svg><use href="#ik-fb"/></svg></a>
+        <a href="https://www.instagram.com/direktedetailing" aria-label="Instagram"><svg><use href="#ik-ig"/></svg></a>
+        <a href="https://www.tiktok.com/@direktedetailing" aria-label="TikTok"><svg><use href="#ik-tt"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <ul>
+        <li><a href="udvendig-vask.html">Udvendig vask</a></li>
+        <li><a href="interi%C3%B8r-reng%C3%B8ring.html">Indvendig rengøring</a></li>
+        <li><a href="full-detail.html">Full Detail</a></li>
+        <li><a href="interi%C3%B8r-reng%C3%B8ring-premium.html">Premium Indvendig</a></li>
+        <li><a href="full-detail-premium.html">Premium Full Detail</a></li>
+        <li><a href="mobil-bilpleje.html">Mobil bilpleje</a></li>
+        <li><a href="hvad-er-detailing.html">Hvad er detailing?</a></li>
+        <li><a href="hvad-koster-indvendig-rengoering.html">Hvad koster indvendig rengøring?</a></li>
+        <li><a href="klargoer-bilen-til-salg.html">Klargøring af bil til salg</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Telefontid</h4>
+      <ul class="tider" id="tider">
+        <li data-d="1"><span>Mandag</span><span>14–20</span></li>
+        <li data-d="2"><span>Tirsdag</span><span>14–20</span></li>
+        <li data-d="3"><span>Onsdag</span><span>14–20</span></li>
+        <li data-d="4"><span>Torsdag</span><span>14–20</span></li>
+        <li data-d="5"><span>Fredag</span><span>14–20</span></li>
+        <li class="lukket" data-d="6"><span>Lørdag</span><span>Lukket</span></li>
+        <li class="lukket" data-d="0"><span>Søndag</span><span>Lukket</span></li>
+      </ul>
+      <span class="nu-aaben" id="nuAaben"><i></i><span>Telefonen er lukket lige nu</span></span>
+    </div>
+    <div>
+      <h4>Kontakt</h4>
+      <ul>
+        <li><a href="tel:+4529729695">29 72 96 95</a></li>
+        <li><a href="mailto:kontakt@direktedetailing.dk">kontakt@direktedetailing.dk</a></li>
+        <li>Løvholmen 2, 5700 Svendborg</li>
+        <li>CVR 46 35 57 84</li>
+        <li style="color:var(--roeg)">Tidligere Svendborg Bildetail</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="fod-ord" id="fodOrd" aria-hidden="true">
+    <svg viewBox="0 0 1200 150" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <linearGradient id="ordFyld" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#E7CE93" stop-opacity=".22"/>
+          <stop offset="1" stop-color="#E7CE93" stop-opacity=".02"/>
+        </linearGradient>
+        <radialGradient id="ordLys" gradientUnits="userSpaceOnUse" cx="600" cy="80" r="230">
+          <stop offset="0" stop-color="#F3E5C2" stop-opacity=".95"/>
+          <stop offset=".45" stop-color="#E7CE93" stop-opacity=".35"/>
+          <stop offset="1" stop-color="#E7CE93" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <text id="ordTekst" x="600" y="128" text-anchor="middle" font-size="150" fill="url(#ordFyld)">DIREKTE DETAILING</text>
+      <text x="600" y="128" text-anchor="middle" font-size="150" fill="url(#ordLys)" id="ordLysTekst" opacity="0">DIREKTE DETAILING</text>
+    </svg>
+  </div>
+
+  <div class="fod-bund">
+    <span>© 2026 Direkte Detailing · Mobil bilpleje i Svendborg</span>
+    <nav>
+      <a href="privacy.html">Privatliv og cookies</a>
+      <a href="https://www.sonderbymarketing.dk">Hjemmeside af SONDERBY MARKETING</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="mobil-bar glas" id="mobilBar">
+  <span class="mb-t" id="mbT">Din pris<b id="mbPris">0 kr</b></span>
+  <a href="https://direkte-detailing.planway.com/" class="knap" id="mbBook">Book tid</a>
+</div>
+<script>
+/* Prisberegner. Priserne er de samme som på services.html (inkl. moms).
+   Forvalg via URL: ?str=lille|mellem|stor|syv&pakke=udv|indv|full|pindv|pfull */
+(function(){
+  const $ = (s, r = document) => r.querySelector(s);
+  const kr = n => n.toLocaleString('da-DK') + ' kr';
+  const STR = [
+    { id:'lille',  navn:'Lille',       eks:'Polo, Aygo, Fiat 500', ikon:'bil-lille' },
+    { id:'mellem', navn:'Mellem',      eks:'Golf, Octavia, A4',    ikon:'bil-mellem' },
+    { id:'stor',   navn:'Stor',        eks:'Passat st., Model Y',  ikon:'bil-stor' },
+    { id:'syv',    navn:'7-personers', eks:'alle biler med 7 sæder', ikon:'bil-syv' },
+  ];
+  const PAKKER = [
+    { id:'udv',   navn:'Udvendig vask',        bes:'Håndvask, fælgrens og tørring af hele bilen.',
+      pris:{ lille:375, mellem:375, stor:375, syv:375 },
+      med:['Forvask og afspuling','Kontaktvask med bilshampoo','Fælg- og dækrens','Vinduespuds','Tørring af hele bilen'] },
+    { id:'indv',  navn:'Indvendig rengøring',  bes:'Støvsugning, damprens og en frisk kabine.',
+      pris:{ lille:685, mellem:875, stor:975, syv:1125 },
+      med:['Grundig støvsugning i alle kroge','Afpudsning af instrumentbord og alle overflader','Rens med damprenser','Rens af måtter','Vinduer indefra','Dørfalser rengøres'] },
+    { id:'full',  navn:'Full Detail', plade:'Mest valgt', bes:'Hele bilen inde og ude i ét besøg.',
+      pris:{ lille:1060, mellem:1185, stor:1299, syv:1435 },
+      med:['Alt fra Udvendig vask','Alt fra Indvendig rengøring','Ét besøg, én pris'] },
+    { id:'pindv', navn:'Premium Indvendig', premium:true, bes:'Mere grundig, helt i dybden. Læder og plastik behandles.',
+      pris:{ lille:1250, mellem:1430, stor:1549, syv:1750 },
+      med:['Alt fra Indvendig rengøring, mere grundigt','Læderbehandling','Plastikpleje'] },
+    { id:'pfull', navn:'Premium Full Detail', premium:true, plade:'Mest komplet', bes:'Vores mest komplette behandling, inde og ude.',
+      pris:{ lille:1560, mellem:1875, stor:2049, syv:2310 },
+      med:['Alt fra Full Detail, mere grundigt','Læderbehandling','Plastikpleje'] },
+  ];
+  const TILKOEB = [
+    { id:'saede', navn:'Sæderens', pris:80, prSaede:true, bes:'80 kr pr. sæde' },
+    { id:'voks',  navn:'Voksbehandling', pris:185, bes:'185 kr · glans og vandafvisning' },
+    { id:'plastu',navn:'Udvendig plastikfornyer', pris:125, bes:'125 kr · kofangere og lister' },
+    { id:'laeder',navn:'Læderbehandling', pris:125, inPremium:true, bes:'125 kr' },
+    { id:'plasti',navn:'Plastikpleje', pris:185, inPremium:true, bes:'185 kr · indvendig plast' },
+    { id:'hund',  navn:'Fjernelse af hundehår', note:true, bes:'149–399 kr · vurderes på stedet' },
+  ];
+
+  // Planway-deeplinks (én service pr. pakke og størrelse, andre services skjult). Udvendig vask har én fælles service.
+  const PLANWAY = 'https://direkte-detailing.planway.com/?d=66989&single=1&sid=';
+  const SID = {
+    udv:   { lille:473642, mellem:473642, stor:473642, syv:473642 },
+    indv:  { lille:467675, mellem:473467, stor:492253, syv:473468 },
+    full:  { lille:473469, mellem:473470, stor:492249, syv:473471 },
+    pindv: { lille:473472, mellem:473473, stor:492251, syv:473474 },
+    pfull: { lille:473475, mellem:473476, stor:492247, syv:473477 },
+  };
+
+  const q = new URLSearchParams(location.search);
+  const s = {
+    str: STR.some(x => x.id === q.get('str')) ? q.get('str') : 'mellem',
+    pakke: PAKKER.some(x => x.id === q.get('pakke')) ? q.get('pakke') : 'full',
+    tk: new Set(), saeder: 2,
+  };
+
+  $('#strValg').innerHTML = STR.map(x => `
+    <label class="valg"><input type="radio" name="str" value="${x.id}" ${x.id === s.str ? 'checked' : ''}>
+      <span class="flade"><svg aria-hidden="true"><use href="#${x.ikon}"/></svg><b>${x.navn}</b><small>${x.eks}</small></span></label>`).join('');
+  $('#pakkeValg').innerHTML = PAKKER.map(p => `
+    <label class="valg"><input type="radio" name="pakke" value="${p.id}" ${p.id === s.pakke ? 'checked' : ''}>
+      <span class="flade"><span class="prik"></span>
+        <span class="navn">${p.navn}${p.plade ? `<i class="${p.premium ? 'kant' : ''}">${p.plade}</i>` : ''}</span>
+        <span class="pp" data-pp="${p.id}"></span>
+        <span class="bes">${p.bes}</span></span></label>`).join('');
+  $('#tkValg').innerHTML = TILKOEB.map(t => `
+    <label class="valg" data-tk="${t.id}"><input type="checkbox" value="${t.id}">
+      <span class="flade"><span class="boks"></span><b>${t.navn}</b><small>${t.bes}</small>
+        ${t.prSaede ? `<span class="saeder">Antal sæder <button type="button" data-d="-1" aria-label="Færre sæder">−</button><output id="saedeTal">${s.saeder}</output><button type="button" data-d="1" aria-label="Flere sæder">+</button></span>` : ''}
+      </span></label>`).join('');
+
+  const spor = (navn, data) => { if (typeof gtag === 'function') gtag('event', navn, data); };
+  const meta = (navn, data) => { if (typeof fbq === 'function') fbq('track', navn, data); };
+  let forrige = null;
+
+  function tegn(){
+    const p = PAKKER.find(x => x.id === s.pakke), st = STR.find(x => x.id === s.str);
+    document.querySelectorAll('[data-pp]').forEach(el => {
+      el.textContent = kr(PAKKER.find(x => x.id === el.dataset.pp).pris[s.str]);
+    });
+    TILKOEB.forEach(t => {
+      const lbl = document.querySelector(`[data-tk="${t.id}"]`), inp = lbl.querySelector('input'), sm = lbl.querySelector('small');
+      const inkl = t.inPremium && p.premium;
+      lbl.classList.toggle('inkl', inkl); inp.disabled = inkl;
+      if (inkl) { inp.checked = false; s.tk.delete(t.id); }
+      sm.textContent = inkl ? 'Med i premiumpakken' : t.bes;
+    });
+    const maks = s.str === 'syv' ? 7 : 5;
+    s.saeder = Math.min(Math.max(s.saeder, 1), maks);
+    $('#saedeTal').textContent = s.saeder;
+
+    let total = p.pris[s.str];
+    const linjer = [`<li><span>${p.navn}</span><b>${kr(p.pris[s.str])}</b></li>`];
+    TILKOEB.filter(t => s.tk.has(t.id)).forEach(t => {
+      if (t.note) { linjer.push(`<li class="note"><span>${t.navn}</span><b>vurderes på stedet</b></li>`); return; }
+      const b = t.prSaede ? t.pris * s.saeder : t.pris; total += b;
+      linjer.push(`<li><span>${t.navn}${t.prSaede ? ` · ${s.saeder} sæder` : ''}</span><b>${kr(b)}</b></li>`);
+    });
+    if (p.premium) linjer.push(`<li class="note"><span>Læder og plastikpleje</span><b>med i prisen</b></li>`);
+    $('#linjer').innerHTML = linjer.join('');
+    $('#valgt').innerHTML = `${p.navn}<span>${st.navn === '7-personers' ? '7-personers bil' : st.navn + ' bil'} · f.eks. ${st.eks}</span>`;
+    $('#medITitel').textContent = `Det er med i ${p.navn}`;
+    $('#medI').innerHTML = p.med.map(m => `<li>${m}</li>`).join('');
+
+    const t = $('#total');
+    if (forrige !== null && forrige !== total) { t.classList.add('skift'); setTimeout(() => t.classList.remove('skift'), 160); }
+    setTimeout(() => { t.textContent = kr(total); }, forrige === null ? 0 : 120);
+    const link = PLANWAY + SID[s.pakke][s.str];
+    $('#bookKnap').href = link; $('#mbBook').href = link;
+    $('#mbPris').textContent = kr(total);
+    $('#mbT').firstChild.textContent = p.navn + ' ';
+    forrige = total;
+    s.total = total;
+  }
+
+  document.addEventListener('change', e => {
+    const i = e.target;
+    if (i.name === 'str') s.str = i.value;
+    else if (i.name === 'pakke') s.pakke = i.value;
+    else if (i.type === 'checkbox' && i.closest('#tkValg')) i.checked ? s.tk.add(i.value) : s.tk.delete(i.value);
+    else return;
+    tegn();
+    spor('beregner_valg', { bilstoerrelse: s.str, pakke: s.pakke, tilkoeb: [...s.tk].join(','), value: s.total, currency: 'DKK' });
+  });
+  $('#tkValg').addEventListener('click', e => {
+    const b = e.target.closest('button[data-d]'); if (!b) return;
+    e.preventDefault(); s.saeder += +b.dataset.d; tegn();
+  });
+  ['#bookKnap', '#mbBook'].forEach(id => $(id).addEventListener('click', () =>
+    { spor('book_klik', { kilde: 'prisberegner', bilstoerrelse: s.str, pakke: s.pakke, tilkoeb: [...s.tk].join(','), value: s.total, currency: 'DKK' });
+      meta('InitiateCheckout', { value: s.total, currency: 'DKK', content_name: s.pakke }); }));
+  $('#ringKnap').addEventListener('click', () => { spor('ring_klik', { kilde: 'prisberegner', value: s.total, currency: 'DKK' }); meta('Contact'); });
+
+  // Mobilbjælken: frem, når beregneren er nået, væk igen ved footeren
+  const bar = $('#mobilBar'), beregner = $('#beregner'), fod = $('#fod');
+  const opdater = () => bar.classList.toggle('op', beregner.getBoundingClientRect().top < innerHeight * .5 && fod.getBoundingClientRect().top > innerHeight);
+  addEventListener('scroll', opdater, { passive: true }); opdater();
+
+  tegn();
+})();
+</script>
+
+<script src="faelles.js"></script>
+<script src="menu.js"></script>
+</body>
+</html>
