@@ -20,7 +20,7 @@
   </url>
   <url>
     <loc>https://direktedetailing.dk/</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -101,5 +101,11 @@
     <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://direktedetailing.dk/hvad-koster-bilpleje.html</loc>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>
