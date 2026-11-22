@@ -937,6 +937,7 @@ html.menu-aaben .menu-panel nav a{ opacity:1; transform:none; }
         <div><dt>Telefon</dt><dd><a href="tel:+4529729695">29 72 96 95</a></dd></div>
         <div><dt>Telefontid</dt><dd>Mandag–fredag 14–20</dd></div>
         <div><dt>Område</dt><dd>Svendborg, Tåsinge, Thurø og omegn</dd></div>
+        <div><dt>Forsikring</dt><dd>Erhvervsforsikring hos Tryg</dd></div>
       </dl>
     </div>
   </div>
@@ -1111,10 +1112,10 @@ html.menu-aaben .menu-panel nav a{ opacity:1; transform:none; }
     ],
     premium: [
       { id:'pindv', etiket:'Premium · Indvendig', navn:'Premium Indvendig', foto:'Billeder/ny/macan-foran.webp', link:'interi%C3%B8r-reng%C3%B8ring-premium.html', premium:true,
-        desc:'Når kabinen har brug for mere end en rengøring.', liste:['Alt fra Indvendig rengøring','Læderbehandling','Plastikpleje, der giver farven tilbage'],
+        desc:'Vi går mere i dybden og bruger mere tid på detaljerne. Vores anbefaling, hvis bilen er slem.', liste:['Alt fra Indvendig rengøring','Mere tid på detaljerne og de svære steder','Læderbehandling og plastikpleje'],
         pris:{ lille:1250, mellem:1430, stor:1549, syv:1750 }, mod:'indv', modNavn:'Indvendig' },
       { id:'pfull', etiket:'Premium · Inde og ude', navn:'Premium Full Detail', plade:'Mest komplet', foto:'Billeder/kort-premium-fulldetail.webp', link:'full-detail-premium.html', premium:true,
-        desc:'Den mest komplette pakke, inde og ude.', liste:['Alt fra Full Detail','Læderbehandling og plastikpleje','Maksimal finish inde og ude'],
+        desc:'Den mest grundige pakke, inde og ude. Vores anbefaling, hvis bilen er slem.', liste:['Alt fra Full Detail','Mere tid på detaljerne, inde og ude','Læderbehandling og plastikpleje'],
         pris:{ lille:1560, mellem:1875, stor:2049, syv:2310 }, mod:'full', modNavn:'Full Detail' },
     ],
   };
@@ -1149,7 +1150,7 @@ html.menu-aaben .menu-panel nav a{ opacity:1; transform:none; }
     alle.forEach(p => {
       const b = $(`[data-pris=${p.id}]`), s = $(`[data-for=${p.id}]`);
       const saet = () => {
-        b.textContent = (p.id === 'udv' ? 'Fra ' : '') + kr(p.pris[str]) + ' kr';
+        b.textContent = kr(p.pris[str]) + ' kr';
         s.textContent = p.id === 'udv' ? 'Samme pris for alle biler' : (p.mod ? `${kr(p.pris[str] - alle.find(x => x.id === p.mod).pris[str])} kr mere end ${p.modNavn}` : STR[str].navn);
         b.classList.remove('skift');
       };
