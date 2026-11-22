@@ -445,6 +445,9 @@ h1 em,h2 em{ font-style:normal; color:inherit; }
 .tilkoeb ul{ list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:10px 26px; flex:1; }
 .tilkoeb li{ font-size:.94rem; color:var(--tekst-2); }
 .tilkoeb li span{ color:var(--champagne); font-variant-numeric:tabular-nums; margin-left:6px; }
+.tilkoeb li em{ display:block; font-style:normal; font-size:.78rem; color:var(--roeg); margin-top:2px; }
+.tilkoeb li span{ white-space:nowrap; }
+@media (max-width:640px){ .tilkoeb ul{ flex:1 1 100%; display:grid; grid-template-columns:1fr 1fr; gap:14px 18px; } }
 .tilkoeb a{ font-size:.9rem; color:var(--champagne); border-bottom:1px solid rgba(var(--guld-rgb),.35); white-space:nowrap; }
 .pris-note{ margin:18px 0 0; color:var(--roeg); font-size:.9rem; display:flex; gap:10px; align-items:flex-start; }
 .pris-note svg{ width:16px; height:16px; color:var(--champagne); flex-shrink:0; margin-top:3px; }
@@ -656,7 +659,7 @@ html.menu-aaben .menu-panel nav a{ opacity:1; transform:none; }
       "name": "Er I forsikret?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Ja. Vi har erhvervsforsikring hos Tryg, som dækker skader på din bil, mens vi arbejder på den. Sker der noget, så sig det til os med det samme."
+        "text": "Ja. Vi har erhvervsforsikring hos Tryg, som dækker skader på din bil, mens vi arbejder på den. Sker der noget, siger vi det til dig med det samme. Opdager du selv noget bagefter, så ring eller skriv til os."
       }
     },
     {
@@ -821,14 +824,14 @@ html.menu-aaben .menu-panel nav a{ opacity:1; transform:none; }
         <li>Sæderens <span>80 kr pr. sæde</span></li>
         <li>Voksbehandling <span>185 kr</span></li>
         <li>Udvendig plastikfornyer <span>125 kr</span></li>
-        <li>Læderbehandling <span>125 kr</span></li>
-        <li>Plastikpleje <span>185 kr</span></li>
+        <li>Læderbehandling <span>125 kr</span><em>med i Premium</em></li>
+        <li>Indvendig plastikpleje <span>185 kr</span><em>med i Premium</em></li>
         <li>Hundehår <span>149–399 kr</span></li>
       </ul>
       <a href="tilk%C3%B8b.html">Om tilkøbene</a>
     </div>
     <p class="pris-note vis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7.5 3v5.5c0 4.4-3.1 8.2-7.5 9.5-4.4-1.3-7.5-5.1-7.5-9.5V6z"/></svg>
-      <span>Ligger bilen mellem to størrelser, vurderer vi den ved ankomst. Du får prisen, før vi går i gang, og den bliver aldrig højere, uden at du har sagt ja.</span></p>
+      <span>Alle priser er inkl. moms. Ligger bilen mellem to størrelser, vurderer vi den ved ankomst. Du får prisen, før vi går i gang, og den bliver aldrig højere, uden at du har sagt ja.</span></p>
   </div>
 </section>
 
@@ -906,7 +909,7 @@ html.menu-aaben .menu-panel nav a{ opacity:1; transform:none; }
 <section class="sek tynd" id="anmeldelser">
   <div class="indre">
     <div class="sek-hoved vis">
-      <div><p class="etiket streg"><a href="https://maps.google.com/?cid=16628578266830274771" class="anm-link" target="_blank" rel="noopener">5,0 ★ · 10 anmeldelser på Google</a></p><h2>Det skriver kunderne</h2></div>
+      <div><p class="etiket streg"><a href="https://maps.google.com/?cid=16628578266830274771" class="anm-link" target="_blank" rel="noopener">5,0 ★ · 10 anmeldelser på Google</a></p><h2>Det skriver kunderne</h2><p style="margin:12px 0 0;font-size:.88rem;color:var(--roeg)">Alle 10 anmeldelser er fra vores Google-profil, hvor de er skrevet af kunder. Her er et udvalg, og du kan læse dem alle på Google.</p></div>
     </div>
   </div>
   <div class="anm-baand vis" id="anmBaand">
@@ -927,7 +930,7 @@ html.menu-aaben .menu-panel nav a{ opacity:1; transform:none; }
     <div class="vis">
       <p class="etiket streg">Om os</p>
       <h2>Tre unge fra Svendborg, der tager det seriøst</h2>
-      <p>Vi går på HHX og startede Direkte Detailing i 2025. Siden har vi gjort over 100 biler rene her i området. Det er os selv, der kommer ud til din bil, og det er også os, du taler med, når du ringer.</p>
+      <p>Vi går på HHX og startede i 2025 under navnet Svendborg Bildetail, som i dag hedder Direkte Detailing. Siden har vi gjort over 100 biler rene her i området. Det er os selv, der kommer ud til din bil, og det er også os, du taler med, når du ringer.</p>
     </div>
     <div class="om-kort lg-kant vis" style="--d:120ms">
       <dl>
@@ -951,7 +954,7 @@ html.menu-aaben .menu-panel nav a{ opacity:1; transform:none; }
       <details><summary>Hvad koster bilrengøring i Svendborg?<i class="plus"></i></summary><p><a href="udvendig-vask.html" style="color:var(--champagne)">Udvendig bilvask</a> koster 375 kr. for alle biler. <a href="interi%C3%B8r-reng%C3%B8ring.html" style="color:var(--champagne)">Indvendig rengøring</a> koster fra 685 kr., og Full Detail, hvor vi tager bilen både inde og ude, koster fra 1.060 kr. Prisen følger bilens størrelse, og der er intet transporttillæg i Svendborg, på Tåsinge og Thurø.</p></details>
       <details><summary>Laver I også almindelig bilvask?<i class="plus"></i></summary><p>Ja. <a href="udvendig-vask.html" style="color:var(--champagne)">Udvendig bilvask</a> er håndvask med forvask, kontaktvask, fælg- og dækrens og tørring af hele bilen. Den koster 375 kr. uanset bilens størrelse, og vi kommer ud til dig, så du ikke skal i vaskehal.</p></details>
       <details><summary>Hvad skal I bruge fra mig?<i class="plus"></i></summary><p>Adgang til strøm og vand. Alt andet har vi med: højtryksrenser, støvsuger, damprenser og produkterne.</p></details>
-      <details><summary>Er I forsikret?<i class="plus"></i></summary><p>Ja. Vi har erhvervsforsikring hos Tryg, som dækker skader på din bil, mens vi arbejder på den. Sker der noget, så sig det til os med det samme.</p></details>
+      <details><summary>Er I forsikret?<i class="plus"></i></summary><p>Ja. Vi har erhvervsforsikring hos Tryg, som dækker skader på din bil, mens vi arbejder på den. Sker der noget, siger vi det til dig med det samme. Opdager du selv noget bagefter, så ring eller skriv til os.</p></details>
       <details><summary>Hvor lang tid tager det?<i class="plus"></i></summary><p>Typisk mellem 2 og 4 timer. Det afhænger af, hvor beskidt bilen er, hvor stor den er, og hvilke tilkøb du har valgt.</p></details>
       <details><summary>Hvilken størrelse er min bil?<i class="plus"></i></summary><p>Har bilen 7 sæder, vælger du altid 7-personers. Ellers vælger du efter bilens fysiske størrelse. En stationcar tæller typisk som stor bil. Er du i tvivl, så se vores <a href="bilstoerrelse.html" style="color:var(--champagne)">bilstørrelse-guide</a>, eller ring.</p></details>
       <details><summary>Hvad er forskellen på Standard og Premium?<i class="plus"></i></summary><p>Standard er en rengøring: vi fjerner snavset i og på bilen. Premium er mere grundig og går helt i dybden, så den er klart bedst, hvis bilen er meget beskidt. Læderbehandling og plastikpleje er også med. Sæderens kan lægges på alle pakker for 80 kr. pr. sæde. Vi siger det ærligt, hvis du ikke har brug for den dyreste pakke.</p></details>
