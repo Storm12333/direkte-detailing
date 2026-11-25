@@ -163,7 +163,7 @@ html.vinter-paa .menu-panel{ padding-top:calc(108px + var(--vinter-h,38px)); }
 <script>
 (function(){
   var d=document.documentElement, v=document.getElementById('vinter');
-  document.addEventListener('DOMContentLoaded', function(){
+  function vinterTekst(){
     var R=[['og bookingen er åben hele døgnet.','og i vinterpausen booker du ved at skrive til os.'],
       ['Åben døgnet rundt','SMS 29 72 96 95'],['Book her på siden','Sådan booker du'],
       ['Vælg service, størrelse og tidspunkt','Skriv hvad du vil have lavet, så finder vi en tid'],
@@ -181,7 +181,9 @@ html.vinter-paa .menu-panel{ padding-top:calc(108px + var(--vinter-h,38px)); }
         else if(x==='booke online') t.nodeValue=t.nodeValue.replace(x,'skrive til os');
       }
     });
-  });
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', vinterTekst); else vinterTekst();
+  addEventListener('load', vinterTekst); setTimeout(vinterTekst, 1200); setTimeout(vinterTekst, 4000);
   try{ if(sessionStorage.getItem('vinterLukket')){ v.remove(); return; } }catch(e){}
   function maal(){ d.style.setProperty('--vinter-h', v.offsetHeight+'px'); }
   d.classList.add('vinter-paa'); maal(); addEventListener('resize', maal);
