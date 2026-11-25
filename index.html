@@ -699,6 +699,53 @@ html.menu-aaben .menu-panel nav a{ opacity:1; transform:none; }
 </script>
 </head>
 <body>
+<!-- VINTERBANNER start (fjernes ved genåbning) -->
+<style>
+.vinter{ position:fixed; top:0; left:0; right:0; z-index:61; background:var(--champagne,#D8BF8A); color:#0b0b0b; font-size:.86rem; line-height:1.4; padding:9px 44px 9px 16px; text-align:center; }
+.vinter b{ font-weight:600; }
+.vinter a{ color:inherit; text-decoration:underline; text-underline-offset:2px; white-space:nowrap; }
+.vinter .vk{ display:none; }
+.vinter button{ position:absolute; right:8px; top:50%; transform:translateY(-50%); width:32px; height:32px; border:0; background:transparent; color:inherit; font-size:1.2rem; cursor:pointer; }
+html.vinter-paa .nav{ top:calc(var(--vinter-h,38px) + 10px); }
+html.vinter-paa .menu-panel{ padding-top:calc(108px + var(--vinter-h,38px)); }
+@media(max-width:640px){ .vinter{ font-size:.8rem; padding:8px 40px 8px 12px; } .vinter .vl{ display:none; } .vinter .vk{ display:inline; } }
+</style>
+<div class="vinter" id="vinter" role="region" aria-label="Vinterpause">
+  <span class="vl"><b>Vinterpause:</b> Det er for koldt og mørkt til at arbejde i indkørslen. Indtil 1. februar henter vi i stedet din bil, gør den ren på vores opvarmede værksted og kører den hjem igen.</span>
+  <span class="vk"><b>Til 1. feb:</b> Vi henter bilen og gør den ren på vores opvarmede værksted.</span>
+  <a href="sms:+4529729695">Skriv til 29 72 96 95</a>
+  <button type="button" aria-label="Luk besked" onclick="vinterLuk()">×</button>
+</div>
+<script>
+(function(){
+  var d=document.documentElement, v=document.getElementById('vinter');
+  document.addEventListener('DOMContentLoaded', function(){
+    var R=[['og bookingen er åben hele døgnet.','og i vinterpausen booker du ved at skrive til os.'],
+      ['Åben døgnet rundt','SMS 29 72 96 95'],['Book her på siden','Sådan booker du'],
+      ['Vælg service, størrelse og tidspunkt','Skriv hvad du vil have lavet, så finder vi en tid'],
+      ['Vælg en tid i kalenderen','Skriv, så finder vi en tid'],
+      ['Du vælger service, bilstørrelse og tidspunkt i vores bookingkalender. Du får en bekræftelse, når du har booket.','Skriv hvilken bil du har, og hvad du vil have lavet. Så finder vi en dag, hvor vi henter den og gør den ren på værkstedet.'],
+      ['Onlinebooking og mail er åbne døgnet rundt.','SMS og mail kan du sende døgnet rundt.']];
+    var tw=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT), n;
+    while((n=tw.nextNode())){ for(var i=0;i<R.length;i++){ if(n.nodeValue.indexOf(R[i][0])>-1) n.nodeValue=n.nodeValue.replace(R[i][0],R[i][1]); } }
+    document.querySelectorAll('a[href*="planway.com"]').forEach(function(a){
+      a.href='sms:+4529729695'; a.removeAttribute('target');
+      var w=document.createTreeWalker(a,NodeFilter.SHOW_TEXT), t;
+      while((t=w.nextNode())){
+        var x=t.nodeValue.trim();
+        if(/^Book|^Åbn bookingkalenderen/.test(x)) t.nodeValue=t.nodeValue.replace(x,'Skriv til os');
+        else if(x==='booke online') t.nodeValue=t.nodeValue.replace(x,'skrive til os');
+      }
+    });
+  });
+  try{ if(sessionStorage.getItem('vinterLukket')){ v.remove(); return; } }catch(e){}
+  function maal(){ d.style.setProperty('--vinter-h', v.offsetHeight+'px'); }
+  d.classList.add('vinter-paa'); maal(); addEventListener('resize', maal);
+  window.vinterLuk=function(){ v.remove(); d.classList.remove('vinter-paa'); try{ sessionStorage.setItem('vinterLukket','1'); }catch(e){} };
+})();
+</script>
+<!-- VINTERBANNER slut -->
+
 <div class="intro" id="intro" aria-hidden="true">
   <svg viewBox="-20 -20 1040 655"><use href="#ddsti" class="intro-streg"/><use href="#ddsti" class="intro-fyld"/></svg>
 </div>
