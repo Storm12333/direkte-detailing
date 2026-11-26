@@ -57,12 +57,11 @@
   "description": "Kontakt os for at booke bilrengøring i Svendborg. Ring på 29 72 96 95 eller send en mail.",
   "url": "https://direktedetailing.dk/kontakt.html",
   "mainEntity": {
-    "@type": "LocalBusiness",
+    "@type": "Organization",
     "@id": "https://direktedetailing.dk/#virksomhed",
     "name": "Direkte Detailing",
-    "alternateName": "Svendborg Bildetail",
-    "telephone": "+4529729695",
-    "email": "kontakt@direktedetailing.dk"
+    "url": "https://direktedetailing.dk/",
+    "logo": "https://direktedetailing.dk/Billeder/dd-logo-512.png"
   }
 }
 </script>
@@ -72,8 +71,18 @@
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Forside", "item": "https://direktedetailing.dk/" },
-    { "@type": "ListItem", "position": 2, "name": "Kontakt", "item": "https://direktedetailing.dk/kontakt.html" }
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Forside",
+      "item": "https://direktedetailing.dk/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Kontakt",
+      "item": "https://direktedetailing.dk/kontakt.html"
+    }
   ]
 }
 </script>
@@ -284,7 +293,7 @@ html.vinter-paa .menu-panel{ padding-top:calc(108px + var(--vinter-h,38px)); }
       <p class="etiket streg">Når du har booket</p>
       <h2 class="stor-titel">Det eneste, du skal sørge for</h2>
       <ul class="tjek">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><div><b>Adgang til vand</b>En udendørs hane er nok.</div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><div><b>Adgang til vand</b>En udendørs hane inden for ca. 15 meter af bilen. Kun til udvendig vask.</div></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><div><b>Adgang til el</b>En stikkontakt, vi kan nå.</div></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><div><b>En plads til bilen</b>Hvor den kan holde stille i et par timer, typisk indkørslen eller carporten.</div></li>
       </ul>
